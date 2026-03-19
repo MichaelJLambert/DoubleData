@@ -1,0 +1,402 @@
+\documentclass[11pt]{article}
+\pdfoutput=1
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage[margin=1in]{geometry}
+\usepackage[shortlabels]{enumitem}
+\usepackage[backgroundcolor=lightgray,linecolor=lightgray,textsize=footnotesize]{todonotes}
+
+% Mathematics.
+\usepackage{double-data-macros}
+\numberwithin{equation}{section}
+
+% References.
+\usepackage[breaklinks,hidelinks,bookmarksnumbered]{hyperref}
+\usepackage[capitalize,noabbrev,nameinlink]{cleveref}
+
+% Theorems.
+\usepackage{thmtools}
+\declaretheorem[within=section]{theorem}
+\declaretheorem[sibling=theorem]{proposition}
+\declaretheorem[sibling=theorem]{corollary}
+\declaretheorem[sibling=theorem]{lemma}
+\declaretheorem[sibling=theorem,style=definition,qed=\qedsymbol]{definition}
+\declaretheorem[sibling=theorem,style=definition,qed=\qedsymbol]{construction}
+\declaretheorem[sibling=theorem,style=remark,qed=\qedsymbol]{remark}
+\declaretheorem[sibling=theorem,style=remark,qed=\qedsymbol]{example}
+
+% Diagrams.
+\usepackage{nicematrix}
+\NiceMatrixOptions{cell-space-limits=3pt}
+\newenvironment{dblArray}[1]{\begin{NiceArray}{#1}[hvlines]}{\end{NiceArray}}
+
+% Bibliography.
+\usepackage[style=alphabetic,maxbibnames=10]{biblatex}
+\addbibresource{double-data-bib.bib}
+\renewbibmacro{in:}{}
+
+% Title.
+\title{Double Data}
+\author{Michael Lambert}
+\date{Spring 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+  Working draft of a paper on quantification, modality, data queries and comprehension, all in the context of double categories. A follow-up to \cite{lambert2025}.
+\end{abstract}
+
+\section{Introduction}
+
+\section{Double Categories, OLOGs, and Data Instances}
+
+\begin{example}
+  In $\Mat(\cat V)$, restrictions and extensions are computed as 
+    \begin{equation*}
+      % https://q.uiver.app/#q=WzAsNCxbMCwwLCJaIl0sWzAsMSwiWCJdLFsxLDEsIlkiXSxbMSwwLCJXIl0sWzAsMSwiZiIsMl0sWzEsMiwiTSIsMix7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImJhcnJlZCJ9fX1dLFszLDIsImciXSxbMCwzLCJmXyFNZ14qIiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiYmFycmVkIn19fV0sWzcsNSwiXFx0ZXh0e3Jlc30iLDEseyJzaG9ydGVuIjp7InNvdXJjZSI6MjAsInRhcmdldCI6MjB9LCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJub25lIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
+      \begin{tikzcd}
+        Z & W \\
+        X & Y
+        \arrow[""{name=0, anchor=center, inner sep=0}, "{f_!Mg^*}"{inner sep=.8ex}, "\shortmid"{marking}, from=1-1, to=1-2]
+        \arrow["f"', from=1-1, to=2-1]
+        \arrow["g", from=1-2, to=2-2]
+        \arrow[""{name=1, anchor=center, inner sep=0}, "M"'{inner sep=.8ex}, "\shortmid"{marking}, from=2-1, to=2-2]
+        \arrow["{\text{res}}"{description}, draw=none, from=0, to=1]
+      \end{tikzcd} \qquad \qquad
+      f_!Mg^*(z,w) = M(fz,gw)
+    \end{equation*}
+  and 
+    \begin{equation*}
+      % https://q.uiver.app/#q=WzAsNCxbMCwwLCJaIl0sWzAsMSwiWCJdLFsxLDEsIlkiXSxbMSwwLCJXIl0sWzAsMSwiZiIsMl0sWzEsMiwiZl4qTmdfISIsMix7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImJhcnJlZCJ9fX1dLFszLDIsImciXSxbMCwzLCJOIiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiYmFycmVkIn19fV0sWzcsNSwiXFx0ZXh0e2V4dH0iLDEseyJzaG9ydGVuIjp7InNvdXJjZSI6MjAsInRhcmdldCI6MjB9LCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJub25lIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
+      \begin{tikzcd}
+        Z & W \\
+        X & Y
+        \arrow[""{name=0, anchor=center, inner sep=0}, "N"{inner sep=.8ex}, "\shortmid"{marking}, from=1-1, to=1-2]
+        \arrow["f"', from=1-1, to=2-1]
+        \arrow["g", from=1-2, to=2-2]
+        \arrow[""{name=1, anchor=center, inner sep=0}, "{f^*Ng_!}"'{inner sep=.8ex}, "\shortmid"{marking}, from=2-1, to=2-2]
+        \arrow["{\text{ext}}"{description}, draw=none, from=0, to=1]
+      \end{tikzcd} \qquad \qquad f^*Ng_!(x,y) = \sum_{\substack{fz=x\\gw=y}} A(z,w)
+    \end{equation*}
+\end{example}
+
+\section{Existential Quantification and Disjunctive Queries}
+
+A relation $R\colon X\proto Y$ might be thought of as a predicate, as a generalized many-valued non-functional relationship, or when $X= Y$ as a non-deterministic system. That $x$ and $y$ are $R$-related is written $xRy$ or perhaps $x\leq_R y$ or even $x\sim_Ry$. That in any case $y$ is on the left suggests, due to non-symmetry, that $y$ is somehow subsequent to, or a consequence of $x$. This comports with the system view of $R$ that $y$ is a later state accessible from $x$. Perhaps $x$ is prior to $y$ in a temporal sequence. On the causal view, somehow $y$ is a consequence of $x$.
+
+A proposition is a subset $S\subset Y$ or perhaps a monic arrow $S\rightarrowtail Y$. Such propositions are in 1-1 correspondence with functions $X\to \mathbf 2$. That $x\in X$ satisfies the proposition $S\subset X$ is written $S(x)$ and means $x\in S$ too. Any given such $x$ may or may not satisfy $S$. That some elements of $X$ does so is usually written `$\exists x S(x)$' and the operator `$\exists$' binds the dummy variable. The set of all $x\in X$ for which some subsequent state satisfies $S\subset X$ is written 
+  \begin{equation*} \label{eqn:diamond-definition}
+    \diamondsuit S = \lbrace x\mid S(y) \text{ for some } x\leq_R y \rbrace.
+  \end{equation*}
+This is exactly the modal possibility operator familiar from the topological semantics given by the Alexandrov Topology. Likewise there is the set of all elements of $X$, all of whose subsequent states satisfy $S\subset X$, written 
+  \begin{equation*}
+    \Box S = \lbrace x\mid S(x) \text{ for all } x\leq_R y\rbrace.
+  \end{equation*}
+This is modal necessity in the same topological semantics. Thus, in the former case, an element of $\diamondsuit S$ is an element of $X$ for which $S$ is possible, in the sense that it is true of some later accessible state. In the latter case, an element of $\Box S$ is an element of $X$ for which $S$ is necessarily true, in the sense that any subsequent accessible state satisfies $S$.
+
+The possibility set $\diamondsuit S$ above is constructed via the application of adjoint functors. That is, consider the proposition $s\colon S\rightarrowtail X$ as a monic arrow and form the pullback on the left followed by the image
+  \begin{equation*}
+    % https://q.uiver.app/#q=WzAsNCxbMCwwLCJSXFxvZG90IHNeKiJdLFsxLDAsIlIiXSxbMSwxLCJYXFx0aW1lcyBZIl0sWzAsMSwiWFxcdGltZXMgUyJdLFswLDEsIiIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Im1vbm8ifX19XSxbMSwyLCIiLDAseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJtb25vIn19fV0sWzAsMywiIiwyLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoibW9ubyJ9fX1dLFszLDIsIjFcXHRpbWVzIHMiLDIseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJtb25vIn19fV0sWzAsMiwiIiwxLHsic3R5bGUiOnsibmFtZSI6ImNvcm5lciJ9fV1d
+    \begin{tikzcd}
+      {R\odot s^*} & R \\
+      {X\times S} & {X\times Y}
+      \arrow[tail, from=1-1, to=1-2]
+      \arrow[tail, from=1-1, to=2-1]
+      \arrow["\lrcorner"{anchor=center, pos=0.125}, draw=none, from=1-1, to=2-2]
+      \arrow[tail, from=1-2, to=2-2]
+      \arrow["{1\times s}"', tail, from=2-1, to=2-2]
+    \end{tikzcd}\quad \leadsto \quad
+    % https://q.uiver.app/#q=WzAsNCxbMSwwLCJYXFx0aW1lcyBTIl0sWzIsMCwiWFxcdGltZXMgMSJdLFsxLDEsIlxcZGlhbW9uZHN1aXQgUyJdLFswLDAsIlJcXG9kb3Qgc14qIl0sWzAsMSwiMVxcdGltZXMgISJdLFsyLDEsIiIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Im1vbm8ifX19XSxbMywwLCIiLDAseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJtb25vIn19fV0sWzMsMiwiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoiZXBpIn19fV1d
+    \begin{tikzcd}
+      {R\odot s^*} & {X\times S} & {X\times 1} \\
+      & {\diamondsuit S}
+      \arrow[tail, from=1-1, to=1-2]
+      \arrow[two heads, from=1-1, to=2-2]
+      \arrow["{1\times !}", from=1-2, to=1-3]
+      \arrow[tail, from=2-2, to=1-3]
+    \end{tikzcd}
+  \end{equation*}
+That is, the corner of the pullback on the right is exactly the set of pairs $(x,a)$ where $x\sim_Ra$ under $R$. The image then binds $x\in X$ via existential quantification. This is formalized in the double category $\Rel$ of sets, functions and relations, $\diamondsuit S$ by first taking a restriction and then an extension:
+  \begin{equation*}
+    % https://q.uiver.app/#q=WzAsNCxbMCwwLCJYIl0sWzEsMCwiUyJdLFsxLDEsIlgiXSxbMCwxLCJYIl0sWzAsMSwiUlxcb2RvdCB1XioiLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJiYXJyZWQifX19XSxbMSwyLCJzIiwwLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoibW9ubyJ9fX1dLFswLDMsIjEiLDJdLFszLDIsIlIiLDIseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJiYXJyZWQifX19XSxbNCw3LCJcXHRleHR7cmVzfSIsMSx7InNob3J0ZW4iOnsic291cmNlIjoyMCwidGFyZ2V0IjoyMH0sInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6Im5vbmUifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dXQ==
+    \begin{tikzcd}
+      X & S \\
+      X & X
+      \arrow[""{name=0, anchor=center, inner sep=0}, "{R\odot u^*}"{inner sep=.8ex}, "\shortmid"{marking}, from=1-1, to=1-2]
+      \arrow["1"', from=1-1, to=2-1]
+      \arrow["s", tail, from=1-2, to=2-2]
+      \arrow[""{name=1, anchor=center, inner sep=0}, "R"'{inner sep=.8ex}, "\shortmid"{marking}, from=2-1, to=2-2]
+      \arrow["{\text{res}}"{description}, draw=none, from=0, to=1]
+    \end{tikzcd} \qquad\leadsto\qquad 
+    % https://q.uiver.app/#q=WzAsNCxbMCwwLCJYIl0sWzEsMCwiUyJdLFsxLDEsIjEiXSxbMCwxLCJYIl0sWzAsMSwiUlxcb2RvdCB1XioiLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJiYXJyZWQifX19XSxbMSwyLCIhIl0sWzAsMywiMSIsMl0sWzMsMiwiXFxkaWFtb25kc3VpdCBTIiwyLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiYmFycmVkIn19fV0sWzQsNywiXFx0ZXh0e2V4dH0iLDEseyJzaG9ydGVuIjp7InNvdXJjZSI6MjAsInRhcmdldCI6MjB9LCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJub25lIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
+    \begin{tikzcd}
+      X & S \\
+      X & 1
+      \arrow[""{name=0, anchor=center, inner sep=0}, "{R\odot u^*}"{inner sep=.8ex}, "\shortmid"{marking}, from=1-1, to=1-2]
+      \arrow["1"', from=1-1, to=2-1]
+      \arrow["{!}", from=1-2, to=2-2]
+      \arrow[""{name=1, anchor=center, inner sep=0}, "{\diamondsuit S}"'{inner sep=.8ex}, "\shortmid"{marking}, from=2-1, to=2-2]
+      \arrow["{\text{ext}}"{description}, draw=none, from=0, to=1]
+    \end{tikzcd}
+  \end{equation*}
+since restrictions in this double category are pullbacks and extensions are images. 
+
+Note that the same effect could be achieved simply by composing. That is, in any double category $\dbl{D}$, there is a comparison cell of the form
+  \begin{equation*}
+    % https://q.uiver.app/#q=WzAsNixbMCwwLCJYIl0sWzEsMCwiUyJdLFsyLDAsIlMiXSxbMiwxLCIxIl0sWzAsMSwiWCJdLFsxLDEsIlgiXSxbMCwxLCJSXFxvZG90IHNeKiIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImJhcnJlZCJ9fX1dLFsxLDIsIlxcaWQiLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJiYXJyZWQifX19XSxbMiwzLCIhIl0sWzAsNCwiMSIsMl0sWzQsNSwiUiIsMix7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImJhcnJlZCJ9fX1dLFs1LDMsIlMiLDIseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJiYXJyZWQifX19XSxbMSw1LCJzIl0sWzcsMTEsIlxcdGV4dHtleHR9IiwxLHsic2hvcnRlbiI6eyJzb3VyY2UiOjIwLCJ0YXJnZXQiOjIwfSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoibm9uZSJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzYsMTAsIlxcdGV4dHtyZXN9IiwxLHsic2hvcnRlbiI6eyJzb3VyY2UiOjIwLCJ0YXJnZXQiOjIwfSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoibm9uZSJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV1d
+    \begin{tikzcd}
+      X & S & S \\
+      X & X & 1
+      \arrow[""{name=0, anchor=center, inner sep=0}, "{R\odot s^*}"{inner sep=.8ex}, "\shortmid"{marking}, from=1-1, to=1-2]
+      \arrow["1"', from=1-1, to=2-1]
+      \arrow[""{name=1, anchor=center, inner sep=0}, "\id"{inner sep=.8ex}, "\shortmid"{marking}, from=1-2, to=1-3]
+      \arrow["s", from=1-2, to=2-2]
+      \arrow["{!}", from=1-3, to=2-3]
+      \arrow[""{name=2, anchor=center, inner sep=0}, "R"'{inner sep=.8ex}, "\shortmid"{marking}, from=2-1, to=2-2]
+      \arrow[""{name=3, anchor=center, inner sep=0}, "S"'{inner sep=.8ex}, "\shortmid"{marking}, from=2-2, to=2-3]
+      \arrow["{\text{res}}"{description}, draw=none, from=0, to=2]
+      \arrow["{\text{ext}}"{description}, draw=none, from=1, to=3]
+    \end{tikzcd}  
+  \end{equation*}
+where $S\colon X\proto 1$ is defined via the extension cell and a slight abuse of notation. Thus, there is a globular cell $\diamondsuit S \Rightarrow R\odot S$ since $\diamondsuit S$ is constructed as an extension: 
+  \begin{equation*}
+    % https://q.uiver.app/#q=WzAsOCxbMCwxLCJYIl0sWzEsMSwiUyJdLFsyLDEsIlMiXSxbMiwyLCIxIl0sWzAsMiwiWCJdLFsxLDIsIlgiXSxbMCwwLCJYIl0sWzIsMCwiUyJdLFsxLDIsIlxcaWQiLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJiYXJyZWQifX19XSxbMiwzLCIhIl0sWzAsNCwiMSIsMl0sWzQsNSwiUiIsMix7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImJhcnJlZCJ9fX1dLFs1LDMsIlMiLDIseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJiYXJyZWQifX19XSxbMSw1LCJzIl0sWzYsMF0sWzYsNywiUlxcb2RvdCBzXioiLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJiYXJyZWQifX19XSxbNywyXSxbMCwxLCJSXFxvZG90IHNeKiIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImJhcnJlZCJ9fX1dLFs4LDEyLCJcXHRleHR7ZXh0fSIsMSx7InNob3J0ZW4iOnsic291cmNlIjoyMCwidGFyZ2V0IjoyMH0sInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6Im5vbmUifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsxNywxMSwiXFx0ZXh0e3Jlc30iLDEseyJzaG9ydGVuIjp7InNvdXJjZSI6MjAsInRhcmdldCI6MjB9LCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJub25lIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMTUsMSwiXFxjb25nIiwxLHsic2hvcnRlbiI6eyJzb3VyY2UiOjIwfSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoibm9uZSJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV1d
+    \begin{tikzcd}
+      X && S \\
+      X & S & S \\
+      X & X & 1
+      \arrow[""{name=0, anchor=center, inner sep=0}, "{R\odot s^*}"{inner sep=.8ex}, "\shortmid"{marking}, from=1-1, to=1-3]
+      \arrow[from=1-1, to=2-1]
+      \arrow[from=1-3, to=2-3]
+      \arrow[""{name=1, anchor=center, inner sep=0}, "{R\odot s^*}"{inner sep=.8ex}, "\shortmid"{marking}, from=2-1, to=2-2]
+      \arrow["1"', from=2-1, to=3-1]
+      \arrow[""{name=2, anchor=center, inner sep=0}, "\id"{inner sep=.8ex}, "\shortmid"{marking}, from=2-2, to=2-3]
+      \arrow["s", from=2-2, to=3-2]
+      \arrow["{!}", from=2-3, to=3-3]
+      \arrow[""{name=3, anchor=center, inner sep=0}, "R"'{inner sep=.8ex}, "\shortmid"{marking}, from=3-1, to=3-2]
+      \arrow[""{name=4, anchor=center, inner sep=0}, "S"'{inner sep=.8ex}, "\shortmid"{marking}, from=3-2, to=3-3]
+      \arrow["\cong"{description}, draw=none, from=0, to=2-2]
+      \arrow["{\text{res}}"{description}, draw=none, from=1, to=3]
+      \arrow["{\text{ext}}"{description}, draw=none, from=2, to=4]
+    \end{tikzcd} \qquad = \qquad 
+    % https://q.uiver.app/#q=WzAsNixbMCwwLCJYIl0sWzEsMCwiUyJdLFsxLDEsIjEiXSxbMCwxLCJYIl0sWzAsMiwiWCJdLFsxLDIsIjEiXSxbMCwxLCJSXFxvZG90IHVeKiIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImJhcnJlZCJ9fX1dLFsxLDIsIiEiXSxbMCwzLCIiLDIseyJsZXZlbCI6Miwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFszLDIsIlxcZGlhbW9uZHN1aXQgUyIsMix7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImJhcnJlZCJ9fX1dLFszLDQsIiIsMix7ImxldmVsIjoyLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzQsNSwiUlxcb2RvdCBTIiwyLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiYmFycmVkIn19fV0sWzIsNSwiIiwyLHsibGV2ZWwiOjIsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbOSwxMSwiXFxleGlzdHNcXCwhIiwxLHsibGFiZWxfcG9zaXRpb24iOjYwLCJzaG9ydGVuIjp7InNvdXJjZSI6MjAsInRhcmdldCI6MjB9LCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJub25lIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNiw5LCJcXHRleHR7ZXh0fSIsMSx7InNob3J0ZW4iOnsic291cmNlIjoyMCwidGFyZ2V0IjoyMH0sInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6Im5vbmUifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dXQ==
+    \begin{tikzcd}
+      X & S \\
+      X & 1 \\
+      X & 1
+      \arrow[""{name=0, anchor=center, inner sep=0}, "{R\odot u^*}"{inner sep=.8ex}, "\shortmid"{marking}, from=1-1, to=1-2]
+      \arrow[equals, from=1-1, to=2-1]
+      \arrow["{!}", from=1-2, to=2-2]
+      \arrow[""{name=1, anchor=center, inner sep=0}, "{\diamondsuit S}"'{inner sep=.8ex}, "\shortmid"{marking}, from=2-1, to=2-2]
+      \arrow[equals, from=2-1, to=3-1]
+      \arrow[equals, from=2-2, to=3-2]
+      \arrow[""{name=2, anchor=center, inner sep=0}, "{R\odot S}"'{inner sep=.8ex}, "\shortmid"{marking}, from=3-1, to=3-2]
+      \arrow["{\text{ext}}"{description}, draw=none, from=0, to=1]
+      \arrow["{\exists\,!}"{description, pos=0.6}, draw=none, from=1, to=2]
+    \end{tikzcd}
+  \end{equation*}
+Now, this is an invertible cell when $\dbl{D}$ is either $\Rel$ or $\Span$ or $\Mat(\cat{V})$ for suitably structured monoidal $\cat V$. The case of $\Rel$ is trivial, so we treat the other two briefly.
+
+\begin{example}
+  In $\Span$, work with $\langle d,c\rangle\colon R\to X\times Y$ and then on the one hand
+    \begin{equation*}
+      \diamondsuit S = \lbrace ((x,a), r) \mid x\in X, a\in S, r\in R, d(r) = x, c(r) = a\rbrace
+    \end{equation*}
+  whereas $R\odot \hat s$ is the corner of the pullback:
+    \begin{equation*}
+      R\times_X S = \lbrace (r,a)\mid r\in R, a\in S, c(r) = a\rbrace.
+    \end{equation*}
+  These are evidently isomorphic, as the latter just forgets the indices $x\in X$. But these are recoverable as $d(r) = x$.
+\end{example}
+
+\begin{example}
+  Let $\cat V$ denote any monoidal category with coproducts preserved by the tensor. We then have the double category $\Mat(\cat V)$ of $\cat V$-matrices. 
+  To form the possibility operator, we have first the restriction 
+    \begin{equation*}
+      % https://q.uiver.app/#q=WzAsNCxbMCwwLCJYIl0sWzAsMSwiWCJdLFsxLDEsIlgiXSxbMSwwLCJTIl0sWzAsMSwiIiwyLHsibGV2ZWwiOjIsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMSwyLCJNIiwyLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiYmFycmVkIn19fV0sWzMsMiwicyJdLFswLDMsIk1cXG9kb3Qgc14qIiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiYmFycmVkIn19fV0sWzcsNSwiXFx0ZXh0e3Jlc30iLDEseyJzaG9ydGVuIjp7InNvdXJjZSI6MjAsInRhcmdldCI6MjB9LCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJub25lIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
+      \begin{tikzcd}
+        X & S \\
+        X & X
+        \arrow[""{name=0, anchor=center, inner sep=0}, "{M\odot s^*}"{inner sep=.8ex}, "\shortmid"{marking}, from=1-1, to=1-2]
+        \arrow[equals, from=1-1, to=2-1]
+        \arrow["s", from=1-2, to=2-2]
+        \arrow[""{name=1, anchor=center, inner sep=0}, "M"'{inner sep=.8ex}, "\shortmid"{marking}, from=2-1, to=2-2]
+        \arrow["{\text{res}}"{description}, draw=none, from=0, to=1]
+      \end{tikzcd} \qquad \qquad
+      (M\odot s^*)(x,a) = M(x,a) \qquad \text{ for } x\in X, a\in S
+    \end{equation*} 
+  and then via an extension we have the possibility operator:
+    \begin{equation*}
+      % https://q.uiver.app/#q=WzAsNCxbMCwwLCJYIl0sWzAsMSwiWCJdLFsxLDEsIiEiXSxbMSwwLCJTIl0sWzAsMSwiIiwyLHsibGV2ZWwiOjIsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMSwyLCJcXGRpYW1vbmRzdWl0IFMiLDIseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJiYXJyZWQifX19XSxbMywyLCIhIl0sWzAsMywiTVxcb2RvdCBzXioiLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJiYXJyZWQifX19XSxbNyw1LCJcXHRleHR7ZXh0fSIsMSx7InNob3J0ZW4iOnsic291cmNlIjoyMCwidGFyZ2V0IjoyMH0sInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6Im5vbmUifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dXQ==
+      \begin{tikzcd}
+        X & S \\
+        X & {!}
+        \arrow[""{name=0, anchor=center, inner sep=0}, "{M\odot s^*}"{inner sep=.8ex}, "\shortmid"{marking}, from=1-1, to=1-2]
+        \arrow[equals, from=1-1, to=2-1]
+        \arrow["{!}", from=1-2, to=2-2]
+        \arrow[""{name=1, anchor=center, inner sep=0}, "{\diamondsuit S}"'{inner sep=.8ex}, "\shortmid"{marking}, from=2-1, to=2-2]
+        \arrow["{\text{ext}}"{description}, draw=none, from=0, to=1]
+      \end{tikzcd} \qquad \qquad \diamondsuit S(x) = \sum_{a\in S} M(x,a) \qquad\text{for } x\in X.
+    \end{equation*}
+  Now, to compare this to the composite $M\odot S$ note first that $S$ viewed as a proarrow $S\colon X\proto 1$ has the entries described by
+    \begin{equation*}
+      % https://q.uiver.app/#q=WzAsNCxbMCwwLCJTIl0sWzEsMCwiUyJdLFsxLDEsIjEiXSxbMCwxLCJYIl0sWzAsMSwiXFxpZF9TIiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiYmFycmVkIn19fV0sWzEsMiwiISJdLFswLDMsInMiLDJdLFszLDIsIlMiLDIseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJiYXJyZWQifX19XSxbNCw3LCJcXHRleHR7ZXh0fSIsMSx7InNob3J0ZW4iOnsic291cmNlIjoyMCwidGFyZ2V0IjoyMH0sInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6Im5vbmUifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dXQ==
+      \begin{tikzcd}
+        S & S \\
+        X & 1
+        \arrow[""{name=0, anchor=center, inner sep=0}, "{\id_S}"{inner sep=.8ex}, "\shortmid"{marking}, from=1-1, to=1-2]
+        \arrow["s"', from=1-1, to=2-1]
+        \arrow["{!}", from=1-2, to=2-2]
+        \arrow[""{name=1, anchor=center, inner sep=0}, "S"'{inner sep=.8ex}, "\shortmid"{marking}, from=2-1, to=2-2]
+        \arrow["{\text{ext}}"{description}, draw=none, from=0, to=1]
+      \end{tikzcd} \qquad\qquad  S(x) = \begin{cases} I \quad & x\in S \\ 0 &\text{o/w} \end{cases} \qquad \text{ for } x\in X.
+    \end{equation*}
+  This follows from the definition of the unit proarrows in $\Mat(\cat V)$. Now, from the definition of the loose composite of two matrices, we have 
+    \begin{align*}
+      (M\odot S)(x) &= \sum_{y\in X}M(x,y)\otimes S(y) \\
+                    &= \sum_{y\in X}M(x,y)\otimes \begin{cases} I \;\;\;\; y\in U \\ 0\;\;\;\;\text{o/w}\end{cases} \\
+                    &= \sum_{y\in S}M(x,y)
+    \end{align*}
+  for any $x\in X$, showing that the two constructions are the same in this case too.
+\end{example}
+
+However, in $\Prof$, the cell under consideration is not invertible. This is essentially a failure of left Kan extension to commute with composition of profunctors.
+
+\begin{example}
+  
+\end{example}
+
+Since in general the constructions are not the same, we must make a choice as to which is basic. In the case of $\Span$, although the appropriate element $x\in X$ is implicit in the latter as $d(r) = x$, our preference is to keep the data as a triple $((x,a),r) = (x,a,r)$ as in the first way of computing the possibility operator. This way all the information is recorded in the apex of the span and the two legs can be forgotten. The preferred definition is thus formalized in the following way.
+
+\begin{definition}[Possibility]
+  Let $s\colon S\rightarrowtail X$ denote any monic arrow in the equipment $\dbl{D}$. The proposition \textbf{possibly} $S$ is then formed as an restriction followed by an extension:
+    \begin{equation*}
+    % https://q.uiver.app/#q=WzAsNCxbMCwwLCJYIl0sWzEsMCwiUyJdLFsxLDEsIlgiXSxbMCwxLCJYIl0sWzAsMSwiUlxcb2RvdCB1XioiLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJiYXJyZWQifX19XSxbMSwyLCJzIiwwLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoibW9ubyJ9fX1dLFswLDMsIjEiLDJdLFszLDIsIlIiLDIseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJiYXJyZWQifX19XSxbNCw3LCJcXHRleHR7cmVzfSIsMSx7InNob3J0ZW4iOnsic291cmNlIjoyMCwidGFyZ2V0IjoyMH0sInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6Im5vbmUifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dXQ==
+    \begin{tikzcd}
+      X & S \\
+      X & X
+      \arrow[""{name=0, anchor=center, inner sep=0}, "{R\odot u^*}"{inner sep=.8ex}, "\shortmid"{marking}, from=1-1, to=1-2]
+      \arrow["1"', from=1-1, to=2-1]
+      \arrow["s", tail, from=1-2, to=2-2]
+      \arrow[""{name=1, anchor=center, inner sep=0}, "R"'{inner sep=.8ex}, "\shortmid"{marking}, from=2-1, to=2-2]
+      \arrow["{\text{res}}"{description}, draw=none, from=0, to=1]
+    \end{tikzcd} \qquad\leadsto\qquad 
+    % https://q.uiver.app/#q=WzAsNCxbMCwwLCJYIl0sWzEsMCwiUyJdLFsxLDEsIjEiXSxbMCwxLCJYIl0sWzAsMSwiUlxcb2RvdCB1XioiLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJiYXJyZWQifX19XSxbMSwyLCIhIl0sWzAsMywiMSIsMl0sWzMsMiwiXFxkaWFtb25kc3VpdCBTIiwyLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiYmFycmVkIn19fV0sWzQsNywiXFx0ZXh0e2V4dH0iLDEseyJzaG9ydGVuIjp7InNvdXJjZSI6MjAsInRhcmdldCI6MjB9LCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJub25lIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
+    \begin{tikzcd}
+      X & S \\
+      X & 1
+      \arrow[""{name=0, anchor=center, inner sep=0}, "{R\odot u^*}"{inner sep=.8ex}, "\shortmid"{marking}, from=1-1, to=1-2]
+      \arrow["1"', from=1-1, to=2-1]
+      \arrow["{!}", from=1-2, to=2-2]
+      \arrow[""{name=1, anchor=center, inner sep=0}, "{\diamondsuit S}"'{inner sep=.8ex}, "\shortmid"{marking}, from=2-1, to=2-2]
+      \arrow["{\text{ext}}"{description}, draw=none, from=0, to=1]
+    \end{tikzcd}
+  \end{equation*}
+  as in the pattern suggested above:
+\end{definition}
+
+This operator justly bears the `$\diamondsuit$' notation on account of the following observation, namely, that what is the case is possibly the case, as in the usual monadic interpretation of possibility. The proof is most naturally interpreted in $\Rel$, but is completely formal. When $\Rel$ is meant, the relationship is the familiar $S\leq \diamondsuit S$.
+
+\begin{proposition}
+  If $R$ is reflexive, then there is a globular cell $S \Rightarrow \diamondsuit S$.
+\end{proposition}
+\begin{proof}
+  Reflexivity of $R$ means that there is a canonical cell 
+    \begin{equation*}
+      % https://q.uiver.app/#q=WzAsNCxbMCwwLCJYIl0sWzEsMCwiWCJdLFsxLDEsIlgiXSxbMCwxLCJYIl0sWzAsMSwiXFxpZF9YIiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiYmFycmVkIn19fV0sWzEsMiwiIiwwLHsibGV2ZWwiOjIsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMCwzLCIiLDIseyJsZXZlbCI6Miwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFszLDIsIlIiLDIseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJiYXJyZWQifX19XSxbNCw3LCJcXGRlbHRhX1giLDEseyJzaG9ydGVuIjp7InNvdXJjZSI6MjAsInRhcmdldCI6MjB9LCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJub25lIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
+      \begin{tikzcd}
+        X & X \\
+        X & X
+        \arrow[""{name=0, anchor=center, inner sep=0}, "{\id_X}"{inner sep=.8ex}, "\shortmid"{marking}, from=1-1, to=1-2]
+        \arrow[equals, from=1-1, to=2-1]
+        \arrow[equals, from=1-2, to=2-2]
+        \arrow[""{name=1, anchor=center, inner sep=0}, "R"'{inner sep=.8ex}, "\shortmid"{marking}, from=2-1, to=2-2]
+        \arrow["{\delta_X}"{description}, draw=none, from=0, to=1]
+      \end{tikzcd}
+    \end{equation*}
+  expressing the fact that the diagonal factors through $R$. Consequently, since $R\odot u^*$ arises as a restriction, there is a unique cell making an equality
+    \begin{equation*}
+      % https://q.uiver.app/#q=WzAsNixbMCwxLCJYIl0sWzEsMSwiWCJdLFsxLDIsIlgiXSxbMCwyLCJYIl0sWzAsMCwiUyJdLFsxLDAsIlMiXSxbMCwxLCJcXGlkX1giLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJiYXJyZWQifX19XSxbMSwyLCIiLDAseyJsZXZlbCI6Miwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFswLDMsIiIsMix7ImxldmVsIjoyLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzMsMiwiUiIsMix7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImJhcnJlZCJ9fX1dLFs0LDAsInMiLDJdLFs0LDUsIlxcaWRfUyIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImJhcnJlZCJ9fX1dLFs1LDEsInMiXSxbNiw5LCJcXGRlbHRhX1giLDEseyJzaG9ydGVuIjp7InNvdXJjZSI6MjAsInRhcmdldCI6MjB9LCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJub25lIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMTEsNiwiXFxpZF9zIiwxLHsibGFiZWxfcG9zaXRpb24iOjQwLCJzaG9ydGVuIjp7InNvdXJjZSI6MjAsInRhcmdldCI6MjB9LCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJub25lIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
+      \begin{tikzcd}
+        S & S \\
+        X & X \\
+        X & X
+        \arrow[""{name=0, anchor=center, inner sep=0}, "{\id_S}"{inner sep=.8ex}, "\shortmid"{marking}, from=1-1, to=1-2]
+        \arrow["s"', from=1-1, to=2-1]
+        \arrow["s", from=1-2, to=2-2]
+        \arrow[""{name=1, anchor=center, inner sep=0}, "{\id_X}"{inner sep=.8ex}, "\shortmid"{marking}, from=2-1, to=2-2]
+        \arrow[equals, from=2-1, to=3-1]
+        \arrow[equals, from=2-2, to=3-2]
+        \arrow[""{name=2, anchor=center, inner sep=0}, "R"'{inner sep=.8ex}, "\shortmid"{marking}, from=3-1, to=3-2]
+        \arrow["{\id_s}"{description, pos=0.4}, draw=none, from=0, to=1]
+        \arrow["{\delta_X}"{description}, draw=none, from=1, to=2]
+      \end{tikzcd} \qquad = \qquad 
+      % https://q.uiver.app/#q=WzAsNixbMCwwLCJTIl0sWzEsMCwiUyJdLFsxLDEsIlMiXSxbMCwxLCJYIl0sWzAsMiwiWCJdLFsxLDIsIlgiXSxbMCwxLCJcXGlkX1MiLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJiYXJyZWQifX19XSxbMSwyLCIiLDAseyJsZXZlbCI6Miwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFswLDMsInMiLDJdLFszLDQsIiIsMix7ImxldmVsIjoyLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzIsNSwicyJdLFs0LDUsIlIiLDIseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJiYXJyZWQifX19XSxbMywyLCJSXFxvZG90IHNeKiIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImJhcnJlZCJ9fX1dLFs2LDEyLCJcXGV4aXN0c1xcLCEiLDEseyJsYWJlbF9wb3NpdGlvbiI6NDAsInNob3J0ZW4iOnsic291cmNlIjoyMCwidGFyZ2V0IjoyMH0sInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6Im5vbmUifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsxMiwxMSwiXFx0ZXh0e3Jlc30iLDEseyJzaG9ydGVuIjp7InNvdXJjZSI6MjAsInRhcmdldCI6MjB9LCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJub25lIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
+      \begin{tikzcd}
+        S & S \\
+        X & S \\
+        X & X
+        \arrow[""{name=0, anchor=center, inner sep=0}, "{\id_S}"{inner sep=.8ex}, "\shortmid"{marking}, from=1-1, to=1-2]
+        \arrow["s"', from=1-1, to=2-1]
+        \arrow[equals, from=1-2, to=2-2]
+        \arrow[""{name=1, anchor=center, inner sep=0}, "{R\odot s^*}"{inner sep=.8ex}, "\shortmid"{marking}, from=2-1, to=2-2]
+        \arrow[equals, from=2-1, to=3-1]
+        \arrow["s", from=2-2, to=3-2]
+        \arrow[""{name=2, anchor=center, inner sep=0}, "R"'{inner sep=.8ex}, "\shortmid"{marking}, from=3-1, to=3-2]
+        \arrow["{\exists\,!}"{description, pos=0.4}, draw=none, from=0, to=1]
+        \arrow["{\text{res}}"{description}, draw=none, from=1, to=2]
+      \end{tikzcd}
+    \end{equation*}
+  And so, putting this cell as (I) in the diagram below, we get the desired comparison induced by the universal property of the extension cell:
+    \begin{equation*}
+      % https://q.uiver.app/#q=WzAsNixbMCwwLCJTIl0sWzEsMCwiUyJdLFsxLDEsIlMiXSxbMCwxLCJYIl0sWzAsMiwiWCJdLFsxLDIsIjEiXSxbMCwxLCJcXGlkX1MiLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJiYXJyZWQifX19XSxbMSwyLCIiLDAseyJsZXZlbCI6Miwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFswLDMsInMiLDJdLFszLDQsIiIsMix7ImxldmVsIjoyLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzIsNSwiISJdLFs0LDUsIlxcZGlhbW9uZHN1aXQgUyIsMix7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImJhcnJlZCJ9fX1dLFszLDIsIlJcXG9kb3Qgc14qIiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiYmFycmVkIn19fV0sWzYsMTIsIlxcdGV4dHsoSSl9IiwxLHsibGFiZWxfcG9zaXRpb24iOjQwLCJzaG9ydGVuIjp7InNvdXJjZSI6MjAsInRhcmdldCI6MjB9LCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJub25lIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMTIsMTEsIlxcdGV4dHtleHR9IiwxLHsic2hvcnRlbiI6eyJzb3VyY2UiOjIwLCJ0YXJnZXQiOjIwfSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoibm9uZSJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV1d
+      \begin{tikzcd}
+        S & S \\
+        X & S \\
+        X & 1
+        \arrow[""{name=0, anchor=center, inner sep=0}, "{\id_S}"{inner sep=.8ex}, "\shortmid"{marking}, from=1-1, to=1-2]
+        \arrow["s"', from=1-1, to=2-1]
+        \arrow[equals, from=1-2, to=2-2]
+        \arrow[""{name=1, anchor=center, inner sep=0}, "{R\odot s^*}"{inner sep=.8ex}, "\shortmid"{marking}, from=2-1, to=2-2]
+        \arrow[equals, from=2-1, to=3-1]
+        \arrow["{!}", from=2-2, to=3-2]
+        \arrow[""{name=2, anchor=center, inner sep=0}, "{\diamondsuit S}"'{inner sep=.8ex}, "\shortmid"{marking}, from=3-1, to=3-2]
+        \arrow["{\text{(I)}}"{description, pos=0.4}, draw=none, from=0, to=1]
+        \arrow["{\text{ext}}"{description}, draw=none, from=1, to=2]
+      \end{tikzcd}\qquad = \qquad 
+        % https://q.uiver.app/#q=WzAsNixbMCwwLCJTIl0sWzEsMCwiUyJdLFsxLDEsIjEiXSxbMCwxLCJYIl0sWzAsMiwiWCJdLFsxLDIsIjEiXSxbMCwxLCJcXGlkX1MiLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJiYXJyZWQifX19XSxbMSwyLCIhIl0sWzAsMywicyIsMl0sWzMsNCwiIiwwLHsibGV2ZWwiOjIsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNCw1LCJcXGRpYW1vbmRzdWl0IFMiLDIseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJiYXJyZWQifX19XSxbMiw1LCIiLDIseyJsZXZlbCI6Miwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFszLDIsIlMiLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJiYXJyZWQifX19XSxbMTIsMTAsIlxcZXhpc3RzIFxcLCEiLDEseyJzaG9ydGVuIjp7InNvdXJjZSI6MjAsInRhcmdldCI6MjB9LCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJub25lIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNiwxMiwiXFx0ZXh0e2V4dH0iLDEseyJsYWJlbF9wb3NpdGlvbiI6NDAsInNob3J0ZW4iOnsic291cmNlIjoyMCwidGFyZ2V0IjoyMH0sInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6Im5vbmUifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dXQ==
+        \begin{tikzcd}
+          S & S \\
+          X & 1 \\
+          X & 1
+          \arrow[""{name=0, anchor=center, inner sep=0}, "{\id_S}"{inner sep=.8ex}, "\shortmid"{marking}, from=1-1, to=1-2]
+          \arrow["s"', from=1-1, to=2-1]
+          \arrow["{!}", from=1-2, to=2-2]
+          \arrow[""{name=1, anchor=center, inner sep=0}, "S"{inner sep=.8ex}, "\shortmid"{marking}, from=2-1, to=2-2]
+          \arrow[equals, from=2-1, to=3-1]
+          \arrow[equals, from=2-2, to=3-2]
+          \arrow[""{name=2, anchor=center, inner sep=0}, "{\diamondsuit S}"'{inner sep=.8ex}, "\shortmid"{marking}, from=3-1, to=3-2]
+          \arrow["{\text{ext}}"{description, pos=0.4}, draw=none, from=0, to=1]
+          \arrow["{\exists \,!}"{description}, draw=none, from=1, to=2]
+        \end{tikzcd}
+    \end{equation*}
+  Notice the abuse of notation, namely, that we think of $S$ as both the object providing the domain of $s$ but also as a proarrow $S\colon X\proto 1$ obtained by extension.
+\end{proof}
+
+\section{Universal Quantification and Conjunctive Queries}
+
+\section{Tabulators and Modality}
+
+\section{Full Closed Comprehension}
+
+\section{Prospectus}
+
+
+
+
+
+\printbibliography[heading=bibintoc]
+\end{document}

@@ -38,7 +38,7 @@
 \renewbibmacro{in:}{}
 
 % Title.
-\title{Double Data}
+\title{Relational Division in Double-Categorical OLOGs}
 \author{Michael Lambert}
 \date{Spring 2026}
 
@@ -51,7 +51,280 @@
 
 \section{Introduction}
 
-\section{Double Categories, OLOGs, and Data Instances}
+\section{Relational Division, Quantification, and Modality}
+\label{section:relational-division}
+Relational division is a query introduced in \cite[\S 2]{codd1972} that behaves essentially as a universal quantifier over given specified values in the column of a table. First we illustrate this operation with a very simple generic example. We may as well work with binary relations $R \colon C\proto A$ which are of course equivalently monic arrows $\langle d,c\rangle \colon R\rightarrowtail C\times A$. Recall the notation from the reference
+  \begin{equation*}
+    r[A] = c(r) \text{ where } r\in R
+  \end{equation*}
+and likewise for $r[C] = d(r)$. This is a bit notationally-heavy, but is consistent with the reference and allows for generalizations beyond the following example. Likewise, for any binary relation $T$, let $g_T(x) = \lbrace y\mid xTy\rbrace$, that is, the set of all $y$ in the target of $T$ related to $x$ under $T$. Call this the $T$-orbit of $x$. Now, for the example, consider the two relational tables $R$ and $S$ with columns $(C,A)$ and $(B,D)$, respectively:
+  \[
+    \begin{tabular}{| l | l | }
+        \hline\multicolumn{2}{| c |}{\bf R}\\
+        \hline {\bf C }&{\bf A}\\
+        \hline 1 & a \\
+        \hline 1 & b \\
+        \hline 1 & c \\
+        \hline 2 & a \\
+        \hline 2 & b \\
+        \hline 3 & b \\
+        \hline
+    \end{tabular} \qquad\qquad\qquad
+    \begin{tabular}{| l | l | }
+        \hline\multicolumn{2}{| c |}{\bf S}\\
+        \hline {\bf B }&{\bf D}\\
+        \hline a & 2 \\
+        \hline b & 1 \\
+        \hline b & 2 \\
+        \hline a & 3 \\
+        \hline
+    \end{tabular}
+  \]
+Thus, for example, $2Ra$ and $2Rb$. Likewise, $aS2$, et cetera. Now, in the notation of the reference, a division query is 
+    \begin{equation*}
+      R[A\div B]S = \lbrace r[C]\mid r\in R \wedge S[B]\subset g_R(r[C])\rbrace = \lbrace 1,2\rbrace
+    \end{equation*}
+We unpack this carefully to illustrate the operation. Note that the columns $A$ and $B$ must take the same types of values although the values do not need to have the same exact extension. Now, $r[C]$ is the set of values of the $R$-column, $C$. So, $r[C] = \lbrace 1,2,3\rbrace$. Likewise, $S[B] = \lbrace a,b\rbrace$. So, there are three sets of the form $g_R(r[C])$, only two of which contain $S[B]$, as in: 
+    \begin{align*}
+      S[B] &= \lbrace a,b\rbrace \nsubseteq \lbrace b\rbrace = g_R(3) \\
+      S[B] &= \lbrace a,b\rbrace \subset \lbrace a,b,c\rbrace = g_R(1)\\
+      S[B] &= \lbrace a,b\rbrace = \lbrace a,b\rbrace = g_R(2).
+    \end{align*}
+Hence again, the division query returns $\lbrace 1,2\rbrace$, exactly \emph{the set of all $C$-values whose orbit contains all the values of the $B$-column of $S$}. More prosaically, a $C$-value is selected by the query iff it is related to everything on the list of $B$-values. The universal quantification is thus over the set of $B$-values. The query allows the comparison of separate tables; note that $D$ was not needed to do the query. In the containment relations above, the universally quantified set does not need to completely describe the orbit of any given element satisfying the division query; that is, $1$ is related to $c$, but this is not a $B$-value. Likewise $3$ is related to something on the list, but not everything.
+
+A more concrete example illustrating the same query is the following. Consider the two relational tables below. On the left, rows pair an apothecary with an ingredient sold there; on the right, rows pair an ingredient with an effect produced by the combination of that ingredient with another in a potion. 
+    \[
+    \begin{tabular}{| l | l | }
+        \hline\multicolumn{2}{| c |}{\bf Apothecary}\\
+        \hline {\bf Name }&{\bf Ingredient}\\
+        \hline Arcadia's Cauldron & giant's toe \\
+        \hline Arcadia's Cauldron & wheat \\
+        \hline Arcadia's Cauldron & void salts \\
+        \hline Elgrim's Elixers & giant's toe \\
+        \hline Elgrim's Elixers & wheat \\
+        \hline The White Phial & wheat \\
+        \hline
+    \end{tabular} \qquad\qquad
+    \begin{tabular}{| l | l | }
+        \hline\multicolumn{2}{| c |}{\bf Potion}\\
+        \hline {\bf Ingredient }&{\bf Effect}\\
+        \hline giant's toe & fortify health \\
+        \hline wheat & fortify health \\
+        \hline wheat & lingering damage magicka \\
+        \hline giant's toe & damage stamina regen \\
+        \hline
+    \end{tabular}
+  \]
+Note that the second table does not list the other ingredients required to create the potion producing the effect. Our expertise is that any two such ingredients with the same effect will create the desired potion when combined. Now, suppose we want to create a fortify health potion but are to lazy to fight a giant to get his toe. We'd also really like to one-stop-shop (maybe the merchant will give us a deal if we buy in bulk). The orbits are then the inventories:
+    \begin{align*}
+      g_{\text{Apoth}}(\text{Arcadia's}) &= \lbrace \text{giant's toe, wheat, void salts}\rbrace \\
+      g_{\text{Apoth}}(\text{Elgrim's}) &= \lbrace \text{giant's toe, wheat}\rbrace \\
+      g_{\text{Apoth}}(\text{White Phial}) &= \lbrace \text{wheat} \rbrace
+    \end{align*}
+The the set of values quantified over is our shopping list: $\lbrace \text{giant's toe, wheat}\rbrace$. The query is then 
+    \begin{equation*}
+      \text{Apothecary}[\text{Ingredient}\div \text{Ingredient}]\text{Potion} = \lbrace \text{Name} \mid \lbrace \text{giant's toe, wheat}\rbrace\subset \text{Inventory}(\text{Name})\rbrace
+    \end{equation*}
+which is just to say that we are looking for the proprietors who have all the ingredients on our shopping list. The result is $\lbrace \text{Arcadia's, Elgrims}\rbrace$. It does not matter that Arcadia's also has void salts; but it does matter that The White Phial only has wheat but no giant's toe.
+
+There is something awkward about these examples inasmuch as we would probably more likely have tables better reflecting our alchemical expertise such as 
+    \[
+    \begin{tabular}{| l | l | }
+        \hline\multicolumn{2}{| c |}{\bf Apothecary}\\
+        \hline {\bf Name }&{\bf Ingredient}\\
+        \hline Arcadia's Cauldron & giant's toe \\
+        \hline Arcadia's Cauldron & wheat \\
+        \hline Arcadia's Cauldron & void salts \\
+        \hline Elgrim's Elixers & giant's toe \\
+        \hline Elgrim's Elixers & wheat \\
+        \hline The White Phial & wheat \\
+        \hline
+    \end{tabular} \qquad\qquad
+    \begin{tabular}{| l | l | }
+        \hline\multicolumn{2}{| c |}{\bf Potion}\\
+        \hline {\bf Ingredient }&{\bf Effect}\\
+        \hline giant's toe & fortify health \\
+        \hline wheat & fortify health \\
+        \hline wheat & lingering damage magicka \\
+        \hline giant's toe & damage stamina regen \\
+        \hline swamp fungal pod & restore health \\
+        \hline void essence & restore health\\
+        \hline
+    \end{tabular}.
+  \]
+However, division with quantification over the whole the Ingredient column in the Potion table now produces the empty set since no merchant has all those items on hand. And \cite[\S 2.4]{codd1972} recognizes this in the example queries. Namely, example query \#8 to find suppliers supplying at least parts 12, 13 and 15 restricts the part \# values to only 12, 13 and 15 without ranging over the whole column before executing the division query. This is exactly a \emph{shopping list} kind of example. In other words, technically, the division query is not set up to do selection from a sub-list of a column on its own. A restriction to just the values of interest from the second table is employed implicitly before doing the division query. In the example immediately above, to execute our query, we would filter the rows with the value ``fortify health'' first and then do the division query with the ingredients column. The flexibility of the division query as written is that it can be applied to any two tables with columns having the same types of values; the expense is that it might not return anything and may require restrictions to produce results in intuitive cases.
+
+\section{OLOGs and Instances}
+\label{section-OLOGs}
+
+What is going on here from a double-categorical OLOG-perspective \cite{lambert2025} is that we have two basic relations
+    \begin{equation*}
+      % https://q.uiver.app/#q=WzAsMixbMCwwLCJcXGZib3h7TmFtZX0iXSxbMiwwLCJcXGZib3h7SW5ncmVkaWVudH0iXSxbMCwxLCJcXHRleHR7QXBvdGhlY2FyeX0iLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJiYXJyZWQifX19XV0=
+      \begin{tikzcd}
+        {\fbox{Name}} && {\fbox{Ingredient}}
+        \arrow["{\text{Apothecary}}"{inner sep=.8ex}, "\shortmid"{marking}, from=1-1, to=1-3]
+      \end{tikzcd}\qquad\qquad
+      % https://q.uiver.app/#q=WzAsMixbMCwwLCJcXGZib3h7SW5ncmVkaWVudH0iXSxbMiwwLCJcXGZib3h7RWZmZWN0fSJdLFswLDEsIlxcdGV4dHtQb3Rpb259IiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiYmFycmVkIn19fV1d
+      \begin{tikzcd}
+        {\fbox{Ingredient}} && {\fbox{Effect}}
+        \arrow["{\text{Potion}}"{inner sep=.8ex}, "\shortmid"{marking}, from=1-1, to=1-3]
+      \end{tikzcd}.
+    \end{equation*}
+Suppose that these relations are instanced by the two tables at the end of the previous section, thought of as living in $\Rel$. Now, the OLOG generated will be a cartesian equipment. So, given an individual as a global element of a type, say, $\text{Arcadia's}\colon 1\to \fbox{Name}$, we can form the restriction
+    \begin{equation*}
+      % https://q.uiver.app/#q=WzAsNCxbMCwxLCJcXGZib3h7TmFtZX0iXSxbMywxLCJcXGZib3h7SW5ncmVkaWVudH0iXSxbMCwwLCIxIl0sWzMsMCwiXFxmYm94e0luZ3JlZGllbnR9Il0sWzAsMSwiXFx0ZXh0e0Fwb3RoZWNhcnl9IiwyLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiYmFycmVkIn19fV0sWzIsMCwiXFx0ZXh0e0FyY2FkaWEnc30iLDJdLFsyLDMsIlxcdGV4dHtBcmNhZGlhJ3MgSW52ZW50b3J5fSIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImJhcnJlZCJ9fX1dLFszLDFdLFs2LDQsIlxcdGV4dHtyZXN9IiwxLHsic2hvcnRlbiI6eyJzb3VyY2UiOjIwLCJ0YXJnZXQiOjIwfSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoibm9uZSJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV1d
+      \begin{tikzcd}
+        1 &&& {\fbox{Ingredient}} \\
+        {\fbox{Name}} &&& {\fbox{Ingredient}}
+        \arrow[""{name=0, anchor=center, inner sep=0}, "{\text{Arcadia's Inventory}}"{inner sep=.8ex}, "\shortmid"{marking}, from=1-1, to=1-4]
+        \arrow["{\text{Arcadia's}}"', from=1-1, to=2-1]
+        \arrow[from=1-4, to=2-4]
+        \arrow[""{name=1, anchor=center, inner sep=0}, "{\text{Apothecary}}"'{inner sep=.8ex}, "\shortmid"{marking}, from=2-1, to=2-4]
+        \arrow["{\text{res}}"{description}, draw=none, from=0, to=1]
+      \end{tikzcd}
+    \end{equation*}
+which in the instance is precisely the named merchant's inventory. This would play the role of $g_R(x)$ in the previous section. Likewise, our ingredient list for a fortify health potion is schematized by a restriction:
+    \begin{equation*}
+      % https://q.uiver.app/#q=WzAsNCxbMCwxLCJcXGZib3h7SW5ncmVkaWVudH0iXSxbMywxLCJcXGZib3h7RWZmZWN0fSJdLFszLDAsIjEiXSxbMCwwLCJcXGZib3h7SW5ncmVkaWVudH0iXSxbMCwxLCJcXHRleHR7UG90aW9ufSIsMix7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImJhcnJlZCJ9fX1dLFsyLDEsIlxcdGV4dHtmb3J0aWZ5IGhlYWx0aH0iXSxbMywwXSxbMywyLCJcXHRleHR7Zm9ydGlmeSBoZWFsdGggcG90aW9ufSIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImJhcnJlZCJ9fX1dLFs3LDQsIlxcdGV4dHtyZXN9IiwxLHsic2hvcnRlbiI6eyJzb3VyY2UiOjIwLCJ0YXJnZXQiOjIwfSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoibm9uZSJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV1d
+      \begin{tikzcd}
+        {\fbox{Ingredient}} &&& 1 \\
+        {\fbox{Ingredient}} &&& {\fbox{Effect}}
+        \arrow[""{name=0, anchor=center, inner sep=0}, "{\text{fortify health potion}}"{inner sep=.8ex}, "\shortmid"{marking}, from=1-1, to=1-4]
+        \arrow[from=1-1, to=2-1]
+        \arrow["{\text{fortify health}}", from=1-4, to=2-4]
+        \arrow[""{name=1, anchor=center, inner sep=0}, "{\text{Potion}}"'{inner sep=.8ex}, "\shortmid"{marking}, from=2-1, to=2-4]
+        \arrow["{\text{res}}"{description}, draw=none, from=0, to=1]
+      \end{tikzcd}
+    \end{equation*}
+These are both examples of ``filter'' queries discussed in \cite{lambert2025}. Now, we are trying ultimately to compare the two restrictions, to see if the ingredients for the fortify health potion are in the various inventories. In the examples above the composites 
+    \begin{equation*}
+      % https://q.uiver.app/#q=WzAsMyxbNiwwLCIxIl0sWzMsMCwiXFxmYm94e0luZ3JlZGllbnR9Il0sWzAsMCwiMSJdLFsxLDAsIlxcdGV4dHtmb3J0aWZ5IGhlYWx0aCBwb3Rpb259IiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiYmFycmVkIn19fV0sWzIsMSwiXFx0ZXh0e0FyY2FkaWEncyBJbnZlbnRvcnl9IiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiYmFycmVkIn19fV1d
+      \begin{tikzcd}
+        1 &&& {\fbox{Ingredient}} &&& 1
+        \arrow["{\text{Arcadia's Inventory}}"{inner sep=.8ex}, "\shortmid"{marking}, from=1-1, to=1-4]
+        \arrow["{\text{fortify health potion}}"{inner sep=.8ex}, "\shortmid"{marking}, from=1-4, to=1-7]
+      \end{tikzcd}
+    \end{equation*}
+and 
+    \begin{equation*}
+      % https://q.uiver.app/#q=WzAsMyxbNiwwLCIxIl0sWzMsMCwiXFxmYm94e0luZ3JlZGllbnR9Il0sWzAsMCwiXFxmYm94e05hbWV9Il0sWzEsMCwiXFx0ZXh0e2ZvcnRpZnkgaGVhbHRoIHBvdGlvbn0iLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJiYXJyZWQifX19XSxbMiwxLCJcXHRleHR7QXBvdGhlY2FyeX0iLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJiYXJyZWQifX19XV0=
+      \begin{tikzcd}
+        {\fbox{Name}} &&& {\fbox{Ingredient}} &&& 1
+        \arrow["{\text{Apothecary}}"{inner sep=.8ex}, "\shortmid"{marking}, from=1-1, to=1-4]
+        \arrow["{\text{fortify health potion}}"{inner sep=.8ex}, "\shortmid"{marking}, from=1-4, to=1-7]
+      \end{tikzcd}
+    \end{equation*}
+are natural to study but neither returns what we want. In the first case, the $\Rel$-composite will return whichever ingredient Arcadia's has on the list; in the second case, the $\Rel$-composite returns whichever merchants have an ingredient on the list. This is a result of the fact that existential quantification over the instance of the middle type is built into composition in $\Rel$.
+
+If we allow ourselves tabulators in the OLOG, much more progress can be made. This allows the creation of types with projections and universal cells, namely,
+    \begin{equation*}
+      % https://q.uiver.app/#q=WzAsMyxbMCwxLCIxIl0sWzIsMSwiXFxmYm94e0luZ3JlZGllbnR9Il0sWzEsMCwiXFxmYm94e0FyY2FkaWEncyBJbnZlbnRvcnl9Il0sWzAsMSwiXFx0ZXh0e0FyY2FkaWEncyBJbnZlbnRvcnl9IiwyLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiYmFycmVkIn19fV0sWzIsMF0sWzIsMV0sWzIsMywiXFx0ZXh0e3RhYn0iLDEseyJzaG9ydGVuIjp7InRhcmdldCI6MjB9LCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJub25lIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
+      \begin{tikzcd}
+        & {\fbox{Arcadia's Inventory}} & \\
+        1 && {\fbox{Ingredient}}
+        \arrow[from=1-2, to=2-1]
+        \arrow[from=1-2, to=2-3]
+        \arrow[""{name=0, anchor=center, inner sep=0}, "{\text{Arcadia's Inventory}}"'{inner sep=.8ex}, "\shortmid"{marking}, from=2-1, to=2-3]
+        \arrow["{\text{tab}}"{description}, draw=none, from=1-2, to=0]
+      \end{tikzcd}
+    \end{equation*}
+and then another
+    \begin{equation*}
+      % https://q.uiver.app/#q=WzAsMyxbMiwxLCIxIl0sWzAsMSwiXFxmYm94e0luZ3JlZGllbnR9Il0sWzEsMCwiXFxmYm94e1xcdGV4dHtpbmdyZWRpZW50cyBmb3IgZm9ydGlmeSBoZWFsdGggcG90aW9ufX0iXSxbMSwwLCJcXHRleHR7Zm9ydGlmeSBoZWFsdGggcG90aW9ufSIsMix7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImJhcnJlZCJ9fX1dLFsyLDFdLFsyLDBdLFsyLDMsIlxcdGV4dHt0YWJ9IiwxLHsic2hvcnRlbiI6eyJ0YXJnZXQiOjIwfSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoibm9uZSJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV1d
+      \begin{tikzcd}
+        & {\fbox{\text{ingredients for fortify health potion}}} & \\
+        {\fbox{Ingredient}} && 1
+        \arrow[from=1-2, to=2-1]
+        \arrow[from=1-2, to=2-3]
+        \arrow[""{name=0, anchor=center, inner sep=0}, "{\text{fortify health potion}}"'{inner sep=.8ex}, "\shortmid"{marking}, from=2-1, to=2-3]
+        \arrow["{\text{tab}}"{description}, draw=none, from=1-2, to=0]
+      \end{tikzcd}.
+    \end{equation*}
+Now, the shopping query is thus to ask whether for each such inventory, the data reflects a putative relationship schematized as 
+    \begin{equation*}
+      % https://q.uiver.app/#q=WzAsMyxbMSwxLCJcXGZib3h7SW5ncmVkaWVudH0iXSxbMiwwLCJcXGZib3h7QXJjYWRpYSdzIEludmVudG9yeX0iXSxbMCwwLCJcXGZib3h7XFx0ZXh0e2luZ3JlZGllbnQgZm9yIGZvcnRpZnkgaGVhbHRoIHBvdGlvbn19Il0sWzEsMF0sWzIsMSwiIiwyLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzIsMF1d
+\begin{tikzcd}
+	{\fbox{\text{ingredient for fortify health potion}}} && {\fbox{Arcadia's Inventory}} \\
+	& {\fbox{Ingredient}}
+	\arrow[dashed, from=1-1, to=1-3]
+	\arrow[from=1-1, to=2-2]
+	\arrow[from=1-3, to=2-2]
+\end{tikzcd}
+    \end{equation*}
+where, in other words, the inventory in question contains the ingredients on the list. Of course this is not quite right, because we'd like to look at all such inventories simultaneously and pick those merchants whose inventories contain all the ingredients. All the inventories will be contained in our instancing of the ingredient type. So, a better way to do this is just to isolate the type of ingredients and view our shopping list as a subtype of the type of ingredients:
+    \begin{equation*}
+      % https://q.uiver.app/#q=WzAsMixbMCwxLCJcXGZib3h7SW5ncmVkaWVudH0iXSxbMCwwLCJcXGZib3h7XFx0ZXh0e2luZ3JlZGllbnQgZm9yIGZvcnRpZnkgaGVhbHRoIHBvdGlvbn19Il0sWzEsMCwiIiwwLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoibW9ubyJ9fX1dXQ==
+      \begin{tikzcd}
+        {\fbox{\text{ingredient for fortify health potion}}} \\
+        {\fbox{Ingredient}}
+        \arrow[tail, from=1-1, to=2-1]
+      \end{tikzcd}
+    \end{equation*}
+This doesn't necessarily need to be monic. But monic arrows are perfectly well axiomatizable in our framework. Perhaps we use the notation to indicate we are thinking of it as a subtype obtained by comprehension \cite[\S 9.3]{jacobs1999}. Nor does it matter how the subtype comes about at this stage; it could have been obtained as a tabulator as above, or simply required as a primitive in the setup of the OLOG.
+
+What matters is comparing this subtype with the inventories of all the merchants simultaneously. These are implicit in the instancing of the Apothecary relation, so we study the corner  
+    \begin{equation*}
+      % https://q.uiver.app/#q=WzAsMyxbMiwxLCJcXGZib3h7SW5ncmVkaWVudH0iXSxbMiwwLCJcXGZib3h7XFx0ZXh0e2luZ3JlZGllbnQgZm9yIGZvcnRpZnkgaGVhbHRoIHBvdGlvbn19Il0sWzAsMSwiXFxmYm94e05hbWV9Il0sWzEsMCwiIiwwLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoibW9ubyJ9fX1dLFsyLDAsIlxcdGV4dHtBcG90aGVjYXJ5fSIsMix7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImJhcnJlZCJ9fX1dXQ==
+      \begin{tikzcd}
+        && {\fbox{\text{ingredient for fortify health potion}}} \\
+        {\fbox{Name}} && {\fbox{Ingredient}}
+        \arrow[tail, from=1-3, to=2-3]
+        \arrow["{\text{Apothecary}}"'{inner sep=.8ex}, "\shortmid"{marking}, from=2-1, to=2-3]
+      \end{tikzcd}
+    \end{equation*}
+It is tempting just to restrict with an identity morphism on the left. This results in a cartesian cell 
+    \begin{equation*}
+      % https://q.uiver.app/#q=WzAsNCxbNiwxLCJcXGZib3h7SW5ncmVkaWVudH0iXSxbNiwwLCJcXGZib3h7XFx0ZXh0e2luZ3JlZGllbnQgZm9yIGZvcnRpZnkgaGVhbHRoIHBvdGlvbn19Il0sWzAsMSwiXFxmYm94e05hbWV9Il0sWzAsMCwiXFxmYm94e05hbWV9Il0sWzEsMCwiIiwwLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoibW9ubyJ9fX1dLFsyLDAsIlxcdGV4dHtBcG90aGVjYXJ5fSIsMix7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImJhcnJlZCJ9fX1dLFszLDIsIiIsMix7ImxldmVsIjoyLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzMsMSwiXFx0ZXh0e01lcmNoYW50IHdpdGggZm9ydGlmeSBoZWFsdGggaW5ncmVkaWVudH0iLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJiYXJyZWQifX19XSxbNyw1LCJcXHRleHR7cmVzfSIsMSx7InNob3J0ZW4iOnsic291cmNlIjoyMCwidGFyZ2V0IjoyMH0sInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6Im5vbmUifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dXQ==
+\begin{tikzcd}
+	{\fbox{Name}} &&&&&& {\fbox{\text{ingredient for fortify health potion}}} \\
+	{\fbox{Name}} &&&&&& {\fbox{Ingredient}}
+	\arrow[""{name=0, anchor=center, inner sep=0}, "{\text{Merchant with fortify health ingredient}}"{inner sep=.8ex}, "\shortmid"{marking}, from=1-1, to=1-7]
+	\arrow[equals, from=1-1, to=2-1]
+	\arrow[tail, from=1-7, to=2-7]
+	\arrow[""{name=1, anchor=center, inner sep=0}, "{\text{Apothecary}}"'{inner sep=.8ex}, "\shortmid"{marking}, from=2-1, to=2-7]
+	\arrow["{\text{res}}"{description}, draw=none, from=0, to=1]
+\end{tikzcd}
+    \end{equation*}
+which filters the table for those rows having one of the two ingredients on our list:
+    \[
+      \begin{tabular}{| l | l | }
+        \hline\multicolumn{2}{| c |}{\bf Apothecary}\\
+        \hline {\bf Name }&{\bf Ingredient}\\
+        \hline Arcadia's Cauldron & giant's toe \\
+        \hline Arcadia's Cauldron & wheat \\
+        \hline Elgrim's Elixers & giant's toe \\
+        \hline Elgrim's Elixers & wheat \\
+        \hline The White Phial & wheat \\
+        \hline
+      \end{tabular}
+    \]
+Notice that this gets rid of the unnecessary entry with the value ``void salts'' but it does not establish our query. Another operation with which our OLOG comes equipped is extension. In $\Rel$ this acts as an image, and formalizes a select query \cite{lambert2025}. In the present instance we might try an extension
+    \begin{equation*}
+      % https://q.uiver.app/#q=WzAsNCxbNiwxLCIxIl0sWzYsMCwiXFxmYm94e1xcdGV4dHtpbmdyZWRpZW50IGZvciBmb3J0aWZ5IGhlYWx0aCBwb3Rpb259fSJdLFswLDEsIlxcZmJveHtOYW1lfSJdLFswLDAsIlxcZmJveHtOYW1lfSJdLFsxLDAsIiEiXSxbMiwwLCJcXHRleHR7TWVyY2hhbnQgd2l0aCBmb3J0aWZ5IGhlYWx0aCBpbmdyZWRpZW50fSIsMix7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImJhcnJlZCJ9fX1dLFszLDIsIiIsMix7ImxldmVsIjoyLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzMsMSwiXFx0ZXh0e01lcmNoYW50IHdpdGggZm9ydGlmeSBoZWFsdGggaW5ncmVkaWVudH0iLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJiYXJyZWQifX19XSxbNyw1LCJcXHRleHR7ZXh0fSIsMSx7InNob3J0ZW4iOnsic291cmNlIjoyMCwidGFyZ2V0IjoyMH0sInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6Im5vbmUifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dXQ==
+      \begin{tikzcd}
+        {\fbox{Name}} &&&&&& {\fbox{\text{ingredient for fortify health potion}}} \\
+        {\fbox{Name}} &&&&&& 1
+        \arrow[""{name=0, anchor=center, inner sep=0}, "{\text{Merchant with fortify health ingredient}}"{inner sep=.8ex}, "\shortmid"{marking}, from=1-1, to=1-7]
+        \arrow[equals, from=1-1, to=2-1]
+        \arrow["{!}", from=1-7, to=2-7]
+        \arrow[""{name=1, anchor=center, inner sep=0}, "{\text{Merchant with fortify health ingredient}}"'{inner sep=.8ex}, "\shortmid"{marking}, from=2-1, to=2-7]
+        \arrow["{\text{ext}}"{description}, draw=none, from=0, to=1]
+      \end{tikzcd}
+    \end{equation*}
+which in the data instance is effectively just a list of the three merchants, since each has at least one ingredient. But if we went to the White Phial, we'd be out of luck. This result is owing to the fact that in $\Rel$ the extension is an image computed via \emph{existential quantification}. So, the composite query here of restriction along the subtype, followed by extension has performed an \emph{existential query}, returning each merchant whose inventory contains an ingredient on our list.
+
+Now, this is clearly not the result we want, but it is not a dead-end, for it suggests a path forward. Extensions are essentially left adjoints to restriction. Inasmuch as extension is thought of as existential quantification and restriction is thought of as substitution, we have an analogy of adjunctions 
+    \begin{equation*}
+      \text{ext}\dashv \text{res} \qquad\leftrightarrow \qquad \exists \dashv (-)^*.
+    \end{equation*}
+Now, of course in nice logical situations substitution also has a right adjoint, which is \emph{universal quantification}. This is of course exactly the kind of operation we are seeking to formalize. What we want then is to complete the adjoint analogy
+    \begin{equation*}
+      \text{ext}\dashv \text{res} \dashv \,\,??? \qquad\leftrightarrow \qquad \exists \dashv (-)^*\dashv \forall
+    \end{equation*}
+in the theater of OLOGs and of double categories generally. Something like this has been studied in the foundational paper \cite{shulman2008} under the guise of \emph{coextension}. It was mentioned there, but not studied in-depth due to being not as well behaved as the other two operations. And indeed this is not what we envision in this paper. For coextensions are had by asking for the equipment $\dbl{D}_1\to\dbl{D}_0\times\dbl{D}_0$ to be also a \emph{cofibration} which is too strong for what we have in mind. Rather, we take the approach of \emph{fibrational semantics} \cite{jacobs1999} and ask merely that our equipments $\dbl{D}_1\to\dbl{D}_0\times\dbl{D}_0$ have right adjoints to restriction functors and that these satisfy a Beck-Chevalley condition. This is exactly to require \emph{fibered products}. We shall see in more detail how this recovers exactly the queries of interest below in \cref{section:universal-queries}. For this we first review the operations of restriction and extension and then discuss the easier case of the formalism of existential queries in more depth. 
+
+\section{Operations in Double Categories}
+\label{section:operations-in-double-categories}
 
 \begin{example}
   In $\Mat(\cat V)$, restrictions and extensions are computed as 
@@ -83,7 +356,8 @@
     \end{equation*}
 \end{example}
 
-\section{Existential Quantification and Disjunctive Queries}
+\section{Existential Queries}
+\label{section:existential-queries}
 
 A relation $R\colon X\proto Y$ might be thought of as a predicate, as a generalized many-valued non-functional relationship, or when $X= Y$ as a non-deterministic system. That $x$ and $y$ are $R$-related is written $xRy$ or perhaps $x\leq_R y$ or even $x\sim_Ry$. That in any case $y$ is on the left suggests, due to non-symmetry, that $y$ is somehow subsequent to, or a consequence of $x$. This comports with the system view of $R$ that $y$ is a later state accessible from $x$. Perhaps $x$ is prior to $y$ in a temporal sequence. On the causal view, somehow $y$ is a consequence of $x$.
 
@@ -386,7 +660,8 @@ This operator justly bears the `$\diamondsuit$' notation on account of the follo
   Notice the abuse of notation, namely, that we think of $S$ as both the object providing the domain of $s$ but also as a proarrow $S\colon X\proto 1$ obtained by extension.
 \end{proof}
 
-\section{Universal Quantification and Conjunctive Queries}
+\section{Universal Queries}
+\label{section:universal-queries}
 
 \section{Tabulators and Modality}
 

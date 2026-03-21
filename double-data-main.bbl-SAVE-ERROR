@@ -114,39 +114,6 @@
       \verb 2403.19884
       \endverb
     \endentry
-    \entry{shulman2008}{article}{}{}
-      \name{author}{1}{}{%
-        {{hash=a49cc4742950659ae680e1c40f2295a9}{%
-           family={Shulman},
-           familyi={S\bibinitperiod},
-           given={Michael},
-           giveni={M\bibinitperiod}}}%
-      }
-      \strng{namehash}{a49cc4742950659ae680e1c40f2295a9}
-      \strng{fullhash}{a49cc4742950659ae680e1c40f2295a9}
-      \strng{fullhashraw}{a49cc4742950659ae680e1c40f2295a9}
-      \strng{bibnamehash}{a49cc4742950659ae680e1c40f2295a9}
-      \strng{authorbibnamehash}{a49cc4742950659ae680e1c40f2295a9}
-      \strng{authornamehash}{a49cc4742950659ae680e1c40f2295a9}
-      \strng{authorfullhash}{a49cc4742950659ae680e1c40f2295a9}
-      \strng{authorfullhashraw}{a49cc4742950659ae680e1c40f2295a9}
-      \field{labelalpha}{Shu08}
-      \field{sortinit}{S}
-      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{eprinttype}{arXiv}
-      \field{journaltitle}{Theory and Applications of Categories}
-      \field{number}{18}
-      \field{title}{Framed bicategories and monoidal fibrations}
-      \field{volume}{20}
-      \field{year}{2008}
-      \field{pages}{650\bibrangedash 738}
-      \range{pages}{89}
-      \verb{eprint}
-      \verb 0706.1286
-      \endverb
-    \endentry
   \enddatalist
 \endrefsection
 \endinput

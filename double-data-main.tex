@@ -326,7 +326,7 @@ in the theater of OLOGs and of double categories generally. Something like this 
 \section{Operations in Double Categories}
 \label{section:operations-in-double-categories}
 
-\begin{example}
+\begin{example} \label{ex:res-ext-in-MAT}
   In $\Mat(\cat V)$, restrictions and extensions are computed as 
     \begin{equation*}
       % https://q.uiver.app/#q=WzAsNCxbMCwwLCJaIl0sWzAsMSwiWCJdLFsxLDEsIlkiXSxbMSwwLCJXIl0sWzAsMSwiZiIsMl0sWzEsMiwiTSIsMix7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImJhcnJlZCJ9fX1dLFszLDIsImciXSxbMCwzLCJmXyFNZ14qIiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiYmFycmVkIn19fV0sWzcsNSwiXFx0ZXh0e3Jlc30iLDEseyJzaG9ydGVuIjp7InNvdXJjZSI6MjAsInRhcmdldCI6MjB9LCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJub25lIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
@@ -487,7 +487,7 @@ Now, this is an invertible cell when $\dbl{D}$ is either $\Rel$ or $\Span$ or $\
 \end{example}
 
 \begin{example}
-  Let $\cat V$ denote any monoidal category with coproducts preserved by the tensor. We then have the double category $\Mat(\cat V)$ of $\cat V$-matrices. 
+  Let $\cat V$ denote any monoidal category with coproducts preserved by the tensor. We then have the double category $\Mat(\cat V)$ of $\cat V$-matrices (\cref{ex:res-ext-in-MAT}). 
   To form the possibility operator, we have first the restriction 
     \begin{equation*}
       % https://q.uiver.app/#q=WzAsNCxbMCwwLCJYIl0sWzAsMSwiWCJdLFsxLDEsIlgiXSxbMSwwLCJTIl0sWzAsMSwiIiwyLHsibGV2ZWwiOjIsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMSwyLCJNIiwyLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiYmFycmVkIn19fV0sWzMsMiwicyJdLFswLDMsIk1cXG9kb3Qgc14qIiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiYmFycmVkIn19fV0sWzcsNSwiXFx0ZXh0e3Jlc30iLDEseyJzaG9ydGVuIjp7InNvdXJjZSI6MjAsInRhcmdldCI6MjB9LCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJub25lIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
@@ -662,6 +662,102 @@ This operator justly bears the `$\diamondsuit$' notation on account of the follo
 
 \section{Universal Queries}
 \label{section:universal-queries}
+
+That the restriction functor $(f,g)^*\colon \dbl{D}(x,y)\to\dbl{D}(a,b)$ has a right adjoint is the statement that there exists a functor 
+  \begin{equation*}
+    \forall_{f,g}\colon \dbl{D}(a,b)\to\dbl{D}(x,y)
+  \end{equation*}
+and natural isomorphisms
+  \begin{equation*}
+    \dbl{D}(a,b)(f_!mg^*,s)\cong \dbl{D}(x,y)(m,\forall_{f,g}(s))
+  \end{equation*}
+establishing natural families of bijections of globular cells 
+    \begin{equation*}
+      \inferrule{f_!mg^*\Rightarrow s}{m\Rightarrow \forall_{f,g}(s)}
+    \end{equation*}
+given in each direction by application of the appropriate functor and then composition with a unit or counit as the case may be. The elementary characterization of $\forall$ as a universal is the following.
+
+\begin{proposition}
+  The restriction functor $(f,g)^*\colon \dbl{D}(x,y)\to\dbl{D}(a,b)$ has a right adjoint if, and only if, for each $s\colon a\proto b$ there is a globular cell $\epsilon_s$ of the form 
+    \begin{equation*}
+      % https://q.uiver.app/#q=WzAsNCxbMCwwLCJhIl0sWzAsMSwieCJdLFsyLDAsImIiXSxbMiwxLCJ5Il0sWzAsMSwiZiIsMl0sWzAsMiwiZl8hKFxcZm9yYWxsX3tmLGd9KHMpKWdeKiIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImJhcnJlZCJ9fX1dLFsxLDMsIlxcZm9yYWxsX3tmLGd9KHMpIiwyLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiYmFycmVkIn19fV0sWzIsMywiZyJdLFs1LDYsIlxcdGV4dHtyZXN9IiwxLHsic2hvcnRlbiI6eyJzb3VyY2UiOjIwLCJ0YXJnZXQiOjIwfSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoibm9uZSJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV1d
+      \begin{tikzcd}
+        a && b \\
+        x && y
+        \arrow[""{name=0, anchor=center, inner sep=0}, "{f_!(\forall_{f,g}(s))g^*}"{inner sep=.8ex}, "\shortmid"{marking}, from=1-1, to=1-3]
+        \arrow["f"', from=1-1, to=2-1]
+        \arrow["g", from=1-3, to=2-3]
+        \arrow[""{name=1, anchor=center, inner sep=0}, "{\forall_{f,g}(s)}"'{inner sep=.8ex}, "\shortmid"{marking}, from=2-1, to=2-3]
+        \arrow["{\text{res}}"{description}, draw=none, from=0, to=1]
+      \end{tikzcd} \qquad \leadsto \qquad
+      % https://q.uiver.app/#q=WzAsNCxbMCwwLCJhIl0sWzAsMSwiYSJdLFsyLDEsImIiXSxbMiwwLCJiIl0sWzAsMSwiIiwyLHsibGV2ZWwiOjIsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMSwyLCJzIiwyLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiYmFycmVkIn19fV0sWzMsMiwiIiwwLHsibGV2ZWwiOjIsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMCwzLCJmXyEoXFxmb3JhbGxfe2YsZ30ocykpZ14qIiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiYmFycmVkIn19fV0sWzcsNSwiXFxlcHNpbG9uX3MiLDEseyJzaG9ydGVuIjp7InNvdXJjZSI6MjAsInRhcmdldCI6MjB9LCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJub25lIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
+      \begin{tikzcd}
+        a && b \\
+        a && b
+        \arrow[""{name=0, anchor=center, inner sep=0}, "{f_!(\forall_{f,g}(s))g^*}"{inner sep=.8ex}, "\shortmid"{marking}, from=1-1, to=1-3]
+        \arrow[equals, from=1-1, to=2-1]
+        \arrow[equals, from=1-3, to=2-3]
+        \arrow[""{name=1, anchor=center, inner sep=0}, "s"'{inner sep=.8ex}, "\shortmid"{marking}, from=2-1, to=2-3]
+        \arrow["{\epsilon_s}"{description}, draw=none, from=0, to=1]
+      \end{tikzcd}
+    \end{equation*}
+  such that for any other globular cell from a restriction along $f$ and $g$, say, of the form 
+    \begin{equation*}
+      % https://q.uiver.app/#q=WzAsNCxbMCwwLCJhIl0sWzAsMSwieCJdLFsyLDEsInkiXSxbMiwwLCJiIl0sWzAsMSwiZiIsMl0sWzEsMiwidyIsMix7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImJhcnJlZCJ9fX1dLFszLDIsImciXSxbMCwzLCJmXyF3Z14qIiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiYmFycmVkIn19fV0sWzcsNSwiXFx0ZXh0e3Jlc30iLDEseyJzaG9ydGVuIjp7InNvdXJjZSI6MjAsInRhcmdldCI6MjB9LCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJub25lIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
+      \begin{tikzcd}
+        a && b \\
+        x && y
+        \arrow[""{name=0, anchor=center, inner sep=0}, "{f_!wg^*}"{inner sep=.8ex}, "\shortmid"{marking}, from=1-1, to=1-3]
+        \arrow["f"', from=1-1, to=2-1]
+        \arrow["g", from=1-3, to=2-3]
+        \arrow[""{name=1, anchor=center, inner sep=0}, "w"'{inner sep=.8ex}, "\shortmid"{marking}, from=2-1, to=2-3]
+        \arrow["{\text{res}}"{description}, draw=none, from=0, to=1]
+      \end{tikzcd} \qquad\leadsto\qquad
+      % https://q.uiver.app/#q=WzAsNCxbMCwwLCJhIl0sWzAsMSwiYSJdLFsyLDAsImIiXSxbMiwxLCJiIl0sWzAsMSwiIiwyLHsibGV2ZWwiOjIsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMCwyLCJmXyF3Z14qIiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiYmFycmVkIn19fV0sWzEsMywicyIsMix7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImJhcnJlZCJ9fX1dLFsyLDMsIiIsMCx7ImxldmVsIjoyLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzUsNiwiXFx4aSIsMSx7InNob3J0ZW4iOnsic291cmNlIjoyMCwidGFyZ2V0IjoyMH0sInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6Im5vbmUifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dXQ==
+      \begin{tikzcd}
+        a && b \\
+        a && b
+        \arrow[""{name=0, anchor=center, inner sep=0}, "{f_!wg^*}"{inner sep=.8ex}, "\shortmid"{marking}, from=1-1, to=1-3]
+        \arrow[equals, from=1-1, to=2-1]
+        \arrow[equals, from=1-3, to=2-3]
+        \arrow[""{name=1, anchor=center, inner sep=0}, "s"'{inner sep=.8ex}, "\shortmid"{marking}, from=2-1, to=2-3]
+        \arrow["\xi"{description}, draw=none, from=0, to=1]
+      \end{tikzcd}
+    \end{equation*}
+  there is a unique cell $\hat \xi$ for which $h$ factors through $\epsilon_s$ as in 
+    \begin{equation*}
+      % https://q.uiver.app/#q=WzAsNixbMCwwLCJhIl0sWzAsMiwiYSJdLFsyLDAsImIiXSxbMiwyLCJiIl0sWzAsMSwiYSJdLFsyLDEsImIiXSxbMCwyLCJmXyF3Z14qIiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiYmFycmVkIn19fV0sWzEsMywicyIsMix7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImJhcnJlZCJ9fX1dLFswLDQsIiIsMix7ImxldmVsIjoyLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzIsNSwiIiwwLHsibGV2ZWwiOjIsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNCwxLCIiLDIseyJsZXZlbCI6Miwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs1LDMsIiIsMCx7ImxldmVsIjoyLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzQsNSwiZl8hKFxcZm9yYWxsX3tmLGd9KHMpKWdeKiIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImJhcnJlZCJ9fX1dLFs2LDEyLCJcXGhhdFxceGkiLDEseyJsYWJlbF9wb3NpdGlvbiI6NDAsInNob3J0ZW4iOnsic291cmNlIjoyMCwidGFyZ2V0IjoyMH0sInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6Im5vbmUifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsxMiw3LCJcXGVwc2lsb25fcyIsMSx7InNob3J0ZW4iOnsic291cmNlIjoyMCwidGFyZ2V0IjoyMH0sInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6Im5vbmUifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dXQ==
+      \begin{tikzcd}
+        a && b \\
+        a && b \\
+        a && b
+        \arrow[""{name=0, anchor=center, inner sep=0}, "{f_!wg^*}"{inner sep=.8ex}, "\shortmid"{marking}, from=1-1, to=1-3]
+        \arrow[equals, from=1-1, to=2-1]
+        \arrow[equals, from=1-3, to=2-3]
+        \arrow[""{name=1, anchor=center, inner sep=0}, "{f_!(\forall_{f,g}(s))g^*}"{inner sep=.8ex}, "\shortmid"{marking}, from=2-1, to=2-3]
+        \arrow[equals, from=2-1, to=3-1]
+        \arrow[equals, from=2-3, to=3-3]
+        \arrow[""{name=2, anchor=center, inner sep=0}, "s"'{inner sep=.8ex}, "\shortmid"{marking}, from=3-1, to=3-3]
+        \arrow["{\hat\xi}"{description, pos=0.4}, draw=none, from=0, to=1]
+        \arrow["{\epsilon_s}"{description}, draw=none, from=1, to=2]
+      \end{tikzcd}  
+      \qquad = \qquad
+      % https://q.uiver.app/#q=WzAsNCxbMCwwLCJhIl0sWzAsMiwiYSJdLFsxLDAsImIiXSxbMSwyLCJiIl0sWzAsMSwiIiwyLHsibGV2ZWwiOjIsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMCwyLCJmXyF3Z14qIiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiYmFycmVkIn19fV0sWzEsMywicyIsMix7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImJhcnJlZCJ9fX1dLFsyLDMsIiIsMCx7ImxldmVsIjoyLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzUsNiwiXFx4aSIsMSx7InNob3J0ZW4iOnsic291cmNlIjoyMCwidGFyZ2V0IjoyMH0sInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6Im5vbmUifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dXQ==
+      \begin{tikzcd}
+        a & b \\
+        \\
+        a & b
+        \arrow[""{name=0, anchor=center, inner sep=0}, "{f_!wg^*}"{inner sep=.8ex}, "\shortmid"{marking}, from=1-1, to=1-2]
+        \arrow[equals, from=1-1, to=3-1]
+        \arrow[equals, from=1-2, to=3-2]
+        \arrow[""{name=1, anchor=center, inner sep=0}, "s"'{inner sep=.8ex}, "\shortmid"{marking}, from=3-1, to=3-2]
+        \arrow["\xi"{description}, draw=none, from=0, to=1]
+      \end{tikzcd}
+    \end{equation*}
+\end{proposition}
+\begin{proof}
+  This is just the characterization of an adjunction in terms of the existence of a counit as a universal (\cite[\S IV.1, Theorem 2(iv)]{maclane1998}). Note that naturality of $\epsilon_s$ in $s$ follows automatically.
+\end{proof}
 
 \section{Tabulators and Modality}
 

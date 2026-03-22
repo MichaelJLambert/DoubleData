@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2026.1.15)  21 MAR 2026 16:13
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2026.1.15)  21 MAR 2026 21:44
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -485,6 +485,14 @@ Package: inconsolata 2019/05/17 v1.12
 Package: textcomp 2024/04/24 v2.1b Standard LaTeX package
 )
 \zifour@ocount=\count331
+) (c:/texlive/2025/texmf-dist/tex/latex/mathpartir/mathpartir.sty
+Package: mathpartir 2016/02/24 version 1.3.2 Math Paragraph for Typesetting Inference Rules
+\mpr@andskip=\skip63
+\mpr@lista=\toks50
+\mpr@listb=\toks51
+\mpr@hlist=\box69
+\mpr@vlist=\box70
+\mpr@right=\box71
 ) (./quiver.sty
 Package: quiver 2025/09/20 quiver
  (c:/texlive/2025/texmf-dist/tex/latex/tikz-cd/tikz-cd.sty
@@ -511,7 +519,7 @@ File: tikzlibrarycalc.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 \pgfdecorationsegmentamplitude=\dimen295
 \pgfdecorationsegmentlength=\dimen296
 )
-\tikz@lib@dec@box=\box69
+\tikz@lib@dec@box=\box72
 ) (c:/texlive/2025/texmf-dist/tex/generic/pgf/libraries/decorations/pgflibrarydecorations.pathmorphing.code.tex)) (c:/texlive/2025/texmf-dist/tex/latex/spath3/tikzlibraryspath3.code.tex (c:/texlive/2025/texmf-dist/tex/latex/spath3/spath3.sty
 Package: spath3 2024/05/31 v2.8 Functions for manipulating PGF soft paths
 \g__spath_output_int=\count333
@@ -529,10 +537,10 @@ Package: spath3 2024/05/31 v2.8 Functions for manipulating PGF soft paths
 )) (c:/texlive/2025/texmf-dist/tex/latex/graphics/rotating.sty
 Package: rotating 2025/01/14 v2.16e rotated objects in LaTeX
 \c@r@tfl@t=\count338
-\rotFPtop=\skip63
-\rotFPbot=\skip64
-\rot@float@box=\box70
-\rot@mess@toks=\toks50
+\rotFPtop=\skip64
+\rotFPbot=\skip65
+\rot@float@box=\box73
+\rot@mess@toks=\toks52
 ) (c:/texlive/2025/texmf-dist/tex/latex/adjustbox/adjustbox.sty
 Package: adjustbox 2025/02/26 v1.3c Adjusting TeX boxes (trim, clip, ...)
  (c:/texlive/2025/texmf-dist/tex/latex/adjustbox/adjcalc.sty
@@ -541,7 +549,7 @@ Package: adjcalc 2012/05/16 v1.1 Provides advanced setlength with multiple back-
 Package: trimclip 2025/02/21 v1.2a Trim and clip general TeX material
  (c:/texlive/2025/texmf-dist/tex/latex/collectbox/collectbox.sty
 Package: collectbox 2022/10/17 v0.4c Collect macro arguments as boxes
-\collectedbox=\box71
+\collectedbox=\box74
 )
 \tc@llx=\dimen303
 \tc@lly=\dimen304
@@ -564,7 +572,7 @@ Package: ifoddpage 2022/10/18 v1.2 Conditionals for odd/even page detection
 \c@checkoddpage=\count339
 ) (c:/texlive/2025/texmf-dist/tex/latex/varwidth/varwidth.sty
 Package: varwidth 2009/03/30 ver 0.92;  Variable-width minipages
-\@vwid@box=\box72
+\@vwid@box=\box75
 \sift@deathcycles=\count340
 \@vwid@loff=\dimen315
 \@vwid@roff=\dimen316
@@ -666,7 +674,7 @@ Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
 )
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 284.
 )
-\Hy@SectionHShift=\skip65
+\Hy@SectionHShift=\skip66
 ) (c:/texlive/2025/texmf-dist/tex/latex/cleveref/cleveref.sty
 Package: cleveref 2018/03/27 v0.21.4 Intelligent cross-referencing
 Package cleveref Info: `hyperref' support loaded on input line 2370.
@@ -690,13 +698,13 @@ Package cleveref Info: include cross-reference names in hyperlinks on input line
 ==> First Aid for cleveref.sty applied!
 (c:/texlive/2025/texmf-dist/tex/latex/thmtools/thmtools.sty
 Package: thmtools 2023/05/04 v0.76
-\thmt@toks=\toks51
+\thmt@toks=\toks53
 \c@thmt@dummyctr=\count352
  (c:/texlive/2025/texmf-dist/tex/latex/thmtools/thm-patch.sty
 Package: thm-patch 2023/05/04 v0.76
  (c:/texlive/2025/texmf-dist/tex/latex/thmtools/parseargs.sty
 Package: parseargs 2023/05/04 v0.76
-\@parsespec=\toks52
+\@parsespec=\toks54
 )) (c:/texlive/2025/texmf-dist/tex/latex/thmtools/thm-kv.sty
 Package: thm-kv 2023/05/04 v0.76
 Package thm-kv Info: Theorem names will be uppercased on input line 42.
@@ -711,7 +719,7 @@ Package: thm-listof 2023/05/04 v0.76
 Package: thm-restate 2023/05/04 v0.76
 ) (c:/texlive/2025/texmf-dist/tex/latex/thmtools/thm-amsthm.sty
 Package: thm-amsthm 2023/05/04 v0.76
-\thmt@style@headstyle=\toks53
+\thmt@style@headstyle=\toks55
 ))
 \c@theorem=\count353
  (c:/texlive/2025/texmf-dist/tex/latex/nicematrix/nicematrix.sty
@@ -721,18 +729,18 @@ Rollback for package 'array' requested -> date 2025/06/08.
          Best approximation is the release introduced on 2024-06-01.
 Package: array 2025/09/25 v2.6n Tabular extension package (FMi)
 \col@sep=\dimen321
-\ar@mcellbox=\box73
+\ar@mcellbox=\box76
 \extrarowheight=\dimen322
-\NC@list=\toks54
-\extratabsurround=\skip66
-\backup@length=\skip67
-\ar@cellbox=\box74
+\NC@list=\toks56
+\extratabsurround=\skip67
+\backup@length=\skip68
+\ar@cellbox=\box77
 )
 \l__nicematrix_tmpc_dim=\dimen323
 \l__nicematrix_tmpd_dim=\dimen324
 \l__nicematrix_tmpc_int=\count354
 \g__nicematrix_env_int=\count355
-\l__nicematrix_the_array_box=\box75
+\l__nicematrix_the_array_box=\box78
 \g__nicematrix_NiceMatrixBlock_int=\count356
 \g__nicematrix_notes_caption_int=\count357
 \l__nicematrix_columns_width_dim=\dimen325
@@ -862,14 +870,14 @@ File: logreq.def 2010/08/04 v1.0 logreq spec v1.0
 \blx@sectionciteorderinternal@0=\count430
 \blx@entrysetcounter=\count431
 \blx@biblioinstance=\count432
-\labelnumberwidth=\skip68
-\labelalphawidth=\skip69
-\biblabelsep=\skip70
-\bibitemsep=\skip71
-\bibnamesep=\skip72
-\bibinitsep=\skip73
-\bibparsep=\skip74
-\bibhang=\skip75
+\labelnumberwidth=\skip69
+\labelalphawidth=\skip70
+\biblabelsep=\skip71
+\bibitemsep=\skip72
+\bibnamesep=\skip73
+\bibinitsep=\skip74
+\bibparsep=\skip75
+\bibhang=\skip76
 \blx@bcfin=\read3
 \blx@bcfout=\write4
 \blx@langwohyphens=\language90
@@ -953,20 +961,20 @@ Package biblatex Info: ... file 'biblatex-dm.cfg' not found.
 \c@savedoriglanguage=\count501
 \c@pageref=\count502
 \c@savedpageref=\count503
-\shorthandwidth=\skip76
-\shortjournalwidth=\skip77
-\shortserieswidth=\skip78
-\shorttitlewidth=\skip79
-\shortauthorwidth=\skip80
-\shorteditorwidth=\skip81
-\locallabelnumberwidth=\skip82
-\locallabelalphawidth=\skip83
-\localshorthandwidth=\skip84
-\localshortjournalwidth=\skip85
-\localshortserieswidth=\skip86
-\localshorttitlewidth=\skip87
-\localshortauthorwidth=\skip88
-\localshorteditorwidth=\skip89
+\shorthandwidth=\skip77
+\shortjournalwidth=\skip78
+\shortserieswidth=\skip79
+\shorttitlewidth=\skip80
+\shortauthorwidth=\skip81
+\shorteditorwidth=\skip82
+\locallabelnumberwidth=\skip83
+\locallabelalphawidth=\skip84
+\localshorthandwidth=\skip85
+\localshortjournalwidth=\skip86
+\localshortserieswidth=\skip87
+\localshorttitlewidth=\skip88
+\localshortauthorwidth=\skip89
+\localshorteditorwidth=\skip90
 Package biblatex Info: Trying to load compatibility code...
 Package biblatex Info: ... file 'blx-compat.def' found.
  (c:/texlive/2025/texmf-dist/tex/latex/biblatex/blx-compat.def
@@ -1117,15 +1125,15 @@ File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count517
 \scratchdimen=\dimen372
-\scratchbox=\box76
+\scratchbox=\box79
 \nofMPsegments=\count518
 \nofMParguments=\count519
-\everyMPshowfont=\toks55
+\everyMPshowfont=\toks57
 \MPscratchCnt=\count520
 \MPscratchDim=\dimen373
 \MPnumerator=\count521
 \makeMPintoPDFobject=\count522
-\everyMPtoPDFconversion=\toks56
+\everyMPtoPDFconversion=\toks58
 ) (c:/texlive/2025/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
@@ -1214,7 +1222,7 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
  [3] [4] [5]
-Package hyperref Info: bookmark level for unknown example defaults to 0 on input line 330.
+Package hyperref Info: bookmark level for unknown example defaults to 0 on input line 329.
  [6{c:/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}]
 pdfTeX warning (ext4): destination with the same identifier (name{example.1}) has been already used, duplicate ignored
 <to be read again> 
@@ -1223,21 +1231,21 @@ l.478   I
          n $\Span$, work with $\langle d,c\rangle\colon R\to X\times Y$ and ... [7] [8]
 Package hyperref Info: bookmark level for unknown definition defaults to 0 on input line 548.
 Package hyperref Info: bookmark level for unknown proposition defaults to 0 on input line 578.
- [9]
+ [9] [10]
 Package microtype Info: Character `029' is missing
 (microtype)             in font `T1/lmr/m/sc/10.95'.
 (microtype)             Ignoring protrusion settings for this character.
-LaTeX Font Info:    Trying to load font information for T1+zi4 on input line 676.
+LaTeX Font Info:    Trying to load font information for T1+zi4 on input line 772.
  (c:/texlive/2025/texmf-dist/tex/latex/inconsolata/t1zi4.fd
 File: t1zi4.fd 2018/01/14 T1/zi4 (Inconsolata)
 )
 LaTeX Font Info:    Font shape `T1/zi4/m/n' will be
-(Font)              scaled to size 10.95pt on input line 676.
+(Font)              scaled to size 10.95pt on input line 772.
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `zi4' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
- [10{c:/texlive/2025/texmf-dist/fonts/enc/dvips/inconsolata/i4-t1-0.enc}] (./double-data-main.aux)
+ [11{c:/texlive/2025/texmf-dist/fonts/enc/dvips/inconsolata/i4-t1-0.enc}] (./double-data-main.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-29>
@@ -1249,18 +1257,18 @@ Package logreq Info: Writing requests to 'double-data-main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 42729 strings out of 467537
- 884720 string characters out of 5423704
- 1718684 words of memory out of 5000000
- 70791 multiletter control sequences out of 15000+600000
- 708992 words of font info for 181 fonts, out of 8000000 for 9000
+ 43237 strings out of 467537
+ 895518 string characters out of 5423704
+ 1721319 words of memory out of 5000000
+ 71281 multiletter control sequences out of 15000+600000
+ 718056 words of font info for 187 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 117i,20n,125p,1335b,1543s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<c:/texlive/2025/texmf-dist/fonts/type1/public/inconsolata/Inconsolata-zi4r.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/lm/lmbx10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/lm/lmbx12.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/lm/lmcsc10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/lm/lmex10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/lm/lmmi10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/lm/lmmi6.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/lm/lmmi8.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/lm/lmr10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/lm/lmr12.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/lm/lmr17.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/lm/lmr6.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/lm/lmr8.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/lm/lmri10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/lm/lmss10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/lm/lmsy10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/lm/lmsy6.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/lm/lmsy8.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on double-data-main.pdf (10 pages, 369011 bytes).
+ 117i,20n,125p,1335b,1563s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<c:/texlive/2025/texmf-dist/fonts/type1/public/inconsolata/Inconsolata-zi4r.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/lm/lmbx10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/lm/lmbx12.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/lm/lmcsc10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/lm/lmex10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/lm/lmmi10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/lm/lmmi6.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/lm/lmmi8.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/lm/lmr10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/lm/lmr12.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/lm/lmr17.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/lm/lmr6.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/lm/lmr8.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/lm/lmri10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/lm/lmri8.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/lm/lmss10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/lm/lmsy10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/lm/lmsy6.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/lm/lmsy8.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on double-data-main.pdf (11 pages, 387492 bytes).
 PDF statistics:
- 247 PDF objects out of 1000 (max. 8388607)
- 190 compressed objects within 2 object streams
- 36 named destinations out of 1000 (max. 500000)
- 45661 words of extra memory for PDF output out of 51595 (max. 10000000)
+ 266 PDF objects out of 1000 (max. 8388607)
+ 205 compressed objects within 3 object streams
+ 40 named destinations out of 1000 (max. 500000)
+ 49757 words of extra memory for PDF output out of 51595 (max. 10000000)
 

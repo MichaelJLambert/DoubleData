@@ -1,13 +1,13 @@
 # Fdb version 4
-["biber double-data-main"] 1774115760.93642 "double-data-main.bcf" "double-data-main.bbl" "double-data-main" 1774124037.00481 0
-  "double-data-bib.bib" 1774057619 8573 2d86e2c6abad97bff83eadcb06dd8a71 ""
-  "double-data-main.bcf" 1774124036 109247 ee6ef86fe261b0acb5758b9e541513aa "pdflatex"
+["biber double-data-main"] 1774140332.02355 "double-data-main.bcf" "double-data-main.bbl" "double-data-main" 1774143902.11072 0
+  "double-data-bib.bib" 1774140322 8770 a16a52b72b3384ca4b9e64b5770ff339 ""
+  "double-data-main.bcf" 1774143901 109314 7b85e6e8b486f90a70f7110b26c144b2 "pdflatex"
   (generated)
   "double-data-main.bbl"
   "double-data-main.blg"
   (rewritten before read)
-["pdflatex"] 1774124031.57166 "c:/Users/micha/Documents/Mathematical Writing/Documents/DoubleDataOperations/double-data-main.tex" "double-data-main.pdf" "double-data-main" 1774124037.00588 0
-  "c:/Users/micha/Documents/Mathematical Writing/Documents/DoubleDataOperations/double-data-main.tex" 1774124030 57608 f7b2c2f221101fa0bca8918035955076 ""
+["pdflatex"] 1774143895.6759 "c:/Users/micha/Documents/Mathematical Writing/Documents/DoubleDataOperations/double-data-main.tex" "double-data-main.pdf" "double-data-main" 1774143902.11177 0
+  "c:/Users/micha/Documents/Mathematical Writing/Documents/DoubleDataOperations/double-data-main.tex" 1774143894 65967 9b5d8ebe3cbd332bc146f0d22168d574 ""
   "c:/texlive/2025/texmf-dist/fonts/enc/dvips/inconsolata/i4-t1-0.enc" 1768535090 7631 5169ff1acd97ff1c4ab83563c99f96f4 ""
   "c:/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc" 1768535568 2375 baa924870cfb487815765f9094cf3728 ""
   "c:/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc" 1768535568 3486 c7eadf5dcc57b3b2d11736679f6636ba ""
@@ -31,6 +31,8 @@
   "c:/texlive/2025/texmf-dist/fonts/tfm/public/lm/ec-lmr6.tfm" 1768535568 12048 c1068d0f4772be9b0ec447692e1d6d82 ""
   "c:/texlive/2025/texmf-dist/fonts/tfm/public/lm/ec-lmr8.tfm" 1768535568 12064 9b9ade9f64cb32ce1d9a88d21fbd5c2d ""
   "c:/texlive/2025/texmf-dist/fonts/tfm/public/lm/ec-lmri10.tfm" 1768535568 17148 9556e1b5f936b77a796f68d2d559ba99 ""
+  "c:/texlive/2025/texmf-dist/fonts/tfm/public/lm/ec-lmri7.tfm" 1768535568 17168 78a37e395d0470967cfda94332b0716a ""
+  "c:/texlive/2025/texmf-dist/fonts/tfm/public/lm/ec-lmri8.tfm" 1768535568 17152 c8240fef851c4991afefdae37a539ee1 ""
   "c:/texlive/2025/texmf-dist/fonts/tfm/public/lm/lmex10.tfm" 1768535568 992 ce925c9346c7613270a79afbee98c070 ""
   "c:/texlive/2025/texmf-dist/fonts/tfm/public/lm/lmmi10.tfm" 1768535568 1528 6d36b2385e0ca062a654de6ac59cb34f ""
   "c:/texlive/2025/texmf-dist/fonts/tfm/public/lm/lmmi12.tfm" 1768535568 1524 753b192b18f2991794f9d41a8228510b ""
@@ -69,6 +71,7 @@
   "c:/texlive/2025/texmf-dist/fonts/type1/public/lm/lmr6.pfb" 1768535568 123394 992f5e87d698d9e94717394c62580ea6 ""
   "c:/texlive/2025/texmf-dist/fonts/type1/public/lm/lmr8.pfb" 1768535568 122174 a2d5e73f396ddbeb3bdf5c79aea0993d ""
   "c:/texlive/2025/texmf-dist/fonts/type1/public/lm/lmri10.pfb" 1768535568 112593 fda2373ba4420af33949610de4c28fe8 ""
+  "c:/texlive/2025/texmf-dist/fonts/type1/public/lm/lmri8.pfb" 1768535568 109952 907d11d9707997c3fd76af7ec651ec78 ""
   "c:/texlive/2025/texmf-dist/fonts/type1/public/lm/lmss10.pfb" 1768535568 97408 f595704ec2a07246c2d6f7b602587452 ""
   "c:/texlive/2025/texmf-dist/fonts/type1/public/lm/lmsy10.pfb" 1768535568 27863 09ce3735688ffde955e72da27c95b61a ""
   "c:/texlive/2025/texmf-dist/fonts/type1/public/lm/lmsy6.pfb" 1768535568 28109 6d61305ed3d0eb794ebe36f15cf44aa0 ""
@@ -223,6 +226,7 @@
   "c:/texlive/2025/texmf-dist/tex/latex/lm/t1lmr.fd" 1768535568 1867 996fe743d88a01aca041ed22cc10e1bb ""
   "c:/texlive/2025/texmf-dist/tex/latex/logreq/logreq.def" 1768535589 1620 fb1c32b818f2058eca187e5c41dfae77 ""
   "c:/texlive/2025/texmf-dist/tex/latex/logreq/logreq.sty" 1768535589 6187 b27afc771af565d3a9ff1ca7d16d0d46 ""
+  "c:/texlive/2025/texmf-dist/tex/latex/mathpartir/mathpartir.sty" 1768535847 14401 0712448ba80da5750b26552c69bbf0c8 ""
   "c:/texlive/2025/texmf-dist/tex/latex/mathtools/mathtools.sty" 1768535856 62711 3b0ed1d68b598a75677c10d16646d5e5 ""
   "c:/texlive/2025/texmf-dist/tex/latex/mathtools/mhsetup.sty" 1768535856 5582 a43dedf8e5ec418356f1e9dfe5d29fc3 ""
   "c:/texlive/2025/texmf-dist/tex/latex/microtype/microtype-pdftex.def" 1768535963 49656 229fb67764dc0abf5c6f072ee0d27147 ""
@@ -270,12 +274,12 @@
   "c:/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1768538707 5587484 30eee748fa419a911c40b0c750dd21ba ""
   "c:/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt" 1768539098 3635444 6d2f9df4b128591d45ae31f63e4230af ""
   "c:/texlive/2025/texmf.cnf" 1768538679 713 e69b156964470283e0530f5060668171 ""
-  "double-data-macros.sty" 1773945737 7212 3720ba7fb8b929bd90a87e38290b606a ""
-  "double-data-main.aux" 1774124036 4446 a6c75b775a132bc2488a1ed0703ee802 "pdflatex"
-  "double-data-main.bbl" 1774115763 5952 9477d6c016b6990d2964c9498e15ad95 "biber double-data-main"
-  "double-data-main.out" 1774124036 1669 3e690d2806f3d70e35566bab8e5df442 "pdflatex"
-  "double-data-main.run.xml" 1774124036 2400 fa7e7698a42c25721d88adf1a31d92cb "pdflatex"
-  "double-data-main.tex" 1774124030 57608 f7b2c2f221101fa0bca8918035955076 ""
+  "double-data-macros.sty" 1774143894 7223 6e28b1207a683d023a209876f55325c1 ""
+  "double-data-main.aux" 1774143901 4905 ebb5945c66c08ef57bba2c9535b5f917 "pdflatex"
+  "double-data-main.bbl" 1774140334 7195 88202bb342f13f880b7c4f2ef8c35ab6 "biber double-data-main"
+  "double-data-main.out" 1774143901 1669 3e690d2806f3d70e35566bab8e5df442 "pdflatex"
+  "double-data-main.run.xml" 1774143901 2400 fa7e7698a42c25721d88adf1a31d92cb "pdflatex"
+  "double-data-main.tex" 1774143894 65967 9b5d8ebe3cbd332bc146f0d22168d574 ""
   "quiver.sty" 1768500373 2062 f35d43d61f4af55b0fa23be8533a6cf6 ""
   (generated)
   "double-data-main.aux"

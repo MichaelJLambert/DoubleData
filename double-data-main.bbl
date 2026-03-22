@@ -114,6 +114,36 @@
       \verb 2403.19884
       \endverb
     \endentry
+    \entry{maclane1998}{book}{}{}
+      \name{author}{1}{}{%
+        {{hash=d35756c9f39a938d9533376dfaa5ad43}{%
+           family={Mac\bibnamedelima Lane},
+           familyi={M\bibinitperiod\bibinitdelim L\bibinitperiod},
+           given={Saunders},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{d35756c9f39a938d9533376dfaa5ad43}
+      \strng{fullhash}{d35756c9f39a938d9533376dfaa5ad43}
+      \strng{fullhashraw}{d35756c9f39a938d9533376dfaa5ad43}
+      \strng{bibnamehash}{d35756c9f39a938d9533376dfaa5ad43}
+      \strng{authorbibnamehash}{d35756c9f39a938d9533376dfaa5ad43}
+      \strng{authornamehash}{d35756c9f39a938d9533376dfaa5ad43}
+      \strng{authorfullhash}{d35756c9f39a938d9533376dfaa5ad43}
+      \strng{authorfullhashraw}{d35756c9f39a938d9533376dfaa5ad43}
+      \field{labelalpha}{Mac98}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Categories for the Working , 2nd Edition}
+      \field{year}{1998}
+      \verb{doi}
+      \verb 10.1007/978-1-4757-4721-8
+      \endverb
+    \endentry
     \entry{shulman2008}{article}{}{}
       \name{author}{1}{}{%
         {{hash=a49cc4742950659ae680e1c40f2295a9}{%

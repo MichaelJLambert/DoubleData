@@ -38,7 +38,7 @@
 \renewbibmacro{in:}{}
 
 % Title.
-\title{Relational Division in Double-Categorical OLOGs}
+\title{Quantification and Relational Division in Double-Categorical OLOGs}
 \author{Michael Lambert}
 \date{Spring 2026}
 
@@ -356,12 +356,34 @@ in the theater of OLOGs and of double categories generally. Something like this 
     \end{equation*}
 \end{example}
 
-\section{Existential Queries}
-\label{section:existential-queries}
+\section{Varieties of Quantification}
+\label{section:varieties-of-quantification}
 
-A relation $R\colon X\proto Y$ might be thought of as a predicate, as a generalized many-valued non-functional relationship, or when $X= Y$ as a non-deterministic system. That $x$ and $y$ are $R$-related is written $xRy$ or perhaps $x\leq_R y$ or even $x\sim_Ry$. That in any case $y$ is on the left suggests, due to non-symmetry, that $y$ is somehow subsequent to, or a consequence of $x$. This comports with the system view of $R$ that $y$ is a later state accessible from $x$. Perhaps $x$ is prior to $y$ in a temporal sequence. On the causal view, somehow $y$ is a consequence of $x$.
-
-A proposition is a subset $S\subset Y$ or perhaps a monic arrow $S\rightarrowtail Y$. Such propositions are in 1-1 correspondence with functions $X\to \mathbf 2$. That $x\in X$ satisfies the proposition $S\subset X$ is written $S(x)$ and means $x\in S$ too. Any given such $x$ may or may not satisfy $S$. That some elements of $X$ does so is usually written `$\exists x S(x)$' and the operator `$\exists$' binds the dummy variable. The set of all $x\in X$ for which some subsequent state satisfies $S\subset X$ is written 
+It is well-known that quantification provides left and right adjoints to substitution. A proposition is a subset $S\subset X$ or perhaps a monic arrow $S\rightarrowtail Y$. Such propositions are in 1-1 correspondence with functions $X\to \mathbf 2$. That $x\in X$ satisfies the proposition $S\subset X$ is written $S(x)$ and means $x\in S$ too. Now, for a set function $f\colon X\to Y$, there is a usual adjoint situation
+  \begin{equation*}
+    % https://q.uiver.app/#q=WzAsMixbMCwwLCJQWCJdLFsyLDAsIlBZIl0sWzAsMSwiXFxmb3JhbGxfZiIsMCx7Im9mZnNldCI6LTN9XSxbMCwxLCJcXGV4aXN0c19mIiwyLHsib2Zmc2V0IjozfV0sWzEsMCwiZl4qIiwxXV0=
+    \begin{tikzcd}
+      PX && PY
+      \arrow["{\forall_f}", shift left=3, from=1-1, to=1-3]
+      \arrow["{\exists_f}"', shift right=3, from=1-1, to=1-3]
+      \arrow["{f^*}"{description}, from=1-3, to=1-1]
+    \end{tikzcd}\qquad\qquad \exists_f\dashv f^*\dashv\forall_f
+  \end{equation*}
+where
+  \begin{equation*}
+    \exists_f(S) = \lbrace y\in Y\mid f(x) = y \text{ for some } x\in S\rbrace
+  \end{equation*}
+  \begin{equation*}
+    \forall_f(S) = \lbrace y\in Y\mid \text{ for all } x\in X \text{ if } f(x) = y \text{ then } x\in S\rbrace.
+  \end{equation*}
+Of course ordinary quantification is a special case illustrated by taking $f = \pi\colon X\times Y\to Y$, the usual projection to the second factor of the cartesian product. In this case, the quantified subsets are $S\subset X\times Y$, that is, binary relations. That $x$ and $y$ are $S$-related could be written $xSy$ or perhaps $x\leq_S y$ or $x\sim_Sy$. Typically, we bind the left variable, resulting in  
+  \begin{equation*}
+    \exists_f(S) = \lbrace y\in Y\mid S(x,y) \text{ for some } x\in X\rbrace
+  \end{equation*}
+  \begin{equation*}
+    \forall_f(S) = \lbrace y\in Y\mid S(x,y) \text{ for all } x\in X\rbrace.
+  \end{equation*}
+In particular, if $Y=1$, we have closed formulas \emph{viz.} propositions. However, a relation $R\colon X\proto Y$ might also be thought of as set of pairs of entities and observations or attributes, or when $X= Y$ as a non-deterministic system. Fixing $x$ and quantifying over $y$ instead suggests, due to non-symmetry, that $y$ is somehow subsequent to, or a consequence of $x$. This comports with the system view of $R$ that $y$ is a later state accessible from $x$. Perhaps $x$ is prior to $y$ in a temporal sequence. On the causal view, somehow $y$ is a consequence of $x$. Now, the set of all $x\in X$ for which some subsequent state satisfies $S\subset X$ is written 
   \begin{equation*} \label{eqn:diamond-definition}
     \diamondsuit S = \lbrace x\mid S(y) \text{ for some } x\leq_R y \rbrace.
   \end{equation*}
@@ -369,7 +391,10 @@ This is exactly the modal possibility operator familiar from the topological sem
   \begin{equation*}
     \Box S = \lbrace x\mid S(x) \text{ for all } x\leq_R y\rbrace.
   \end{equation*}
-This is modal necessity in the same topological semantics. Thus, in the former case, an element of $\diamondsuit S$ is an element of $X$ for which $S$ is possible, in the sense that it is true of some later accessible state. In the latter case, an element of $\Box S$ is an element of $X$ for which $S$ is necessarily true, in the sense that any subsequent accessible state satisfies $S$.
+This is modal necessity in the same topological semantics. Thus, in the former case, an element of $\diamondsuit S$ is an element of $X$ for which $S$ is possible, in the sense that it is true of some later accessible state. In the latter case, an element of $\Box S$ is an element of $X$ for which $S$ is necessarily true, in the sense that any subsequent accessible state satisfies $S$. These two operators are precise those discussed in \cref{section-OLOGs}. Ultimately they are constructed from the $\exists_f$ and $\forall_f$ immediately above, for special choices of $f$ and together with certain restrictions. We endeavor to show these constructions in the following sections.
+
+\section{Existential Queries}
+\label{section:existential-queries}
 
 The possibility set $\diamondsuit S$ above is constructed via the application of adjoint functors. That is, consider the proposition $s\colon S\rightarrowtail X$ as a monic arrow and form the pullback on the left followed by the image
   \begin{equation*}
@@ -418,7 +443,7 @@ That is, the corner of the pullback on the right is exactly the set of pairs $(x
   \end{equation*}
 since restrictions in this double category are pullbacks and extensions are images. 
 
-Note that the same effect could be achieved simply by composing. That is, in any double category $\dbl{D}$, there is a comparison cell of the form
+Note that the same effect could be achieved simply by composing. That is, in any equipment $\dbl{D}$, there is a comparison cell of the form
   \begin{equation*}
     % https://q.uiver.app/#q=WzAsNixbMCwwLCJYIl0sWzEsMCwiUyJdLFsyLDAsIlMiXSxbMiwxLCIxIl0sWzAsMSwiWCJdLFsxLDEsIlgiXSxbMCwxLCJSXFxvZG90IHNeKiIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImJhcnJlZCJ9fX1dLFsxLDIsIlxcaWQiLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJiYXJyZWQifX19XSxbMiwzLCIhIl0sWzAsNCwiMSIsMl0sWzQsNSwiUiIsMix7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImJhcnJlZCJ9fX1dLFs1LDMsIlMiLDIseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJiYXJyZWQifX19XSxbMSw1LCJzIl0sWzcsMTEsIlxcdGV4dHtleHR9IiwxLHsic2hvcnRlbiI6eyJzb3VyY2UiOjIwLCJ0YXJnZXQiOjIwfSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoibm9uZSJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzYsMTAsIlxcdGV4dHtyZXN9IiwxLHsic2hvcnRlbiI6eyJzb3VyY2UiOjIwLCJ0YXJnZXQiOjIwfSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoibm9uZSJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV1d
     \begin{tikzcd}
@@ -436,7 +461,7 @@ Note that the same effect could be achieved simply by composing. That is, in any
     \end{tikzcd}  
   \end{equation*}
 where $S\colon X\proto 1$ is defined via the extension cell and a slight abuse of notation. Thus, there is a globular cell $\diamondsuit S \Rightarrow R\odot S$ since $\diamondsuit S$ is constructed as an extension: 
-  \begin{equation*}
+  \begin{equation} \label{equation:globular-cell}
     % https://q.uiver.app/#q=WzAsOCxbMCwxLCJYIl0sWzEsMSwiUyJdLFsyLDEsIlMiXSxbMiwyLCIxIl0sWzAsMiwiWCJdLFsxLDIsIlgiXSxbMCwwLCJYIl0sWzIsMCwiUyJdLFsxLDIsIlxcaWQiLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJiYXJyZWQifX19XSxbMiwzLCIhIl0sWzAsNCwiMSIsMl0sWzQsNSwiUiIsMix7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImJhcnJlZCJ9fX1dLFs1LDMsIlMiLDIseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJiYXJyZWQifX19XSxbMSw1LCJzIl0sWzYsMF0sWzYsNywiUlxcb2RvdCBzXioiLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJiYXJyZWQifX19XSxbNywyXSxbMCwxLCJSXFxvZG90IHNeKiIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImJhcnJlZCJ9fX1dLFs4LDEyLCJcXHRleHR7ZXh0fSIsMSx7InNob3J0ZW4iOnsic291cmNlIjoyMCwidGFyZ2V0IjoyMH0sInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6Im5vbmUifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsxNywxMSwiXFx0ZXh0e3Jlc30iLDEseyJzaG9ydGVuIjp7InNvdXJjZSI6MjAsInRhcmdldCI6MjB9LCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJub25lIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMTUsMSwiXFxjb25nIiwxLHsic2hvcnRlbiI6eyJzb3VyY2UiOjIwfSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoibm9uZSJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV1d
     \begin{tikzcd}
       X && S \\
@@ -471,7 +496,7 @@ where $S\colon X\proto 1$ is defined via the extension cell and a slight abuse o
       \arrow["{\text{ext}}"{description}, draw=none, from=0, to=1]
       \arrow["{\exists\,!}"{description, pos=0.6}, draw=none, from=1, to=2]
     \end{tikzcd}
-  \end{equation*}
+  \end{equation}
 Now, this is an invertible cell when $\dbl{D}$ is either $\Rel$ or $\Span$ or $\Mat(\cat{V})$ for suitably structured monoidal $\cat V$. The case of $\Rel$ is trivial, so we treat the other two briefly.
 
 \begin{example}
@@ -537,13 +562,16 @@ Now, this is an invertible cell when $\dbl{D}$ is either $\Rel$ or $\Span$ or $\
   for any $x\in X$, showing that the two constructions are the same in this case too.
 \end{example}
 
-However, in $\Prof$, the cell under consideration is not invertible. This is essentially a failure of left Kan extension to commute with composition of profunctors.
+That the two constructions agree in general is the content of the next result.
 
-\begin{example}
+\begin{proposition}
+  The globular cell $\diamondsuit S \Rightarrow R\odot S$ induced in \cref{equation:globular-cell} is an isomorphism in any equipment. Accordingly, the two possible definitions of $\diamondsuit S$ agree.
+\end{proposition}
+\begin{proof}
   
-\end{example}
+\end{proof}
 
-Since in general the constructions are not the same, we must make a choice as to which is basic. In the case of $\Span$, although the appropriate element $x\in X$ is implicit in the latter as $d(r) = x$, our preference is to keep the data as a triple $((x,a),r) = (x,a,r)$ as in the first way of computing the possibility operator. This way all the information is recorded in the apex of the span and the two legs can be forgotten. The preferred definition is thus formalized in the following way.
+Although the constructions are thus essentially the same, we make a choice as to which is basic. In the case of $\Span$, although the appropriate element $x\in X$ is implicit in the latter as $d(r) = x$, our preference is to keep the data as a triple $((x,a),r) = (x,a,r)$ as in the first way of computing the possibility operator. This way all the information is recorded in the apex of the span and the two legs can be forgotten. The preferred definition is thus formalized in the following way.
 
 \begin{definition}[Possibility]
   Let $s\colon S\rightarrowtail X$ denote any monic arrow in the equipment $\dbl{D}$. The proposition \textbf{possibly} $S$ is then formed as an restriction followed by an extension:

@@ -321,7 +321,158 @@ Now, of course in nice logical situations substitution also has a right adjoint,
     \begin{equation*}
       \text{ext}\dashv \text{res} \dashv \,\,??? \qquad\leftrightarrow \qquad \exists \dashv (-)^*\dashv \forall
     \end{equation*}
-in the theater of OLOGs and of double categories generally. Something like this has been studied in the foundational paper \cite{shulman2008} under the guise of \emph{coextension}. It was mentioned there, but not studied in-depth due to being not as well behaved as the other two operations. And indeed this is not what we envision in this paper. For coextensions are had by asking for the equipment $\dbl{D}_1\to\dbl{D}_0\times\dbl{D}_0$ to be also a \emph{cofibration} which is too strong for what we have in mind. Rather, we take the approach of \emph{fibrational semantics} \cite{jacobs1999} and ask merely that our equipments $\dbl{D}_1\to\dbl{D}_0\times\dbl{D}_0$ have right adjoints to restriction functors and that these satisfy a Beck-Chevalley condition. This is exactly to require \emph{fibered products}. We shall see in more detail how this recovers exactly the queries of interest below in \cref{section:universal-queries}. For this we first review the operations of restriction and extension and then discuss the easier case of the formalism of existential queries in more depth. 
+in the theater of OLOGs and of double categories generally. Something like this has been studied in the foundational paper \cite{shulman2008} under the guise of \emph{coextension}. It was mentioned there, but not studied in-depth due to being not as well behaved as the other two operations. And indeed this is not what we envision in this paper. For coextensions are had by asking for the equipment $\dbl{D}_1\to\dbl{D}_0\times\dbl{D}_0$ to be also a \emph{cofibration} which is too strong for what we have in mind. Rather, we take the approach of \emph{fibrational semantics} \cite{jacobs1999} and ask merely that our equipments $\dbl{D}_1\to\dbl{D}_0\times\dbl{D}_0$ have right adjoints to restriction functors and that these satisfy a Beck-Chevalley condition. This is exactly to require \emph{fibered products}. We shall see in more detail how this recovers exactly the queries of interest below in \cref{section:universal-queries}. For this we first review quantification in more detail.
+
+\section{Varieties of Quantification}
+\label{section:varieties-of-quantification}
+
+Both universal and existential quantification occurred in some form in the discussion of \cref{section-OLOGs}. In general, it is well-known that quantification provides left and right adjoints to substitution. A proposition is a subset $S\subset X$ or perhaps a monic arrow $S\rightarrowtail Y$. Such propositions are in 1-1 correspondence with functions $X\to \mathbf 2$. That $x\in X$ satisfies the proposition $S\subset X$ is written $S(x)$ and means $x\in S$ too. Now, for a set function $f\colon X\to Y$, there is a usual adjoint situation
+  \begin{equation*}
+    % https://q.uiver.app/#q=WzAsMixbMCwwLCJQWCJdLFsyLDAsIlBZIl0sWzAsMSwiXFxmb3JhbGxfZiIsMCx7Im9mZnNldCI6LTN9XSxbMCwxLCJcXGV4aXN0c19mIiwyLHsib2Zmc2V0IjozfV0sWzEsMCwiZl4qIiwxXV0=
+    \begin{tikzcd}
+      PX && PY
+      \arrow["{\forall_f}", shift left=3, from=1-1, to=1-3]
+      \arrow["{\exists_f}"', shift right=3, from=1-1, to=1-3]
+      \arrow["{f^*}"{description}, from=1-3, to=1-1]
+    \end{tikzcd}\qquad\qquad \exists_f\dashv f^*\dashv\forall_f
+  \end{equation*}
+where
+  \begin{equation*}
+    \exists_f(S) = \lbrace y\in Y\mid f(x) = y \text{ for some } x\in S\rbrace
+  \end{equation*}
+  \begin{equation*}
+    \forall_f(S) = \lbrace y\in Y\mid \text{ for all } x\in X \text{ if } f(x) = y \text{ then } x\in S\rbrace.
+  \end{equation*}
+Of course ordinary quantification is a special case illustrated by taking $f = \pi\colon X\times Y\to Y$, the usual projection to the second factor of the cartesian product. In this case, the quantified subsets are $R\subset X\times Y$, that is, binary relations. That $x$ and $y$ are $R$-related could be written $xRy$ or perhaps $x\leq_R y$ or $x\sim_Ry$. Quantification is then:
+  \begin{equation*}
+    \exists_\pi(R) = \lbrace y\in Y\mid R(x,y) \text{ for some } x\in X\rbrace
+  \end{equation*}
+  \begin{equation*}
+    \forall_\pi(R) = \lbrace y\in Y\mid R(x,y) \text{ for all } x\in X\rbrace.
+  \end{equation*}
+Typically, the left variable is bound. Note also in particular that if $Y=1$, we have closed formulas \emph{viz.} truth values.  
+
+Now, a relation $R\colon X\proto Y$ might also be thought of as set of pairs of entities and observations or attribute values, or when $X= Y$ as a non-deterministic system. Fixing $x$ and quantifying over $y$ instead suggests, due to non-symmetry, that $y$ is somehow subsequent to, or a consequence of $x$. This comports with the system view of $R$ that $y$ is a later state accessible from $x$. Perhaps $x$ is prior to $y$ in a temporal sequence. On the causal view, somehow $y$ is a consequence of $x$. Now, the set of all $x\in X$ for which some subsequent state or attribute value satisfies a proposition $S\subset Y$ is written 
+  \begin{equation*} \label{eqn:diamond-definition}
+    \diamondsuit S = \lbrace x\mid S(y) \text{ for some } x\leq_R y \rbrace.
+  \end{equation*}
+This is exactly the modal possibility operator familiar from the topological semantics given by the Alexandrov Topology. Likewise there is the set of those elements of $X$, all of whose subsequent states or attribute values satisfy $S\subset Y$, written 
+  \begin{equation*}
+    \Box S = \lbrace x\mid S(y) \text{ for all } x\leq_R y\rbrace.
+  \end{equation*}
+This is modal necessity in the same topological semantics. Thus, in the former case, an element of $\diamondsuit S$ is an element of $X$ for which $S$ is possible, in the sense that it is true of some later accessible state. In the latter case, an element of $\Box S$ is an element of $X$ for which $S$ is necessarily true, in the sense that any subsequent accessible state satisfies $S$. 
+
+So far this is just the usual $\Rel$-semantics of quantification and modality. These operators recover those discussed in \cref{section-OLOGs} and several others. If we go back to the table instancing the relation
+  \[
+    \begin{tabular}{| l | l | }
+        \hline\multicolumn{2}{| c |}{\bf Apothecary}\\
+        \hline {\bf Name }&{\bf Ingredient}\\
+        \hline Arcadia's Cauldron & giant's toe \\
+        \hline Arcadia's Cauldron & wheat \\
+        \hline Arcadia's Cauldron & void salts \\
+        \hline Elgrim's Elixers & giant's toe \\
+        \hline Elgrim's Elixers & wheat \\
+        \hline The White Phial & wheat \\
+        \hline
+    \end{tabular} \qquad\qquad 
+    % https://q.uiver.app/#q=WzAsMixbMCwwLCJcXGZib3h7TmFtZX0iXSxbMiwwLCJcXGZib3h7SW5ncmVkaWVudH0iXSxbMCwxLCJcXHRleHR7QXBvdGhlY2FyeX0iLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJiYXJyZWQifX19XV0=
+      \begin{tikzcd}
+        {\fbox{Name}} && {\fbox{Ingredient}}
+        \arrow["{\text{Apothecary}}"{inner sep=.8ex}, "\shortmid"{marking}, from=1-1, to=1-3]
+      \end{tikzcd}
+  \]
+and our list $S$ again has wheat and giant's toe, then directly from the operations above we have six queries summarized in \cref{fig:quant-queries}. Use $R$ to denote the relation and $R^\dagger$ is the reverse relation. The variables $x$ and $y$ range over names and over ingredients, respectively. Notice some curiosities. The first is that $R$ is supposed to be given. Thus, the existential queries are just the select column queries returning either all the merchants or all the ingredients specified by $R$. These are already studied in \cite{lambert2025}. The universal queries are new and more interesting, but neither returns our list query since $S$ does not even enter into the construction. The modal queries as well are new. The possibility query returns the same as the existential query only as an accident of $R$. If The White Phial was paired with something other than wheat, for example, the results would be different. Note as well that the necessity query is not the list query we are looking for. It returns the set of those merchants having only the ingredients on our list. This is a query with utility, but as far as our shopping list goes it does not matter whether the returned merchant has other items. In fact, suppose that one closer has our ingredients but also a lot of others. We would naturally prefer to go there.
+\begin{figure}[H]
+\begin{center}
+\renewcommand{\arraystretch}{1.5} % extra vertical padding
+
+\newlength{\boxheight}
+\setlength{\boxheight}{4cm} % adjust row height as needed
+
+\begin{tabularx}{\linewidth}{>{\centering\arraybackslash}X >{\centering\arraybackslash}X}
+
+% Row 1
+\begin{minipage}[t][\boxheight][t]{\hsize}
+\begin{tcolorbox}[title=Result of Existential Query, boxrule=0.5mm, sharp corners, height=\boxheight,colback=white,colframe=black,coltitle=white,colbacktitle=black]
+  \[
+  \begin{aligned}
+    \exists_\pi(R) &= \lbrace y\mid R(x,y) \text{ for some } x\in X\rbrace \\
+                  &= \lbrace \text{ingredients someone has}\rbrace \\
+                  &= \lbrace\text{wheat}, \text{giant's toe},\text{void salts}\rbrace
+  \end{aligned}
+  \]
+\end{tcolorbox}
+\end{minipage}
+&
+\begin{minipage}[t][\boxheight][t]{\hsize}
+\begin{tcolorbox}[title=Result of Universal Query, boxrule=0.5mm, sharp corners, height=\boxheight,colback=white,colframe=black,coltitle=white,colbacktitle=black]
+  \[
+  \begin{aligned}
+    \forall_\pi(R) &= \lbrace y\mid R(x,y) \text{ for some } x\in X\rbrace \\
+                  &= \lbrace \text{ingredients everyone has}\rbrace \\
+                  &= \lbrace\text{wheat}\rbrace
+  \end{aligned}
+  \]
+\end{tcolorbox}
+\end{minipage}
+\\[2ex]
+
+% Row 2
+\begin{minipage}[t][\boxheight][t]{\hsize}
+\begin{tcolorbox}[title=Result of Reverse Existential Query, boxrule=0.5mm, sharp corners, height=\boxheight,colback=white,colframe=black,coltitle=white,colbacktitle=black]
+  \[
+  \begin{aligned}
+    \exists_\pi(R^\dagger) &= \lbrace x \mid R(x,y) \text{ for some } y\in Y\rbrace \\
+                  &= \lbrace \text{those with an $R$-ingredient}\rbrace \\
+                  &= \lbrace\text{wheat}, \text{giant's toe},\text{void salts}\rbrace
+  \end{aligned}
+  \]
+\end{tcolorbox}
+\end{minipage}
+&
+\begin{minipage}[t][\boxheight][t]{\hsize}
+\begin{tcolorbox}[title=Result of Reverse Universal Query, boxrule=0.5mm, sharp corners, height=\boxheight,colback=white,colframe=black,coltitle=white,colbacktitle=black]
+  \[
+  \begin{aligned}
+    \forall_\pi(R^\dagger) &= \lbrace x\mid R(x,y) \text{ for all } y\in Y\rbrace \\
+                  &= \lbrace \text{those with all $R$-ingredients}\rbrace \\
+                  &= \lbrace\text{Arcadia's}\rbrace
+  \end{aligned}
+  \]
+\end{tcolorbox}
+\end{minipage}
+\\[2ex]
+
+% Row 3
+\begin{minipage}[t][\boxheight][t]{\hsize}
+\begin{tcolorbox}[title=Result of Possibility Query, boxrule=0.5mm, sharp corners, height=\boxheight,colback=white,colframe=black,coltitle=white,colbacktitle=black]
+  \[
+  \begin{aligned}
+  \diamondsuit S &=\lbrace x\mid S(y) \text{ for some } x\leq_R y \rbrace \\
+  &= \lbrace x \mid x \text{ has an ingredient on } S \rbrace \\ &= \lbrace \text{Arcadia's}, \text{Elgrim's}, \text{Phial}\rbrace
+  \end{aligned}
+  \]
+\end{tcolorbox}
+\end{minipage}
+&
+\begin{minipage}[t][\boxheight][t]{\hsize}
+\begin{tcolorbox}[title=Results of Necessity Query, boxrule=0.5mm, sharp corners, height=\boxheight,colback=white,colframe=black,coltitle=white,colbacktitle=black]
+  \[
+  \begin{aligned}
+  \Box S &= \lbrace x\mid S(y) \text{ for all } x\leq_R y\rbrace\\ 
+  &= \lbrace x \mid x \text{ has only ingredients on } S \rbrace \\ &= \lbrace \text{Elgrim's}\rbrace
+  \end{aligned}
+  \]
+\end{tcolorbox}
+\end{minipage}
+
+\end{tabularx}
+\end{center}
+\caption{Results of six quantification queries.}
+\label{fig:quant-queries}
+\end{figure}
+
+It will turn out that the list query is given by a pair of operations, one of which is universal quantification, applied in sequence. And so, to enrich the datascheme to handle this, the goal now is to formulate all of the above operations purely double-categorically and axiomatize them in our generated OLOGs. Ultimately, we will allow the data-instancing and double-categorical functorial semantics to perform the desired queries.
 
 \section{Operations in Double Categories}
 \label{section:operations-in-double-categories}
@@ -356,47 +507,24 @@ in the theater of OLOGs and of double categories generally. Something like this 
     \end{equation*}
 \end{example}
 
-\section{Varieties of Quantification}
-\label{section:varieties-of-quantification}
-
-It is well-known that quantification provides left and right adjoints to substitution. A proposition is a subset $S\subset X$ or perhaps a monic arrow $S\rightarrowtail Y$. Such propositions are in 1-1 correspondence with functions $X\to \mathbf 2$. That $x\in X$ satisfies the proposition $S\subset X$ is written $S(x)$ and means $x\in S$ too. Now, for a set function $f\colon X\to Y$, there is a usual adjoint situation
-  \begin{equation*}
-    % https://q.uiver.app/#q=WzAsMixbMCwwLCJQWCJdLFsyLDAsIlBZIl0sWzAsMSwiXFxmb3JhbGxfZiIsMCx7Im9mZnNldCI6LTN9XSxbMCwxLCJcXGV4aXN0c19mIiwyLHsib2Zmc2V0IjozfV0sWzEsMCwiZl4qIiwxXV0=
-    \begin{tikzcd}
-      PX && PY
-      \arrow["{\forall_f}", shift left=3, from=1-1, to=1-3]
-      \arrow["{\exists_f}"', shift right=3, from=1-1, to=1-3]
-      \arrow["{f^*}"{description}, from=1-3, to=1-1]
-    \end{tikzcd}\qquad\qquad \exists_f\dashv f^*\dashv\forall_f
-  \end{equation*}
-where
-  \begin{equation*}
-    \exists_f(S) = \lbrace y\in Y\mid f(x) = y \text{ for some } x\in S\rbrace
-  \end{equation*}
-  \begin{equation*}
-    \forall_f(S) = \lbrace y\in Y\mid \text{ for all } x\in X \text{ if } f(x) = y \text{ then } x\in S\rbrace.
-  \end{equation*}
-Of course ordinary quantification is a special case illustrated by taking $f = \pi\colon X\times Y\to Y$, the usual projection to the second factor of the cartesian product. In this case, the quantified subsets are $S\subset X\times Y$, that is, binary relations. That $x$ and $y$ are $S$-related could be written $xSy$ or perhaps $x\leq_S y$ or $x\sim_Sy$. Typically, we bind the left variable, resulting in  
-  \begin{equation*}
-    \exists_f(S) = \lbrace y\in Y\mid S(x,y) \text{ for some } x\in X\rbrace
-  \end{equation*}
-  \begin{equation*}
-    \forall_f(S) = \lbrace y\in Y\mid S(x,y) \text{ for all } x\in X\rbrace.
-  \end{equation*}
-In particular, if $Y=1$, we have closed formulas \emph{viz.} propositions. However, a relation $R\colon X\proto Y$ might also be thought of as set of pairs of entities and observations or attributes, or when $X= Y$ as a non-deterministic system. Fixing $x$ and quantifying over $y$ instead suggests, due to non-symmetry, that $y$ is somehow subsequent to, or a consequence of $x$. This comports with the system view of $R$ that $y$ is a later state accessible from $x$. Perhaps $x$ is prior to $y$ in a temporal sequence. On the causal view, somehow $y$ is a consequence of $x$. Now, the set of all $x\in X$ for which some subsequent state satisfies $S\subset X$ is written 
-  \begin{equation*} \label{eqn:diamond-definition}
-    \diamondsuit S = \lbrace x\mid S(y) \text{ for some } x\leq_R y \rbrace.
-  \end{equation*}
-This is exactly the modal possibility operator familiar from the topological semantics given by the Alexandrov Topology. Likewise there is the set of all elements of $X$, all of whose subsequent states satisfy $S\subset X$, written 
-  \begin{equation*}
-    \Box S = \lbrace x\mid S(x) \text{ for all } x\leq_R y\rbrace.
-  \end{equation*}
-This is modal necessity in the same topological semantics. Thus, in the former case, an element of $\diamondsuit S$ is an element of $X$ for which $S$ is possible, in the sense that it is true of some later accessible state. In the latter case, an element of $\Box S$ is an element of $X$ for which $S$ is necessarily true, in the sense that any subsequent accessible state satisfies $S$. These two operators are precise those discussed in \cref{section-OLOGs}. Ultimately they are constructed from the $\exists_f$ and $\forall_f$ immediately above, for special choices of $f$ and together with certain restrictions. We endeavor to show these constructions in the following sections.
-
 \section{Existential Queries}
 \label{section:existential-queries}
 
-The possibility set $\diamondsuit S$ above is constructed via the application of adjoint functors. That is, consider the proposition $s\colon S\rightarrowtail X$ as a monic arrow and form the pullback on the left followed by the image
+The set-up we are entertaining is that of having a subtype $s\colon S\rightarrowtail Y$ thought of as specifying in the associated data some subcollection or list of items in the ambient list instancing $Y$. We have already seen that in $\Rel$, merely composing has the effect of an existential query. This can be formalized in any equipment $\dbl{D}$ by first viewing $S$ as an extension and then composition with $R$ on the left as in 
+  \begin{equation*}
+    % https://q.uiver.app/#q=WzAsNSxbMSwwLCJTIl0sWzEsMSwiWSJdLFswLDEsIlgiXSxbMiwwLCJTIl0sWzIsMSwiMSJdLFswLDEsInMiLDIseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJtb25vIn19fV0sWzIsMSwiUiIsMix7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImJhcnJlZCJ9fX1dLFswLDMsIlxcaWRfUyIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImJhcnJlZCJ9fX1dLFszLDQsIiEiXSxbMSw0LCJTIiwyLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiYmFycmVkIn19fV0sWzcsOSwiXFx0ZXh0e2V4dH0iLDEseyJzaG9ydGVuIjp7InNvdXJjZSI6MjAsInRhcmdldCI6MjB9LCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJub25lIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
+    \begin{tikzcd}
+      & S & S \\
+      X & Y & 1
+      \arrow[""{name=0, anchor=center, inner sep=0}, "{\id_S}"{inner sep=.8ex}, "\shortmid"{marking}, from=1-2, to=1-3]
+      \arrow["s"', tail, from=1-2, to=2-2]
+      \arrow["{!}", from=1-3, to=2-3]
+      \arrow["R"'{inner sep=.8ex}, "\shortmid"{marking}, from=2-1, to=2-2]
+      \arrow[""{name=1, anchor=center, inner sep=0}, "S"'{inner sep=.8ex}, "\shortmid"{marking}, from=2-2, to=2-3]
+      \arrow["{\text{ext}}"{description}, draw=none, from=0, to=1]
+    \end{tikzcd}.
+  \end{equation*}
+In $\Rel$, the result $R\otimes S$ is precisely $\diamondsuit S$ as above. An equivalent $\Rel$-construction is to form the pullback on the left followed by the image
   \begin{equation*}
     % https://q.uiver.app/#q=WzAsNCxbMCwwLCJSXFxvZG90IHNeKiJdLFsxLDAsIlIiXSxbMSwxLCJYXFx0aW1lcyBZIl0sWzAsMSwiWFxcdGltZXMgUyJdLFswLDEsIiIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Im1vbm8ifX19XSxbMSwyLCIiLDAseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJtb25vIn19fV0sWzAsMywiIiwyLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoibW9ubyJ9fX1dLFszLDIsIjFcXHRpbWVzIHMiLDIseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJtb25vIn19fV0sWzAsMiwiIiwxLHsic3R5bGUiOnsibmFtZSI6ImNvcm5lciJ9fV1d
     \begin{tikzcd}
@@ -417,8 +545,8 @@ The possibility set $\diamondsuit S$ above is constructed via the application of
       \arrow["{1\times !}", from=1-2, to=1-3]
       \arrow[tail, from=2-2, to=1-3]
     \end{tikzcd}
-  \end{equation*}
-That is, the corner of the pullback on the right is exactly the set of pairs $(x,a)$ where $x\sim_Ra$ under $R$. The image then binds $x\in X$ via existential quantification. This is formalized in the double category $\Rel$ of sets, functions and relations, $\diamondsuit S$ by first taking a restriction and then an extension:
+  \end{equation*}.
+That is, the corner of the pullback on the right is exactly the set of pairs $(x,a)$ where $x\sim_Ra$ under $R$. The image then binds $x\in X$ via existential quantification. This is formalized in any equipment $\dbl{D}$ by first taking a restriction and then an extension:
   \begin{equation*}
     % https://q.uiver.app/#q=WzAsNCxbMCwwLCJYIl0sWzEsMCwiUyJdLFsxLDEsIlgiXSxbMCwxLCJYIl0sWzAsMSwiUlxcb2RvdCB1XioiLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJiYXJyZWQifX19XSxbMSwyLCJzIiwwLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoibW9ubyJ9fX1dLFswLDMsIjEiLDJdLFszLDIsIlIiLDIseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJiYXJyZWQifX19XSxbNCw3LCJcXHRleHR7cmVzfSIsMSx7InNob3J0ZW4iOnsic291cmNlIjoyMCwidGFyZ2V0IjoyMH0sInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6Im5vbmUifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dXQ==
     \begin{tikzcd}
@@ -439,11 +567,9 @@ That is, the corner of the pullback on the right is exactly the set of pairs $(x
       \arrow["{!}", from=1-2, to=2-2]
       \arrow[""{name=1, anchor=center, inner sep=0}, "{\diamondsuit S}"'{inner sep=.8ex}, "\shortmid"{marking}, from=2-1, to=2-2]
       \arrow["{\text{ext}}"{description}, draw=none, from=0, to=1]
-    \end{tikzcd}
+    \end{tikzcd}.
   \end{equation*}
-since restrictions in this double category are pullbacks and extensions are images. 
-
-Note that the same effect could be achieved simply by composing. That is, in any equipment $\dbl{D}$, there is a comparison cell of the form
+Now, in any equipment $\dbl{D}$ there is a comparison cell of the form
   \begin{equation*}
     % https://q.uiver.app/#q=WzAsNixbMCwwLCJYIl0sWzEsMCwiUyJdLFsyLDAsIlMiXSxbMiwxLCIxIl0sWzAsMSwiWCJdLFsxLDEsIlgiXSxbMCwxLCJSXFxvZG90IHNeKiIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImJhcnJlZCJ9fX1dLFsxLDIsIlxcaWQiLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJiYXJyZWQifX19XSxbMiwzLCIhIl0sWzAsNCwiMSIsMl0sWzQsNSwiUiIsMix7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImJhcnJlZCJ9fX1dLFs1LDMsIlMiLDIseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJiYXJyZWQifX19XSxbMSw1LCJzIl0sWzcsMTEsIlxcdGV4dHtleHR9IiwxLHsic2hvcnRlbiI6eyJzb3VyY2UiOjIwLCJ0YXJnZXQiOjIwfSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoibm9uZSJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzYsMTAsIlxcdGV4dHtyZXN9IiwxLHsic2hvcnRlbiI6eyJzb3VyY2UiOjIwLCJ0YXJnZXQiOjIwfSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoibm9uZSJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV1d
     \begin{tikzcd}
@@ -460,7 +586,7 @@ Note that the same effect could be achieved simply by composing. That is, in any
       \arrow["{\text{ext}}"{description}, draw=none, from=1, to=3]
     \end{tikzcd}  
   \end{equation*}
-where $S\colon X\proto 1$ is defined via the extension cell and a slight abuse of notation. Thus, there is a globular cell $\diamondsuit S \Rightarrow R\odot S$ since $\diamondsuit S$ is constructed as an extension: 
+Thus, there is a globular cell $\diamondsuit S \Rightarrow R\odot S$ since $\diamondsuit S$ is constructed as an extension: 
   \begin{equation} \label{equation:globular-cell}
     % https://q.uiver.app/#q=WzAsOCxbMCwxLCJYIl0sWzEsMSwiUyJdLFsyLDEsIlMiXSxbMiwyLCIxIl0sWzAsMiwiWCJdLFsxLDIsIlgiXSxbMCwwLCJYIl0sWzIsMCwiUyJdLFsxLDIsIlxcaWQiLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJiYXJyZWQifX19XSxbMiwzLCIhIl0sWzAsNCwiMSIsMl0sWzQsNSwiUiIsMix7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImJhcnJlZCJ9fX1dLFs1LDMsIlMiLDIseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJiYXJyZWQifX19XSxbMSw1LCJzIl0sWzYsMF0sWzYsNywiUlxcb2RvdCBzXioiLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJiYXJyZWQifX19XSxbNywyXSxbMCwxLCJSXFxvZG90IHNeKiIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImJhcnJlZCJ9fX1dLFs4LDEyLCJcXHRleHR7ZXh0fSIsMSx7InNob3J0ZW4iOnsic291cmNlIjoyMCwidGFyZ2V0IjoyMH0sInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6Im5vbmUifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsxNywxMSwiXFx0ZXh0e3Jlc30iLDEseyJzaG9ydGVuIjp7InNvdXJjZSI6MjAsInRhcmdldCI6MjB9LCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJub25lIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMTUsMSwiXFxjb25nIiwxLHsic2hvcnRlbiI6eyJzb3VyY2UiOjIwfSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoibm9uZSJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV1d
     \begin{tikzcd}
@@ -497,7 +623,7 @@ where $S\colon X\proto 1$ is defined via the extension cell and a slight abuse o
       \arrow["{\exists\,!}"{description, pos=0.6}, draw=none, from=1, to=2]
     \end{tikzcd}
   \end{equation}
-Now, this is an invertible cell when $\dbl{D}$ is either $\Rel$ or $\Span$ or $\Mat(\cat{V})$ for suitably structured monoidal $\cat V$. The case of $\Rel$ is trivial, so we treat the other two briefly.
+Now, it can be seen directly that this is an invertible cell when $\dbl{D}$ is either $\Rel$ or $\Span$ or $\Mat(\cat{V})$ for suitably structured monoidal $\cat V$. The case of $\Rel$ is trivial, so we treat the other two.
 
 \begin{example}
   In $\Span$, work with $\langle d,c\rangle\colon R\to X\times Y$ and then on the one hand
@@ -562,18 +688,18 @@ Now, this is an invertible cell when $\dbl{D}$ is either $\Rel$ or $\Span$ or $\
   for any $x\in X$, showing that the two constructions are the same in this case too.
 \end{example}
 
-That the two constructions agree in general is the content of the next result.
+Now, in fact the two construction agree in general for any equipment such as $\Prof$ or $\Mat(\cat{V})$ for more complicated $\cat{V}$, each of which are difficult to treat directly.
 
-\begin{proposition}
+\begin{proposition} \label{prop:possibility-rewrite-rule-1}
   The globular cell $\diamondsuit S \Rightarrow R\odot S$ induced in \cref{equation:globular-cell} is an isomorphism in any equipment. Accordingly, the two possible definitions of $\diamondsuit S$ agree.
 \end{proposition}
 \begin{proof}
-  
+  It suffices to show that the two sides of \cref{equation:globular-cell} compute the same extension. But this is just a result of how they are computed in equipments. That is, $S$ viewed as a proarrow defined via the extension is the composite $S := s^*\odot \id_S\odot !_S$ where $!_S$ is the companion of $!\colon S\to 1$. So, the composite is $R\odot S = R\odot s^*\odot\id_S\odot !_S$. Likewise, $\diamondsuit S$ as the extension of $R\odot s^*$ along $1_X$ and $!$ is just $\diamondsuit S = R\odot s^*\odot !_S$. These are clearly isomorphic by inserting appropriate associators and units coming from the equipment structure. More abstractly, the left side of \cref{equation:globular-cell} can thus be rearranged to make $R\odot S$ exhibit the same extension explicitly.
 \end{proof}
 
-Although the constructions are thus essentially the same, we make a choice as to which is basic. In the case of $\Span$, although the appropriate element $x\in X$ is implicit in the latter as $d(r) = x$, our preference is to keep the data as a triple $((x,a),r) = (x,a,r)$ as in the first way of computing the possibility operator. This way all the information is recorded in the apex of the span and the two legs can be forgotten. The preferred definition is thus formalized in the following way.
+So, although the constructions are thus essentially the same, we make a choice as to which is basic. We insist on starting with the subtype $s\colon S\to Y$ consistent with the set-up of \cref{section-OLOGs}. And so in either case there are two operations to perform the query. There is a slight semantic advantage to the latter. For in the case of $\Span$, although the appropriate element $x\in X$ is implicit in the composite as $d(r) = x$, our preference is to keep the data as a triple $((x,a),r) = (x,a,r)$ as in the second way of computing the possibility operator. This way all the information is recorded in the apex of the span and the two legs can be forgotten.
 
-\begin{definition}[Possibility]
+\begin{definition}[Possibility] \label{def:possibility-operator}
   Let $s\colon S\rightarrowtail X$ denote any monic arrow in the equipment $\dbl{D}$. The proposition \textbf{possibly} $S$ is then formed as an restriction followed by an extension:
     \begin{equation*}
     % https://q.uiver.app/#q=WzAsNCxbMCwwLCJYIl0sWzEsMCwiUyJdLFsxLDEsIlgiXSxbMCwxLCJYIl0sWzAsMSwiUlxcb2RvdCB1XioiLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJiYXJyZWQifX19XSxbMSwyLCJzIiwwLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoibW9ubyJ9fX1dLFswLDMsIjEiLDJdLFszLDIsIlIiLDIseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJiYXJyZWQifX19XSxbNCw3LCJcXHRleHR7cmVzfSIsMSx7InNob3J0ZW4iOnsic291cmNlIjoyMCwidGFyZ2V0IjoyMH0sInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6Im5vbmUifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dXQ==
@@ -600,93 +726,45 @@ Although the constructions are thus essentially the same, we make a choice as to
   as in the pattern suggested above:
 \end{definition}
 
-This operator justly bears the `$\diamondsuit$' notation on account of the following observation, namely, that what is the case is possibly the case, as in the usual monadic interpretation of possibility. The proof is most naturally interpreted in $\Rel$, but is completely formal. When $\Rel$ is meant, the relationship is the familiar $S\leq \diamondsuit S$.
+Note then that the content of \cref{prop:possibility-rewrite-rule-1} is thus that of a \emph{rewrite rule} for the possibility operator and thus also for existential queries of this kind.
 
-\begin{proposition}
-  If $R$ is reflexive, then there is a globular cell $S \Rightarrow \diamondsuit S$.
-\end{proposition}
-\begin{proof}
-  Reflexivity of $R$ means that there is a canonical cell 
-    \begin{equation*}
-      % https://q.uiver.app/#q=WzAsNCxbMCwwLCJYIl0sWzEsMCwiWCJdLFsxLDEsIlgiXSxbMCwxLCJYIl0sWzAsMSwiXFxpZF9YIiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiYmFycmVkIn19fV0sWzEsMiwiIiwwLHsibGV2ZWwiOjIsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMCwzLCIiLDIseyJsZXZlbCI6Miwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFszLDIsIlIiLDIseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJiYXJyZWQifX19XSxbNCw3LCJcXGRlbHRhX1giLDEseyJzaG9ydGVuIjp7InNvdXJjZSI6MjAsInRhcmdldCI6MjB9LCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJub25lIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
-      \begin{tikzcd}
-        X & X \\
-        X & X
-        \arrow[""{name=0, anchor=center, inner sep=0}, "{\id_X}"{inner sep=.8ex}, "\shortmid"{marking}, from=1-1, to=1-2]
-        \arrow[equals, from=1-1, to=2-1]
-        \arrow[equals, from=1-2, to=2-2]
-        \arrow[""{name=1, anchor=center, inner sep=0}, "R"'{inner sep=.8ex}, "\shortmid"{marking}, from=2-1, to=2-2]
-        \arrow["{\delta_X}"{description}, draw=none, from=0, to=1]
-      \end{tikzcd}
-    \end{equation*}
-  expressing the fact that the diagonal factors through $R$. Consequently, since $R\odot u^*$ arises as a restriction, there is a unique cell making an equality
-    \begin{equation*}
-      % https://q.uiver.app/#q=WzAsNixbMCwxLCJYIl0sWzEsMSwiWCJdLFsxLDIsIlgiXSxbMCwyLCJYIl0sWzAsMCwiUyJdLFsxLDAsIlMiXSxbMCwxLCJcXGlkX1giLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJiYXJyZWQifX19XSxbMSwyLCIiLDAseyJsZXZlbCI6Miwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFswLDMsIiIsMix7ImxldmVsIjoyLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzMsMiwiUiIsMix7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImJhcnJlZCJ9fX1dLFs0LDAsInMiLDJdLFs0LDUsIlxcaWRfUyIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImJhcnJlZCJ9fX1dLFs1LDEsInMiXSxbNiw5LCJcXGRlbHRhX1giLDEseyJzaG9ydGVuIjp7InNvdXJjZSI6MjAsInRhcmdldCI6MjB9LCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJub25lIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMTEsNiwiXFxpZF9zIiwxLHsibGFiZWxfcG9zaXRpb24iOjQwLCJzaG9ydGVuIjp7InNvdXJjZSI6MjAsInRhcmdldCI6MjB9LCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJub25lIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
-      \begin{tikzcd}
-        S & S \\
-        X & X \\
-        X & X
-        \arrow[""{name=0, anchor=center, inner sep=0}, "{\id_S}"{inner sep=.8ex}, "\shortmid"{marking}, from=1-1, to=1-2]
-        \arrow["s"', from=1-1, to=2-1]
-        \arrow["s", from=1-2, to=2-2]
-        \arrow[""{name=1, anchor=center, inner sep=0}, "{\id_X}"{inner sep=.8ex}, "\shortmid"{marking}, from=2-1, to=2-2]
-        \arrow[equals, from=2-1, to=3-1]
-        \arrow[equals, from=2-2, to=3-2]
-        \arrow[""{name=2, anchor=center, inner sep=0}, "R"'{inner sep=.8ex}, "\shortmid"{marking}, from=3-1, to=3-2]
-        \arrow["{\id_s}"{description, pos=0.4}, draw=none, from=0, to=1]
-        \arrow["{\delta_X}"{description}, draw=none, from=1, to=2]
-      \end{tikzcd} \qquad = \qquad 
-      % https://q.uiver.app/#q=WzAsNixbMCwwLCJTIl0sWzEsMCwiUyJdLFsxLDEsIlMiXSxbMCwxLCJYIl0sWzAsMiwiWCJdLFsxLDIsIlgiXSxbMCwxLCJcXGlkX1MiLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJiYXJyZWQifX19XSxbMSwyLCIiLDAseyJsZXZlbCI6Miwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFswLDMsInMiLDJdLFszLDQsIiIsMix7ImxldmVsIjoyLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzIsNSwicyJdLFs0LDUsIlIiLDIseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJiYXJyZWQifX19XSxbMywyLCJSXFxvZG90IHNeKiIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImJhcnJlZCJ9fX1dLFs2LDEyLCJcXGV4aXN0c1xcLCEiLDEseyJsYWJlbF9wb3NpdGlvbiI6NDAsInNob3J0ZW4iOnsic291cmNlIjoyMCwidGFyZ2V0IjoyMH0sInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6Im5vbmUifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsxMiwxMSwiXFx0ZXh0e3Jlc30iLDEseyJzaG9ydGVuIjp7InNvdXJjZSI6MjAsInRhcmdldCI6MjB9LCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJub25lIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
-      \begin{tikzcd}
-        S & S \\
-        X & S \\
-        X & X
-        \arrow[""{name=0, anchor=center, inner sep=0}, "{\id_S}"{inner sep=.8ex}, "\shortmid"{marking}, from=1-1, to=1-2]
-        \arrow["s"', from=1-1, to=2-1]
-        \arrow[equals, from=1-2, to=2-2]
-        \arrow[""{name=1, anchor=center, inner sep=0}, "{R\odot s^*}"{inner sep=.8ex}, "\shortmid"{marking}, from=2-1, to=2-2]
-        \arrow[equals, from=2-1, to=3-1]
-        \arrow["s", from=2-2, to=3-2]
-        \arrow[""{name=2, anchor=center, inner sep=0}, "R"'{inner sep=.8ex}, "\shortmid"{marking}, from=3-1, to=3-2]
-        \arrow["{\exists\,!}"{description, pos=0.4}, draw=none, from=0, to=1]
-        \arrow["{\text{res}}"{description}, draw=none, from=1, to=2]
-      \end{tikzcd}
-    \end{equation*}
-  And so, putting this cell as (I) in the diagram below, we get the desired comparison induced by the universal property of the extension cell:
-    \begin{equation*}
-      % https://q.uiver.app/#q=WzAsNixbMCwwLCJTIl0sWzEsMCwiUyJdLFsxLDEsIlMiXSxbMCwxLCJYIl0sWzAsMiwiWCJdLFsxLDIsIjEiXSxbMCwxLCJcXGlkX1MiLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJiYXJyZWQifX19XSxbMSwyLCIiLDAseyJsZXZlbCI6Miwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFswLDMsInMiLDJdLFszLDQsIiIsMix7ImxldmVsIjoyLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzIsNSwiISJdLFs0LDUsIlxcZGlhbW9uZHN1aXQgUyIsMix7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImJhcnJlZCJ9fX1dLFszLDIsIlJcXG9kb3Qgc14qIiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiYmFycmVkIn19fV0sWzYsMTIsIlxcdGV4dHsoSSl9IiwxLHsibGFiZWxfcG9zaXRpb24iOjQwLCJzaG9ydGVuIjp7InNvdXJjZSI6MjAsInRhcmdldCI6MjB9LCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJub25lIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMTIsMTEsIlxcdGV4dHtleHR9IiwxLHsic2hvcnRlbiI6eyJzb3VyY2UiOjIwLCJ0YXJnZXQiOjIwfSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoibm9uZSJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV1d
-      \begin{tikzcd}
-        S & S \\
-        X & S \\
-        X & 1
-        \arrow[""{name=0, anchor=center, inner sep=0}, "{\id_S}"{inner sep=.8ex}, "\shortmid"{marking}, from=1-1, to=1-2]
-        \arrow["s"', from=1-1, to=2-1]
-        \arrow[equals, from=1-2, to=2-2]
-        \arrow[""{name=1, anchor=center, inner sep=0}, "{R\odot s^*}"{inner sep=.8ex}, "\shortmid"{marking}, from=2-1, to=2-2]
-        \arrow[equals, from=2-1, to=3-1]
-        \arrow["{!}", from=2-2, to=3-2]
-        \arrow[""{name=2, anchor=center, inner sep=0}, "{\diamondsuit S}"'{inner sep=.8ex}, "\shortmid"{marking}, from=3-1, to=3-2]
-        \arrow["{\text{(I)}}"{description, pos=0.4}, draw=none, from=0, to=1]
-        \arrow["{\text{ext}}"{description}, draw=none, from=1, to=2]
-      \end{tikzcd}\qquad = \qquad 
-        % https://q.uiver.app/#q=WzAsNixbMCwwLCJTIl0sWzEsMCwiUyJdLFsxLDEsIjEiXSxbMCwxLCJYIl0sWzAsMiwiWCJdLFsxLDIsIjEiXSxbMCwxLCJcXGlkX1MiLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJiYXJyZWQifX19XSxbMSwyLCIhIl0sWzAsMywicyIsMl0sWzMsNCwiIiwwLHsibGV2ZWwiOjIsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNCw1LCJcXGRpYW1vbmRzdWl0IFMiLDIseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJiYXJyZWQifX19XSxbMiw1LCIiLDIseyJsZXZlbCI6Miwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFszLDIsIlMiLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJiYXJyZWQifX19XSxbMTIsMTAsIlxcZXhpc3RzIFxcLCEiLDEseyJzaG9ydGVuIjp7InNvdXJjZSI6MjAsInRhcmdldCI6MjB9LCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJub25lIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNiwxMiwiXFx0ZXh0e2V4dH0iLDEseyJsYWJlbF9wb3NpdGlvbiI6NDAsInNob3J0ZW4iOnsic291cmNlIjoyMCwidGFyZ2V0IjoyMH0sInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6Im5vbmUifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dXQ==
-        \begin{tikzcd}
-          S & S \\
-          X & 1 \\
-          X & 1
-          \arrow[""{name=0, anchor=center, inner sep=0}, "{\id_S}"{inner sep=.8ex}, "\shortmid"{marking}, from=1-1, to=1-2]
-          \arrow["s"', from=1-1, to=2-1]
-          \arrow["{!}", from=1-2, to=2-2]
-          \arrow[""{name=1, anchor=center, inner sep=0}, "S"{inner sep=.8ex}, "\shortmid"{marking}, from=2-1, to=2-2]
-          \arrow[equals, from=2-1, to=3-1]
-          \arrow[equals, from=2-2, to=3-2]
-          \arrow[""{name=2, anchor=center, inner sep=0}, "{\diamondsuit S}"'{inner sep=.8ex}, "\shortmid"{marking}, from=3-1, to=3-2]
-          \arrow["{\text{ext}}"{description, pos=0.4}, draw=none, from=0, to=1]
-          \arrow["{\exists \,!}"{description}, draw=none, from=1, to=2]
-        \end{tikzcd}
-    \end{equation*}
-  Notice the abuse of notation, namely, that we think of $S$ as both the object providing the domain of $s$ but also as a proarrow $S\colon X\proto 1$ obtained by extension.
-\end{proof}
+All the instances of existential quantification introduced are instances of \emph{fibrational semantics} of the equipment $\dbl{D}$. We have the general picture:
+  \begin{equation} \label{eqn:left-adjoint-to-restriction}
+    \Sigma_{f,g}\colon\dbl{D}(A,B)\rightleftarrows\dbl{D}(X,Y)\colon (f,g)^*\qquad\Sigma_{f,g}\dashv (f,g)^*
+  \end{equation}
+for any arrows $f\colon A\to X$ and $g\colon B\to Y$ of $\dbl{D}$. The hom categories are the fibers of $\langle\src,\tgt\rangle\colon\dbl{D}_1\to\dbl{D}_0\times\dbl{D}_0$ over the pairs of objects $(A,B)$ and $(X,Y)$. Here $\Sigma_{f,g}$ denotes the left adjoint to substitution/restriction along $f$ and $g$. This is provided automatically since $\langle\src,\tgt\rangle$ is both a fibration and opfibration \cite{shulman2008}. Of course $\Sigma_{f,g}$ is thus extension in the equipment structure. Now, again, both instances of existential quantification are recoverable in this framework. On the one hand, for $s\colon S\to Y$ we have the functors
+  \begin{equation*}
+    % https://q.uiver.app/#q=WzAsMyxbMCwwLCJcXGRibHtEfShYLFgpIl0sWzEsMCwiXFxkYmx7RH0oWCxTKSJdLFsyLDAsIlxcZGJse0R9KFgsMSkiXSxbMCwxLCIoMV9YLHMpXioiXSxbMSwyLCJcXFNpZ21hX3sxX1gsIX0iXV0=
+    \begin{tikzcd}
+      {\dbl{D}(X,Y)} & {\dbl{D}(X,S)} & {\dbl{D}(X,1)}
+      \arrow["{(1_X,s)^*}", from=1-1, to=1-2]
+      \arrow["{\Sigma_{1_X,!}}", from=1-2, to=1-3]
+    \end{tikzcd}
+  \end{equation*}
+and consequently
+  \begin{equation*}
+    \Sigma_{1_X,!}(1_X,s)^*(R) = \diamondsuit S
+  \end{equation*}
+as in \cref{def:possibility-operator}. On the other hand, ordinary existential quantification is just an application of a left adjoint:
+  \begin{equation*}
+    % https://q.uiver.app/#q=WzAsMixbMCwwLCJcXGRibHtEfShYLFkpIl0sWzEsMCwiXFxkYmx7RH0oMSxZKSJdLFswLDEsIlxcU2lnbWFfeyEsMV9ZfSJdXQ==
+    \begin{tikzcd}
+      {\dbl{D}(X,Y)} & {\dbl{D}(1,Y)}
+      \arrow["{\Sigma_{!,1_Y}}", from=1-1, to=1-2]
+    \end{tikzcd} \qquad \Sigma_{!,1_Y}(R) = \exists x . R(x,y)
+  \end{equation*}
+as has already been observed in the case of $\Rel$. In each case, the left adjoints used are special cases of \emph{Kan quantification}. Let $f\colon A\to X$ denote any morphism of $\dbl{D}$. Consider the \emph{one-sided} adjunction 
+  \begin{equation} \label{eqn:one-sided-left-adjoint-to-restriction}
+    \Sigma_{f}\colon\dbl{D}(A,Y)\rightleftarrows\dbl{D}(X,Y)\colon f^*\qquad\Sigma_{f}\dashv f^*
+  \end{equation}
+Owning to the nature of the computation of restrictions and extensions, the two functors are simply: \emph{precompose with a companion or conjoint} as in $\Sigma_f = f^*\odot -$ and $f^* = f_!\odot -$ and the adjunction is then 
+  \begin{equation} \label{eqn:one-sided-left-adjoint-to-restriction2}
+    f^*\odot-\colon\dbl{D}(A,Y)\rightleftarrows\dbl{D}(X,Y)\colon f_!\odot - \qquad f^*\odot-\dashv f_!\odot -
+  \end{equation}
+Retaining the $\Sigma$-notation for the left adjoint, the adjunction expresses an existential quantification introduction rule. Namely, that there is a bijection between globular cells
+  \begin{equation*}
+    x    
+  \end{equation*}
 
 \section{Universal Queries}
 \label{section:universal-queries}
@@ -788,6 +866,98 @@ given in each direction by application of the appropriate functor and then compo
 \end{proof}
 
 \section{Tabulators and Modality}
+
+\section{The Role of Compactness}
+
+\section{Structure on Relations}
+
+This operator justly bears the `$\diamondsuit$' notation not only on account of the semantics discussed above. There is also the following observation, namely, that what is the case is possibly the case, as in the usual monadic interpretation of possibility. The proof is most naturally interpreted in $\Rel$, but is completely formal. When $\Rel$ is meant, the relationship is the familiar $S\leq \diamondsuit S$.
+
+\begin{proposition}
+  If $R$ is reflexive, then there is a globular cell $S \Rightarrow \diamondsuit S$.
+\end{proposition}
+\begin{proof}
+  Reflexivity of $R$ means that there is a canonical cell 
+    \begin{equation*}
+      % https://q.uiver.app/#q=WzAsNCxbMCwwLCJYIl0sWzEsMCwiWCJdLFsxLDEsIlgiXSxbMCwxLCJYIl0sWzAsMSwiXFxpZF9YIiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiYmFycmVkIn19fV0sWzEsMiwiIiwwLHsibGV2ZWwiOjIsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMCwzLCIiLDIseyJsZXZlbCI6Miwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFszLDIsIlIiLDIseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJiYXJyZWQifX19XSxbNCw3LCJcXGRlbHRhX1giLDEseyJzaG9ydGVuIjp7InNvdXJjZSI6MjAsInRhcmdldCI6MjB9LCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJub25lIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
+      \begin{tikzcd}
+        X & X \\
+        X & X
+        \arrow[""{name=0, anchor=center, inner sep=0}, "{\id_X}"{inner sep=.8ex}, "\shortmid"{marking}, from=1-1, to=1-2]
+        \arrow[equals, from=1-1, to=2-1]
+        \arrow[equals, from=1-2, to=2-2]
+        \arrow[""{name=1, anchor=center, inner sep=0}, "R"'{inner sep=.8ex}, "\shortmid"{marking}, from=2-1, to=2-2]
+        \arrow["{\delta_X}"{description}, draw=none, from=0, to=1]
+      \end{tikzcd}
+    \end{equation*}
+  expressing the fact that the diagonal factors through $R$. Consequently, since $R\odot u^*$ arises as a restriction, there is a unique cell making an equality
+    \begin{equation*}
+      % https://q.uiver.app/#q=WzAsNixbMCwxLCJYIl0sWzEsMSwiWCJdLFsxLDIsIlgiXSxbMCwyLCJYIl0sWzAsMCwiUyJdLFsxLDAsIlMiXSxbMCwxLCJcXGlkX1giLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJiYXJyZWQifX19XSxbMSwyLCIiLDAseyJsZXZlbCI6Miwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFswLDMsIiIsMix7ImxldmVsIjoyLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzMsMiwiUiIsMix7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImJhcnJlZCJ9fX1dLFs0LDAsInMiLDJdLFs0LDUsIlxcaWRfUyIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImJhcnJlZCJ9fX1dLFs1LDEsInMiXSxbNiw5LCJcXGRlbHRhX1giLDEseyJzaG9ydGVuIjp7InNvdXJjZSI6MjAsInRhcmdldCI6MjB9LCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJub25lIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMTEsNiwiXFxpZF9zIiwxLHsibGFiZWxfcG9zaXRpb24iOjQwLCJzaG9ydGVuIjp7InNvdXJjZSI6MjAsInRhcmdldCI6MjB9LCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJub25lIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
+      \begin{tikzcd}
+        S & S \\
+        X & X \\
+        X & X
+        \arrow[""{name=0, anchor=center, inner sep=0}, "{\id_S}"{inner sep=.8ex}, "\shortmid"{marking}, from=1-1, to=1-2]
+        \arrow["s"', from=1-1, to=2-1]
+        \arrow["s", from=1-2, to=2-2]
+        \arrow[""{name=1, anchor=center, inner sep=0}, "{\id_X}"{inner sep=.8ex}, "\shortmid"{marking}, from=2-1, to=2-2]
+        \arrow[equals, from=2-1, to=3-1]
+        \arrow[equals, from=2-2, to=3-2]
+        \arrow[""{name=2, anchor=center, inner sep=0}, "R"'{inner sep=.8ex}, "\shortmid"{marking}, from=3-1, to=3-2]
+        \arrow["{\id_s}"{description, pos=0.4}, draw=none, from=0, to=1]
+        \arrow["{\delta_X}"{description}, draw=none, from=1, to=2]
+      \end{tikzcd} \qquad = \qquad 
+      % https://q.uiver.app/#q=WzAsNixbMCwwLCJTIl0sWzEsMCwiUyJdLFsxLDEsIlMiXSxbMCwxLCJYIl0sWzAsMiwiWCJdLFsxLDIsIlgiXSxbMCwxLCJcXGlkX1MiLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJiYXJyZWQifX19XSxbMSwyLCIiLDAseyJsZXZlbCI6Miwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFswLDMsInMiLDJdLFszLDQsIiIsMix7ImxldmVsIjoyLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzIsNSwicyJdLFs0LDUsIlIiLDIseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJiYXJyZWQifX19XSxbMywyLCJSXFxvZG90IHNeKiIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImJhcnJlZCJ9fX1dLFs2LDEyLCJcXGV4aXN0c1xcLCEiLDEseyJsYWJlbF9wb3NpdGlvbiI6NDAsInNob3J0ZW4iOnsic291cmNlIjoyMCwidGFyZ2V0IjoyMH0sInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6Im5vbmUifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsxMiwxMSwiXFx0ZXh0e3Jlc30iLDEseyJzaG9ydGVuIjp7InNvdXJjZSI6MjAsInRhcmdldCI6MjB9LCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJub25lIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
+      \begin{tikzcd}
+        S & S \\
+        X & S \\
+        X & X
+        \arrow[""{name=0, anchor=center, inner sep=0}, "{\id_S}"{inner sep=.8ex}, "\shortmid"{marking}, from=1-1, to=1-2]
+        \arrow["s"', from=1-1, to=2-1]
+        \arrow[equals, from=1-2, to=2-2]
+        \arrow[""{name=1, anchor=center, inner sep=0}, "{R\odot s^*}"{inner sep=.8ex}, "\shortmid"{marking}, from=2-1, to=2-2]
+        \arrow[equals, from=2-1, to=3-1]
+        \arrow["s", from=2-2, to=3-2]
+        \arrow[""{name=2, anchor=center, inner sep=0}, "R"'{inner sep=.8ex}, "\shortmid"{marking}, from=3-1, to=3-2]
+        \arrow["{\exists\,!}"{description, pos=0.4}, draw=none, from=0, to=1]
+        \arrow["{\text{res}}"{description}, draw=none, from=1, to=2]
+      \end{tikzcd}
+    \end{equation*}
+  And so, putting this cell as (I) in the diagram below, we get the desired comparison induced by the universal property of the extension cell:
+    \begin{equation*}
+      % https://q.uiver.app/#q=WzAsNixbMCwwLCJTIl0sWzEsMCwiUyJdLFsxLDEsIlMiXSxbMCwxLCJYIl0sWzAsMiwiWCJdLFsxLDIsIjEiXSxbMCwxLCJcXGlkX1MiLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJiYXJyZWQifX19XSxbMSwyLCIiLDAseyJsZXZlbCI6Miwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFswLDMsInMiLDJdLFszLDQsIiIsMix7ImxldmVsIjoyLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzIsNSwiISJdLFs0LDUsIlxcZGlhbW9uZHN1aXQgUyIsMix7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImJhcnJlZCJ9fX1dLFszLDIsIlJcXG9kb3Qgc14qIiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiYmFycmVkIn19fV0sWzYsMTIsIlxcdGV4dHsoSSl9IiwxLHsibGFiZWxfcG9zaXRpb24iOjQwLCJzaG9ydGVuIjp7InNvdXJjZSI6MjAsInRhcmdldCI6MjB9LCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJub25lIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMTIsMTEsIlxcdGV4dHtleHR9IiwxLHsic2hvcnRlbiI6eyJzb3VyY2UiOjIwLCJ0YXJnZXQiOjIwfSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoibm9uZSJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV1d
+      \begin{tikzcd}
+        S & S \\
+        X & S \\
+        X & 1
+        \arrow[""{name=0, anchor=center, inner sep=0}, "{\id_S}"{inner sep=.8ex}, "\shortmid"{marking}, from=1-1, to=1-2]
+        \arrow["s"', from=1-1, to=2-1]
+        \arrow[equals, from=1-2, to=2-2]
+        \arrow[""{name=1, anchor=center, inner sep=0}, "{R\odot s^*}"{inner sep=.8ex}, "\shortmid"{marking}, from=2-1, to=2-2]
+        \arrow[equals, from=2-1, to=3-1]
+        \arrow["{!}", from=2-2, to=3-2]
+        \arrow[""{name=2, anchor=center, inner sep=0}, "{\diamondsuit S}"'{inner sep=.8ex}, "\shortmid"{marking}, from=3-1, to=3-2]
+        \arrow["{\text{(I)}}"{description, pos=0.4}, draw=none, from=0, to=1]
+        \arrow["{\text{ext}}"{description}, draw=none, from=1, to=2]
+      \end{tikzcd}\qquad = \qquad 
+        % https://q.uiver.app/#q=WzAsNixbMCwwLCJTIl0sWzEsMCwiUyJdLFsxLDEsIjEiXSxbMCwxLCJYIl0sWzAsMiwiWCJdLFsxLDIsIjEiXSxbMCwxLCJcXGlkX1MiLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJiYXJyZWQifX19XSxbMSwyLCIhIl0sWzAsMywicyIsMl0sWzMsNCwiIiwwLHsibGV2ZWwiOjIsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNCw1LCJcXGRpYW1vbmRzdWl0IFMiLDIseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJiYXJyZWQifX19XSxbMiw1LCIiLDIseyJsZXZlbCI6Miwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFszLDIsIlMiLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJiYXJyZWQifX19XSxbMTIsMTAsIlxcZXhpc3RzIFxcLCEiLDEseyJzaG9ydGVuIjp7InNvdXJjZSI6MjAsInRhcmdldCI6MjB9LCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJub25lIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNiwxMiwiXFx0ZXh0e2V4dH0iLDEseyJsYWJlbF9wb3NpdGlvbiI6NDAsInNob3J0ZW4iOnsic291cmNlIjoyMCwidGFyZ2V0IjoyMH0sInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6Im5vbmUifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dXQ==
+        \begin{tikzcd}
+          S & S \\
+          X & 1 \\
+          X & 1
+          \arrow[""{name=0, anchor=center, inner sep=0}, "{\id_S}"{inner sep=.8ex}, "\shortmid"{marking}, from=1-1, to=1-2]
+          \arrow["s"', from=1-1, to=2-1]
+          \arrow["{!}", from=1-2, to=2-2]
+          \arrow[""{name=1, anchor=center, inner sep=0}, "S"{inner sep=.8ex}, "\shortmid"{marking}, from=2-1, to=2-2]
+          \arrow[equals, from=2-1, to=3-1]
+          \arrow[equals, from=2-2, to=3-2]
+          \arrow[""{name=2, anchor=center, inner sep=0}, "{\diamondsuit S}"'{inner sep=.8ex}, "\shortmid"{marking}, from=3-1, to=3-2]
+          \arrow["{\text{ext}}"{description, pos=0.4}, draw=none, from=0, to=1]
+          \arrow["{\exists \,!}"{description}, draw=none, from=1, to=2]
+        \end{tikzcd}
+    \end{equation*}
+  Notice the abuse of notation, namely, that we think of $S$ as both the object providing the domain of $s$ but also as a proarrow $S\colon X\proto 1$ obtained by extension.
+\end{proof}
 
 \section{Full Closed Comprehension}
 

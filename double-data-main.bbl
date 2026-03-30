@@ -75,6 +75,34 @@
       \verb 10.1016/S0049-237X(98)80028-1
       \endverb
     \endentry
+    \entry{lawvere2002}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=7f4e82b361c38ad671615c08cb0678cd}{%
+           family={Lawvere},
+           familyi={L\bibinitperiod},
+           given={F.\bibnamedelimi William},
+           giveni={F\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
+      }
+      \strng{namehash}{7f4e82b361c38ad671615c08cb0678cd}
+      \strng{fullhash}{7f4e82b361c38ad671615c08cb0678cd}
+      \strng{fullhashraw}{7f4e82b361c38ad671615c08cb0678cd}
+      \strng{bibnamehash}{7f4e82b361c38ad671615c08cb0678cd}
+      \strng{authorbibnamehash}{7f4e82b361c38ad671615c08cb0678cd}
+      \strng{authornamehash}{7f4e82b361c38ad671615c08cb0678cd}
+      \strng{authorfullhash}{7f4e82b361c38ad671615c08cb0678cd}
+      \strng{authorfullhashraw}{7f4e82b361c38ad671615c08cb0678cd}
+      \field{labelalpha}{Law02}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Reprints in Theory and Applications of Categories}
+      \field{number}{1}
+      \field{title}{Metric Spaces, Generalized Logic, and Closed Categories}
+      \field{year}{2002}
+      \field{pages}{1\bibrangedash 37}
+      \range{pages}{37}
+    \endentry
     \entry{lambert2025}{inproceedings}{}{}
       \name{author}{2}{}{%
         {{hash=26775461fd456edc4deb5b983123ea7c}{%

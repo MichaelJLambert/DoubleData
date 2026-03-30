@@ -2384,7 +2384,9 @@
     <bcf:citekey order="9" intorder="1">jacobs1999</bcf:citekey>
     <bcf:citekey order="10" intorder="1">lambert2025</bcf:citekey>
     <bcf:citekey order="11" intorder="1">shulman2008</bcf:citekey>
-    <bcf:citekey order="12" intorder="1">maclane1998</bcf:citekey>
+    <bcf:citekey order="12" intorder="1">lawvere2002</bcf:citekey>
+    <bcf:citekey order="13" intorder="1">shulman2008</bcf:citekey>
+    <bcf:citekey order="14" intorder="1">maclane1998</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="anyt">

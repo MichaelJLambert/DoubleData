@@ -75,6 +75,39 @@
       \verb 10.1016/S0049-237X(98)80028-1
       \endverb
     \endentry
+    \entry{lambert2022}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=26775461fd456edc4deb5b983123ea7c}{%
+           family={Lambert},
+           familyi={L\bibinitperiod},
+           given={Michael},
+           giveni={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{26775461fd456edc4deb5b983123ea7c}
+      \strng{fullhash}{26775461fd456edc4deb5b983123ea7c}
+      \strng{fullhashraw}{26775461fd456edc4deb5b983123ea7c}
+      \strng{bibnamehash}{26775461fd456edc4deb5b983123ea7c}
+      \strng{authorbibnamehash}{26775461fd456edc4deb5b983123ea7c}
+      \strng{authornamehash}{26775461fd456edc4deb5b983123ea7c}
+      \strng{authorfullhash}{26775461fd456edc4deb5b983123ea7c}
+      \strng{authorfullhashraw}{26775461fd456edc4deb5b983123ea7c}
+      \field{labelalpha}{Lam22}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprinttype}{arXiv}
+      \field{journaltitle}{Theory and Applications of Categories}
+      \field{number}{33}
+      \field{title}{Double categories of relations}
+      \field{volume}{38}
+      \field{year}{2022}
+      \field{pages}{1249\bibrangedash 1283}
+      \range{pages}{35}
+      \verb{eprint}
+      \verb 2107.07621
+      \endverb
+    \endentry
     \entry{lawvere2002}{article}{}{}
       \name{author}{1}{}{%
         {{hash=7f4e82b361c38ad671615c08cb0678cd}{%
@@ -91,6 +124,7 @@
       \strng{authornamehash}{7f4e82b361c38ad671615c08cb0678cd}
       \strng{authorfullhash}{7f4e82b361c38ad671615c08cb0678cd}
       \strng{authorfullhashraw}{7f4e82b361c38ad671615c08cb0678cd}
+      \field{extraname}{1}
       \field{labelalpha}{Law02}
       \field{sortinit}{L}
       \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
@@ -102,6 +136,76 @@
       \field{year}{2002}
       \field{pages}{1\bibrangedash 37}
       \range{pages}{37}
+    \endentry
+    \entry{lawvere2006}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=7f4e82b361c38ad671615c08cb0678cd}{%
+           family={Lawvere},
+           familyi={L\bibinitperiod},
+           given={F.\bibnamedelimi William},
+           giveni={F\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
+      }
+      \strng{namehash}{7f4e82b361c38ad671615c08cb0678cd}
+      \strng{fullhash}{7f4e82b361c38ad671615c08cb0678cd}
+      \strng{fullhashraw}{7f4e82b361c38ad671615c08cb0678cd}
+      \strng{bibnamehash}{7f4e82b361c38ad671615c08cb0678cd}
+      \strng{authorbibnamehash}{7f4e82b361c38ad671615c08cb0678cd}
+      \strng{authornamehash}{7f4e82b361c38ad671615c08cb0678cd}
+      \strng{authorfullhash}{7f4e82b361c38ad671615c08cb0678cd}
+      \strng{authorfullhashraw}{7f4e82b361c38ad671615c08cb0678cd}
+      \field{extraname}{2}
+      \field{labelalpha}{Law06}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Reprints in Theory and Applications of Categories}
+      \field{number}{16}
+      \field{title}{Adjointness in foundations, with author commentary}
+      \field{year}{2006}
+      \field{pages}{1\bibrangedash 16}
+      \range{pages}{16}
+    \endentry
+    \entry{lawvere1970}{inproceedings}{}{}
+      \name{author}{1}{}{%
+        {{hash=7f4e82b361c38ad671615c08cb0678cd}{%
+           family={Lawvere},
+           familyi={L\bibinitperiod},
+           given={F.\bibnamedelimi William},
+           giveni={F\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
+      }
+      \name{editor}{1}{}{%
+        {{hash=88417a57b0244b782315c30117175426}{%
+           family={Heller},
+           familyi={H\bibinitperiod},
+           given={Alex},
+           giveni={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{7f4e82b361c38ad671615c08cb0678cd}
+      \strng{fullhash}{7f4e82b361c38ad671615c08cb0678cd}
+      \strng{fullhashraw}{7f4e82b361c38ad671615c08cb0678cd}
+      \strng{bibnamehash}{7f4e82b361c38ad671615c08cb0678cd}
+      \strng{authorbibnamehash}{7f4e82b361c38ad671615c08cb0678cd}
+      \strng{authornamehash}{7f4e82b361c38ad671615c08cb0678cd}
+      \strng{authorfullhash}{7f4e82b361c38ad671615c08cb0678cd}
+      \strng{authorfullhashraw}{7f4e82b361c38ad671615c08cb0678cd}
+      \strng{editorbibnamehash}{88417a57b0244b782315c30117175426}
+      \strng{editornamehash}{88417a57b0244b782315c30117175426}
+      \strng{editorfullhash}{88417a57b0244b782315c30117175426}
+      \strng{editorfullhashraw}{88417a57b0244b782315c30117175426}
+      \field{extraname}{3}
+      \field{labelalpha}{Law70}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Applications of Categorical Algebra}
+      \field{series}{Proceedings of the AMS Symposium on Pure Mathematics}
+      \field{title}{Equality in hyperdoctrines and comprehension schema as an adjoint functor}
+      \field{volume}{XVII}
+      \field{year}{1970}
+      \field{pages}{1\bibrangedash 14}
+      \range{pages}{14}
     \endentry
     \entry{lambert2025}{inproceedings}{}{}
       \name{author}{2}{}{%
@@ -170,6 +274,41 @@
       \field{year}{1998}
       \verb{doi}
       \verb 10.1007/978-1-4757-4721-8
+      \endverb
+    \endentry
+    \entry{maclane1992}{book}{}{}
+      \name{author}{2}{}{%
+        {{hash=d35756c9f39a938d9533376dfaa5ad43}{%
+           family={Mac\bibnamedelima Lane},
+           familyi={M\bibinitperiod\bibinitdelim L\bibinitperiod},
+           given={Saunders},
+           giveni={S\bibinitperiod}}}%
+        {{hash=1fc4bc57ad663c84359227240f5bc42f}{%
+           family={Moerdijk},
+           familyi={M\bibinitperiod},
+           given={Ieke},
+           giveni={I\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{5ddd5fc6ef7aceb84cfa1296eb79bdb9}
+      \strng{fullhash}{5ddd5fc6ef7aceb84cfa1296eb79bdb9}
+      \strng{fullhashraw}{5ddd5fc6ef7aceb84cfa1296eb79bdb9}
+      \strng{bibnamehash}{5ddd5fc6ef7aceb84cfa1296eb79bdb9}
+      \strng{authorbibnamehash}{5ddd5fc6ef7aceb84cfa1296eb79bdb9}
+      \strng{authornamehash}{5ddd5fc6ef7aceb84cfa1296eb79bdb9}
+      \strng{authorfullhash}{5ddd5fc6ef7aceb84cfa1296eb79bdb9}
+      \strng{authorfullhashraw}{5ddd5fc6ef7aceb84cfa1296eb79bdb9}
+      \field{labelalpha}{MM92}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Sheaves in geometry and logic: A first introduction to topos theory}
+      \field{year}{1992}
+      \verb{doi}
+      \verb 10.1007/978-1-4612-0927-0
       \endverb
     \endentry
     \entry{shulman2008}{article}{}{}

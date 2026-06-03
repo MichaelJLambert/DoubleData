@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2026.1.15)  30 MAR 2026 06:43
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2026.1.15)  3 JUN 2026 15:21
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1262,59 +1262,57 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             See the microtype manual for details.
  [3] [4] [5] [6]
 \boxheight=\skip91
- [7]
-Package hyperref Info: bookmark level for unknown example defaults to 0 on input line 480.
- [8] [9{c:/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}]
-pdfTeX warning (ext4): destination with the same identifier (name{example.1}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.629   I
-         n $\Span$, work with $\langle d,c\rangle\colon R\to X\times Y$ and ... [10]
-Package hyperref Info: bookmark level for unknown proposition defaults to 0 on input line 693.
-Package hyperref Info: bookmark level for unknown definition defaults to 0 on input line 702.
- [11] [12] [13]
+ [7] [8]
+Package hyperref Info: bookmark level for unknown example defaults to 0 on input line 596.
+ [9]
+Package hyperref Info: bookmark level for unknown proposition defaults to 0 on input line 687.
+ [10{c:/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}]
+Package hyperref Info: bookmark level for unknown definition defaults to 0 on input line 696.
+ [11] [12]
+Package hyperref Info: bookmark level for unknown remark defaults to 0 on input line 928.
+ [13] [14]
 pdfTeX warning (ext4): destination with the same identifier (name{proposition.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.938   I
-         f $R$ is reflexive, then there is a globular cell $S \Rightarrow \d... [14]
+l.972   I
+         f $R$ is reflexive, then there is a globular cell $S \Rightarrow \d... [15]
 Package microtype Info: Character `029' is missing
 (microtype)             in font `T1/lmr/m/sc/10.95'.
 (microtype)             Ignoring protrusion settings for this character.
-LaTeX Font Info:    Trying to load font information for T1+zi4 on input line 1031.
+LaTeX Font Info:    Trying to load font information for T1+zi4 on input line 1063.
  (c:/texlive/2025/texmf-dist/tex/latex/inconsolata/t1zi4.fd
 File: t1zi4.fd 2018/01/14 T1/zi4 (Inconsolata)
 )
 LaTeX Font Info:    Font shape `T1/zi4/m/n' will be
-(Font)              scaled to size 10.95pt on input line 1031.
+(Font)              scaled to size 10.95pt on input line 1063.
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `zi4' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
- [15{c:/texlive/2025/texmf-dist/fonts/enc/dvips/inconsolata/i4-t1-0.enc}] (./double-data-main.aux)
+ [16{c:/texlive/2025/texmf-dist/fonts/enc/dvips/inconsolata/i4-t1-0.enc}] (./double-data-main.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-29>
  ***********
 Package rerunfilecheck Info: File `double-data-main.out' has not changed.
-(rerunfilecheck)             Checksum: 4807A5B1690F6F73E66162DCBFCB1967;2239.
+(rerunfilecheck)             Checksum: 1A9E66D012EB58251FA649F1B20DAABD;1843.
 Package logreq Info: Writing requests to 'double-data-main.run.xml'.
 \openout1 = `double-data-main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 46055 strings out of 467537
- 967532 string characters out of 5423704
- 1778236 words of memory out of 5000000
- 74022 multiletter control sequences out of 15000+600000
- 729789 words of font info for 215 fonts, out of 8000000 for 9000
+ 46144 strings out of 467537
+ 969554 string characters out of 5423704
+ 1787489 words of memory out of 5000000
+ 74074 multiletter control sequences out of 15000+600000
+ 731082 words of font info for 227 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 117i,27n,125p,1506b,1681s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 117i,27n,125p,1886b,1604s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/texlive/2025/texmf-dist/fonts/type1/public/inconsolata/Inconsolata-zi4r.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/lm/lmbx10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/lm/lmbx12.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/lm/lmcsc10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/lm/lmex10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/lm/lmmi10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/lm/lmmi6.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/lm/lmmi8.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/lm/lmr10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/lm/lmr12.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/lm/lmr17.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/lm/lmr6.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/lm/lmr8.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/lm/lmri10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/lm/lmri8.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/lm/lmss10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/lm/lmsy10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/lm/lmsy6.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/lm/lmsy8.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on double-data-main.pdf (15 pages, 410038 bytes).
+Output written on double-data-main.pdf (16 pages, 419314 bytes).
 PDF statistics:
- 315 PDF objects out of 1000 (max. 8388607)
- 250 compressed objects within 3 object streams
- 52 named destinations out of 1000 (max. 500000)
- 55925 words of extra memory for PDF output out of 61914 (max. 10000000)
+ 345 PDF objects out of 1000 (max. 8388607)
+ 279 compressed objects within 3 object streams
+ 65 named destinations out of 1000 (max. 500000)
+ 55917 words of extra memory for PDF output out of 61914 (max. 10000000)
 

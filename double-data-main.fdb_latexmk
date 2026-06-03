@@ -1,13 +1,13 @@
 # Fdb version 4
-["biber double-data-main"] 1774867121.95643 "double-data-main.bcf" "double-data-main.bbl" "double-data-main" 1774867440.37023 0
-  "double-data-bib.bib" 1774865379 9022 fb9cb11f2058fb19c2f85faef39e8c45 ""
-  "double-data-main.bcf" 1774867439 109582 c1588da6f838b360e18b24ed5deb9e06 "pdflatex"
+["biber double-data-main"] 1780504031.6158 "double-data-main.bcf" "double-data-main.bbl" "double-data-main" 1780514480.45197 0
+  "double-data-bib.bib" 1780503516 9630 b13ca65b7ecb0e7293255efd3e04e288 ""
+  "double-data-main.bcf" 1780514479 110117 8a1a9254f6802acb9ec8d241fc47fa47 "pdflatex"
   (generated)
   "double-data-main.bbl"
   "double-data-main.blg"
   (rewritten before read)
-["pdflatex"] 1774867433.62146 "c:/Users/micha/Documents/Mathematical Writing/Documents/DoubleDataOperations/double-data-main.tex" "double-data-main.pdf" "double-data-main" 1774867440.37121 0
-  "c:/Users/micha/Documents/Mathematical Writing/Documents/DoubleDataOperations/double-data-main.tex" 1774867432 85960 30074b7ffb2da967e763a1495ed5d03f ""
+["pdflatex"] 1780514473.77448 "c:/Users/micha/Documents/Mathematical Writing/Documents/DoubleDataOperations/double-data-main.tex" "double-data-main.pdf" "double-data-main" 1780514480.45296 0
+  "c:/Users/micha/Documents/Mathematical Writing/Documents/DoubleDataOperations/double-data-main.tex" 1780514466 92402 4821320bc6e22224f3463c9a13a892b9 ""
   "c:/texlive/2025/texmf-dist/fonts/enc/dvips/inconsolata/i4-t1-0.enc" 1768535090 7631 5169ff1acd97ff1c4ab83563c99f96f4 ""
   "c:/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc" 1768535568 2375 baa924870cfb487815765f9094cf3728 ""
   "c:/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc" 1768535568 3486 c7eadf5dcc57b3b2d11736679f6636ba ""
@@ -288,11 +288,11 @@
   "c:/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt" 1768539098 3635444 6d2f9df4b128591d45ae31f63e4230af ""
   "c:/texlive/2025/texmf.cnf" 1768538679 713 e69b156964470283e0530f5060668171 ""
   "double-data-macros.sty" 1774711872 7248 98ec460c4b37da2042ca73a51b63dada ""
-  "double-data-main.aux" 1774867439 7202 ecc388a263bbbc88c0ae013dadce66ac "pdflatex"
-  "double-data-main.bbl" 1774867124 8494 e3242dc085111198f6a9cfd1c347d808 "biber double-data-main"
-  "double-data-main.out" 1774867439 2239 4807a5b1690f6f73e66162dcbfcb1967 "pdflatex"
-  "double-data-main.run.xml" 1774867439 2400 fa7e7698a42c25721d88adf1a31d92cb "pdflatex"
-  "double-data-main.tex" 1774867432 85960 30074b7ffb2da967e763a1495ed5d03f ""
+  "double-data-main.aux" 1780514479 8395 2ff06a43a527ad42190fa0b1d0d31431 "pdflatex"
+  "double-data-main.bbl" 1780504034 14542 ea74cd1a51116028047322c6f22445e8 "biber double-data-main"
+  "double-data-main.out" 1780514479 1843 1a9e66d012eb58251fa649f1b20daabd "pdflatex"
+  "double-data-main.run.xml" 1780514479 2400 fa7e7698a42c25721d88adf1a31d92cb "pdflatex"
+  "double-data-main.tex" 1780514466 92402 4821320bc6e22224f3463c9a13a892b9 ""
   "quiver.sty" 1768500373 2062 f35d43d61f4af55b0fa23be8533a6cf6 ""
   (generated)
   "double-data-main.aux"

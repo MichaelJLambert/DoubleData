@@ -51,7 +51,7 @@
 
 \section{Introduction}
 
-\section{Relational Division, Quantification, and Modality}
+\section{Relational Division}
 \label{section:relational-division}
 Relational division is a query introduced in \cite[\S 2]{codd1972} that behaves essentially as a universal quantifier over given specified values in the column of a table. First we illustrate this operation with a very simple generic example. We may as well work with binary relations $R \colon C\proto A$ which are of course equivalently monic arrows $\langle d,c\rangle \colon R\rightarrowtail C\times A$. Recall the notation from the reference
   \begin{equation*}
@@ -80,17 +80,17 @@ and likewise for $r[C] = d(r)$. This is a bit notationally-heavy, but is consist
         \hline
     \end{tabular}
   \]
-Thus, for example, $2Ra$ and $2Rb$. Likewise, $aS2$, et cetera. Now, in the notation of the reference, a division query is 
+Thus, for example, $2Ra$ and $2Rb$. Likewise, $aS2$, et cetera. Note that $A$ and $B$ have entries from the same set $\lbrace a,b,c\rbrace$. This is required to perform division. Now, in the notation of the reference, a division query is 
     \begin{equation*}
-      R[A\div B]S = \lbrace r[C]\mid r\in R \wedge S[B]\subset g_R(r[C])\rbrace = \lbrace 1,2\rbrace
+      R[A\div B]S = \lbrace r[C]\mid r\in R \text{ and } S[B]\subset g_R(r[C])\rbrace = \lbrace 1,2\rbrace.
     \end{equation*}
-We unpack this carefully to illustrate the operation. Note that the columns $A$ and $B$ must take the same types of values although the values do not need to have the same exact extension. Now, $r[C]$ is the set of values of the $R$-column, $C$. So, $r[C] = \lbrace 1,2,3\rbrace$. Likewise, $S[B] = \lbrace a,b\rbrace$. So, there are three sets of the form $g_R(r[C])$, only two of which contain $S[B]$, as in: 
+We unpack this carefully to illustrate the operation. Now, the possible values of $r[C]$ are the distinct entries of the $C$-column or $R$, namely, $1$, $2$, and $3$. Likewise, $S[B] = \lbrace a,b\rbrace$ is the set of all values of the $B$-column of $S$. So, there are three sets of the form $g_R(r[C])$, only two of which contain $S[B]$, as in: 
     \begin{align*}
       S[B] &= \lbrace a,b\rbrace \nsubseteq \lbrace b\rbrace = g_R(3) \\
       S[B] &= \lbrace a,b\rbrace \subset \lbrace a,b,c\rbrace = g_R(1)\\
       S[B] &= \lbrace a,b\rbrace = \lbrace a,b\rbrace = g_R(2).
     \end{align*}
-Hence again, the division query returns $\lbrace 1,2\rbrace$, exactly \emph{the set of all $C$-values whose orbit contains all the values of the $B$-column of $S$}. More prosaically, a $C$-value is selected by the query iff it is related to everything on the list of $B$-values. The universal quantification is thus over the set of $B$-values. The query allows the comparison of separate tables; note that $D$ was not needed to do the query. In the containment relations above, the universally quantified set does not need to completely describe the orbit of any given element satisfying the division query; that is, $1$ is related to $c$, but this is not a $B$-value. Likewise $3$ is related to something on the list, but not everything.
+Hence the division query returns $\lbrace 1,2\rbrace$, exactly \emph{the set of all $C$-values whose orbit contains all the values of the $B$-column of $S$}. More prosaically, a $C$-value is selected by the query iff it is related to everything on the list of $B$-values. The universal quantification is thus over the set of $B$-values. The query allows the comparison of separate tables; note that $D$ was not needed to do the query. In the containment relations above, the universally quantified set does not need to completely describe the orbit of any given element satisfying the division query; that is, $1$ is related to $c$, but this is not a $B$-value. Likewise $3$ is related to something on the list, but not everything.
 
 A more concrete example illustrating the same query is the following. Consider the two relational tables below. On the left, rows pair an apothecary with an ingredient sold there; on the right, rows pair an ingredient with an effect produced by the combination of that ingredient with another in a potion. 
     \[
@@ -323,10 +323,10 @@ Now, of course in nice logical situations substitution also has a right adjoint,
     \end{equation*}
 in the theater of OLOGs and of double categories generally. Something like this has been studied in the foundational paper \cite{shulman2008} under the guise of \emph{coextension}. It was mentioned there, but not studied in-depth due to being not as well behaved as the other two operations. And indeed this is not what we envision in this paper. For coextensions are had by asking for the equipment $\dbl{D}_1\to\dbl{D}_0\times\dbl{D}_0$ to be also a \emph{cofibration} which is too strong for what we have in mind. Rather, we take the approach of \emph{fibrational semantics} \cite{jacobs1999} and ask merely that our equipments $\dbl{D}_1\to\dbl{D}_0\times\dbl{D}_0$ have right adjoints to restriction functors and that these satisfy a Beck-Chevalley condition. This is exactly to require \emph{fibered products}. We shall see in more detail how this recovers exactly the queries of interest below in \cref{section:universal-queries}. For this we first review quantification in more detail.
 
-\section{Varieties of Quantification}
+\section{Quantification and Modality}
 \label{section:varieties-of-quantification}
 
-Both universal and existential quantification occurred in some form in the discussion of \cref{section-OLOGs}. In general, it is well-known that quantification provides left and right adjoints to substitution. A proposition is a subset $S\subset X$ or perhaps a monic arrow $S\rightarrowtail Y$. Such propositions are in 1-1 correspondence with functions $X\to \mathbf 2$. That $x\in X$ satisfies the proposition $S\subset X$ is written $S(x)$ and means $x\in S$ too. Now, for a set function $f\colon X\to Y$, there is a usual adjoint situation
+Both universal and existential quantification occurred in some form in the discussion of \cref{section-OLOGs}. It is well-known that quantification provides left and right adjoints to substitution \cite{maclane1992}. Working in ordinary set theory, a proposition is a subset $S\subset X$ or perhaps a monic arrow $S\rightarrowtail X$. Such propositions are in 1-1 correspondence with functions $X\to \mathbf 2$. That $x\in X$ satisfies the proposition $S\subset X$ is written $S(x)$ and means $x\in S$ too. Now, for a set function $f\colon X\to Y$, there is a usual adjoint situation
   \begin{equation*}
     % https://q.uiver.app/#q=WzAsMixbMCwwLCJQWCJdLFsyLDAsIlBZIl0sWzAsMSwiXFxmb3JhbGxfZiIsMCx7Im9mZnNldCI6LTN9XSxbMCwxLCJcXGV4aXN0c19mIiwyLHsib2Zmc2V0IjozfV0sWzEsMCwiZl4qIiwxXV0=
     \begin{tikzcd}
@@ -408,7 +408,7 @@ and our list $S$ again has wheat and giant's toe, then directly from the operati
 \begin{tcolorbox}[title=Result of Universal Query, boxrule=0.5mm, sharp corners, height=\boxheight,colback=white,colframe=black,coltitle=white,colbacktitle=black]
   \[
   \begin{aligned}
-    \forall_\pi(R) &= \lbrace y\mid R(x,y) \text{ for some } x\in X\rbrace \\
+    \forall_\pi(R) &= \lbrace y\mid R(x,y) \text{ for all } x\in X\rbrace \\
                   &= \lbrace \text{ingredients everyone has}\rbrace \\
                   &= \lbrace\text{wheat}\rbrace
   \end{aligned}
@@ -474,39 +474,6 @@ and our list $S$ again has wheat and giant's toe, then directly from the operati
 
 It will turn out that the list query is given by a pair of operations, one of which is universal quantification, applied in sequence. And so, to enrich the datascheme to handle this, the goal now is to formulate all of the above operations purely double-categorically and axiomatize them in our generated OLOGs. Ultimately, we will allow the data-instancing and double-categorical functorial semantics to perform the desired queries.
 
-\section{Operations in Double Categories}
-\label{section:operations-in-double-categories}
-
-\begin{example} \label{ex:res-ext-in-MAT}
-  In $\Mat(\cat V)$, restrictions and extensions are computed as 
-    \begin{equation*}
-      % https://q.uiver.app/#q=WzAsNCxbMCwwLCJaIl0sWzAsMSwiWCJdLFsxLDEsIlkiXSxbMSwwLCJXIl0sWzAsMSwiZiIsMl0sWzEsMiwiTSIsMix7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImJhcnJlZCJ9fX1dLFszLDIsImciXSxbMCwzLCJmXyFNZ14qIiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiYmFycmVkIn19fV0sWzcsNSwiXFx0ZXh0e3Jlc30iLDEseyJzaG9ydGVuIjp7InNvdXJjZSI6MjAsInRhcmdldCI6MjB9LCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJub25lIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
-      \begin{tikzcd}
-        Z & W \\
-        X & Y
-        \arrow[""{name=0, anchor=center, inner sep=0}, "{f_!Mg^*}"{inner sep=.8ex}, "\shortmid"{marking}, from=1-1, to=1-2]
-        \arrow["f"', from=1-1, to=2-1]
-        \arrow["g", from=1-2, to=2-2]
-        \arrow[""{name=1, anchor=center, inner sep=0}, "M"'{inner sep=.8ex}, "\shortmid"{marking}, from=2-1, to=2-2]
-        \arrow["{\text{res}}"{description}, draw=none, from=0, to=1]
-      \end{tikzcd} \qquad \qquad
-      f_!Mg^*(z,w) = M(fz,gw)
-    \end{equation*}
-  and 
-    \begin{equation*}
-      % https://q.uiver.app/#q=WzAsNCxbMCwwLCJaIl0sWzAsMSwiWCJdLFsxLDEsIlkiXSxbMSwwLCJXIl0sWzAsMSwiZiIsMl0sWzEsMiwiZl4qTmdfISIsMix7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImJhcnJlZCJ9fX1dLFszLDIsImciXSxbMCwzLCJOIiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiYmFycmVkIn19fV0sWzcsNSwiXFx0ZXh0e2V4dH0iLDEseyJzaG9ydGVuIjp7InNvdXJjZSI6MjAsInRhcmdldCI6MjB9LCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJub25lIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
-      \begin{tikzcd}
-        Z & W \\
-        X & Y
-        \arrow[""{name=0, anchor=center, inner sep=0}, "N"{inner sep=.8ex}, "\shortmid"{marking}, from=1-1, to=1-2]
-        \arrow["f"', from=1-1, to=2-1]
-        \arrow["g", from=1-2, to=2-2]
-        \arrow[""{name=1, anchor=center, inner sep=0}, "{f^*Ng_!}"'{inner sep=.8ex}, "\shortmid"{marking}, from=2-1, to=2-2]
-        \arrow["{\text{ext}}"{description}, draw=none, from=0, to=1]
-      \end{tikzcd} \qquad \qquad f^*Ng_!(x,y) = \sum_{\substack{fz=x\\gw=y}} A(z,w)
-    \end{equation*}
-\end{example}
-
 \section{Existential Queries}
 \label{section:existential-queries}
 
@@ -545,7 +512,7 @@ In $\Rel$, the result $R\otimes S$ is precisely $\diamondsuit S$ as above. An eq
       \arrow["{1\times !}", from=1-2, to=1-3]
       \arrow[tail, from=2-2, to=1-3]
     \end{tikzcd}
-  \end{equation*}.
+  \end{equation*}
 That is, the corner of the pullback on the right is exactly the set of pairs $(x,a)$ where $x\sim_Ra$ under $R$. The image then binds $x\in X$ via existential quantification. This is formalized in any equipment $\dbl{D}$ by first taking a restriction and then an extension:
   \begin{equation*}
     % https://q.uiver.app/#q=WzAsNCxbMCwwLCJYIl0sWzEsMCwiUyJdLFsxLDEsIlgiXSxbMCwxLCJYIl0sWzAsMSwiUlxcb2RvdCB1XioiLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJiYXJyZWQifX19XSxbMSwyLCJzIiwwLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoibW9ubyJ9fX1dLFswLDMsIjEiLDJdLFszLDIsIlIiLDIseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJiYXJyZWQifX19XSxbNCw3LCJcXHRleHR7cmVzfSIsMSx7InNob3J0ZW4iOnsic291cmNlIjoyMCwidGFyZ2V0IjoyMH0sInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6Im5vbmUifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dXQ==
@@ -638,8 +605,35 @@ Now, it can be seen directly that this is an invertible cell when $\dbl{D}$ is e
 \end{example}
 
 \begin{example}
-  Let $\cat V$ denote any monoidal category with coproducts preserved by the tensor. We then have the double category $\Mat(\cat V)$ of $\cat V$-matrices (\cref{ex:res-ext-in-MAT}). 
-  To form the possibility operator, we have first the restriction 
+  Let $\cat V$ denote any monoidal category with coproducts preserved by the tensor. We then have the double category $\Mat(\cat V)$ of $\cat V$-matrices.
+  Restrictions and extensions are computed as 
+    \begin{equation*}
+      % https://q.uiver.app/#q=WzAsNCxbMCwwLCJaIl0sWzAsMSwiWCJdLFsxLDEsIlkiXSxbMSwwLCJXIl0sWzAsMSwiZiIsMl0sWzEsMiwiTSIsMix7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImJhcnJlZCJ9fX1dLFszLDIsImciXSxbMCwzLCJmXyFNZ14qIiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiYmFycmVkIn19fV0sWzcsNSwiXFx0ZXh0e3Jlc30iLDEseyJzaG9ydGVuIjp7InNvdXJjZSI6MjAsInRhcmdldCI6MjB9LCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJub25lIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
+      \begin{tikzcd}
+        Z & W \\
+        X & Y
+        \arrow[""{name=0, anchor=center, inner sep=0}, "{f_!Mg^*}"{inner sep=.8ex}, "\shortmid"{marking}, from=1-1, to=1-2]
+        \arrow["f"', from=1-1, to=2-1]
+        \arrow["g", from=1-2, to=2-2]
+        \arrow[""{name=1, anchor=center, inner sep=0}, "M"'{inner sep=.8ex}, "\shortmid"{marking}, from=2-1, to=2-2]
+        \arrow["{\text{res}}"{description}, draw=none, from=0, to=1]
+      \end{tikzcd} \qquad \qquad
+      f_!Mg^*(z,w) = M(fz,gw)
+    \end{equation*}
+  and 
+    \begin{equation*}
+      % https://q.uiver.app/#q=WzAsNCxbMCwwLCJaIl0sWzAsMSwiWCJdLFsxLDEsIlkiXSxbMSwwLCJXIl0sWzAsMSwiZiIsMl0sWzEsMiwiZl4qTmdfISIsMix7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImJhcnJlZCJ9fX1dLFszLDIsImciXSxbMCwzLCJOIiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiYmFycmVkIn19fV0sWzcsNSwiXFx0ZXh0e2V4dH0iLDEseyJzaG9ydGVuIjp7InNvdXJjZSI6MjAsInRhcmdldCI6MjB9LCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJub25lIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
+      \begin{tikzcd}
+        Z & W \\
+        X & Y
+        \arrow[""{name=0, anchor=center, inner sep=0}, "N"{inner sep=.8ex}, "\shortmid"{marking}, from=1-1, to=1-2]
+        \arrow["f"', from=1-1, to=2-1]
+        \arrow["g", from=1-2, to=2-2]
+        \arrow[""{name=1, anchor=center, inner sep=0}, "{f^*Ng_!}"'{inner sep=.8ex}, "\shortmid"{marking}, from=2-1, to=2-2]
+        \arrow["{\text{ext}}"{description}, draw=none, from=0, to=1]
+      \end{tikzcd} \qquad \qquad f^*Ng_!(x,y) = \sum_{\substack{fz=x\\gw=y}} A(z,w)
+    \end{equation*}
+  Now, to form the possibility operator, we have first the restriction 
     \begin{equation*}
       % https://q.uiver.app/#q=WzAsNCxbMCwwLCJYIl0sWzAsMSwiWCJdLFsxLDEsIlgiXSxbMSwwLCJTIl0sWzAsMSwiIiwyLHsibGV2ZWwiOjIsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMSwyLCJNIiwyLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiYmFycmVkIn19fV0sWzMsMiwicyJdLFswLDMsIk1cXG9kb3Qgc14qIiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiYmFycmVkIn19fV0sWzcsNSwiXFx0ZXh0e3Jlc30iLDEseyJzaG9ydGVuIjp7InNvdXJjZSI6MjAsInRhcmdldCI6MjB9LCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJub25lIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
       \begin{tikzcd}
@@ -688,7 +682,7 @@ Now, it can be seen directly that this is an invertible cell when $\dbl{D}$ is e
   for any $x\in X$, showing that the two constructions are the same in this case too.
 \end{example}
 
-Now, in fact the two construction agree in general for any equipment such as $\Prof$ or $\Mat(\cat{V})$ for more complicated $\cat{V}$, each of which are difficult to treat directly.
+Now, in fact the two construction agree in general for any equipment such as $\Prof$ or $\Mat(\cat{V})$ for more complicated $\cat{V}$, each of which is difficult to treat directly.
 
 \begin{proposition} \label{prop:possibility-rewrite-rule-1}
   The globular cell $\diamondsuit S \Rightarrow R\odot S$ induced in \cref{equation:globular-cell} is an isomorphism in any equipment. Accordingly, the two possible definitions of $\diamondsuit S$ agree.
@@ -728,19 +722,23 @@ So, although the constructions are thus essentially the same, we make a choice a
 
 Note then that the content of \cref{prop:possibility-rewrite-rule-1} is thus that of a \emph{rewrite rule} for the possibility operator and thus also for existential queries of this kind.
 
-All the instances of existential quantification introduced are instances of \emph{fibrational semantics} of the equipment $\dbl{D}$. We have the general picture:
+\section{Fibrational Semantics {I}}
+
+All the instances of existential quantification introduced above are instances of \emph{fibrational semantics} of the equipment $\dbl{D}$. We have the general picture:
   \begin{equation} \label{eqn:left-adjoint-to-restriction}
     \Sigma_{f,g}\colon\dbl{D}(A,B)\rightleftarrows\dbl{D}(X,Y)\colon (f,g)^*\qquad\Sigma_{f,g}\dashv (f,g)^*
   \end{equation}
-for any arrows $f\colon A\to X$ and $g\colon B\to Y$ of $\dbl{D}$. The hom categories are the fibers of $\langle\src,\tgt\rangle\colon\dbl{D}_1\to\dbl{D}_0\times\dbl{D}_0$ over the pairs of objects $(A,B)$ and $(X,Y)$. Here $\Sigma_{f,g}$ denotes the left adjoint to substitution/restriction along $f$ and $g$. This is provided automatically since $\langle\src,\tgt\rangle$ is both a fibration and opfibration \cite{shulman2008}. Of course $\Sigma_{f,g}$ is thus extension in the equipment structure. Now, again, both instances of existential quantification are recoverable in this framework. On the one hand, for $s\colon S\to Y$ we have the functors
-  \begin{equation*}
+for any arrows $f\colon A\to X$ and $g\colon B\to Y$ of $\dbl{D}$. The hom categories are the fibers of $\langle\src,\tgt\rangle\colon\dbl{D}_1\to\dbl{D}_0\times\dbl{D}_0$ over the pairs of objects $(A,B)$ and $(X,Y)$. Here $\Sigma_{f,g}$ denotes the left adjoint to substitution/restriction along $f$ and $g$. This is provided automatically since $\langle\src,\tgt\rangle$ is both a fibration and opfibration \cite{shulman2008}. Of course $\Sigma_{f,g}$ is thus extension in the equipment structure. 
+
+Both instances of existential quantification are recoverable in this framework. On the one hand, for $s\colon S\to Y$ we have the functors
+  \begin{equation} \label{eqn:possibility-via-doctrines}
     % https://q.uiver.app/#q=WzAsMyxbMCwwLCJcXGRibHtEfShYLFgpIl0sWzEsMCwiXFxkYmx7RH0oWCxTKSJdLFsyLDAsIlxcZGJse0R9KFgsMSkiXSxbMCwxLCIoMV9YLHMpXioiXSxbMSwyLCJcXFNpZ21hX3sxX1gsIX0iXV0=
     \begin{tikzcd}
       {\dbl{D}(X,Y)} & {\dbl{D}(X,S)} & {\dbl{D}(X,1)}
       \arrow["{(1_X,s)^*}", from=1-1, to=1-2]
       \arrow["{\Sigma_S}", from=1-2, to=1-3]
     \end{tikzcd}
-  \end{equation*}
+  \end{equation}
 and consequently
   \begin{equation*}
     \Sigma_{S}(1_X,s)^*(R) = \diamondsuit S
@@ -753,7 +751,7 @@ as in \cref{def:possibility-operator}. On the other hand, ordinary existential q
       \arrow["{\Sigma_{X}}", from=1-1, to=1-2]
     \end{tikzcd} \qquad \Sigma_{X}(R) = \exists x . R(x,y)
   \end{equation*}
-as has already been observed in the case of $\Rel$. In each case, the left adjoints used are special cases of \emph{Kan quantification}. Let $f\colon A\to X$ denote any morphism of $\dbl{D}$. Consider the \emph{one-sided} adjunction 
+as has already been observed in the case of $\Rel$. In each case, the left adjoints used are special cases of \emph{Kan quantification} \cite{lawvere2002}. Let $f\colon A\to X$ denote any morphism of $\dbl{D}$. Consider the \emph{one-sided} adjunction 
   \begin{equation} \label{eqn:one-sided-left-adjoint-to-restriction}
     \Sigma_{f}\colon\dbl{D}(A,Y)\rightleftarrows\dbl{D}(X,Y)\colon f^*\qquad\Sigma_{f}\dashv f^*
   \end{equation}
@@ -761,7 +759,7 @@ Owning to the nature of the computation of restrictions and extensions, the two 
   \begin{equation} \label{eqn:one-sided-left-adjoint-to-restriction2}
     f^*\odot-\colon\dbl{D}(A,Y)\rightleftarrows\dbl{D}(X,Y)\colon f_!\odot - \qquad f^*\odot-\dashv f_!\odot -
   \end{equation}
-Retaining the $\Sigma$-notation for the left adjoint, the adjunction expresses an existential quantification introduction rule. Namely, that there is a bijection between globular cells
+Retaining the $\Sigma$-notation for the left adjoint, the adjunction thus expresses an existential quantification introduction rule. Namely, it presents a bijection between globular cells
   \begin{equation*}
     % https://q.uiver.app/#q=WzAsNCxbMCwwLCJYIl0sWzEsMCwiWSJdLFsxLDEsIlxcYnVsbGV0Il0sWzAsMSwiWCJdLFswLDEsIlxcU2lnbWFfZlIiLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJiYXJyZWQifX19XSxbMSwyLCIiLDAseyJsZXZlbCI6Miwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFswLDMsIiIsMix7ImxldmVsIjoyLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzMsMiwiUyIsMix7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImJhcnJlZCJ9fX1dLFs0LDcsIiIsMCx7InNob3J0ZW4iOnsic291cmNlIjozMCwidGFyZ2V0IjozMH19XV0=
     \begin{tikzcd}
@@ -784,9 +782,9 @@ Retaining the $\Sigma$-notation for the left adjoint, the adjunction expresses a
       \arrow["S"'{inner sep=.8ex}, "\shortmid"{marking}, from=2-2, to=2-3]
       \arrow[between={0.4}{0.8}, Rightarrow, from=0, to=2-2]
     \end{tikzcd} \qquad \qquad
-    \inferrule{\Sigma_fR\Rightarrow S}{R\Rightarrow f_!\odot S}
+    \inferrule{\Sigma_fR\Rightarrow S}{R\Rightarrow f_!\odot S}.
   \end{equation*}
-With the computation $\Sigma_f = f^*\odot -$ we have an analogue of the computation of the left adjoint to substitution for $\cat V$-functors in \cite[\S 3]{lawvere2002}. Applying the bijection to the identity on $\Sigma_fR$, there is a single cell 
+With the computation $\Sigma_f = f^*\odot -$ as above, we have an analogue of the computation of the left adjoint to substitution for $\cat V$-functors in \cite[\S 3]{lawvere2002}. Applying the bijection to the identity on $\Sigma_fR$, there is a single cell 
   \begin{equation*}
     % https://q.uiver.app/#q=WzAsNSxbMCwwLCJBIl0sWzIsMCwiWSJdLFsyLDEsIlkiXSxbMCwxLCJBIl0sWzEsMSwiWCJdLFswLDEsIlIiLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJiYXJyZWQifX19XSxbMSwyLCIiLDAseyJsZXZlbCI6Miwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFswLDMsIiIsMix7ImxldmVsIjoyLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzMsNCwiZl8hIiwyLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiYmFycmVkIn19fV0sWzQsMiwiXFxTaWdtYV9mUiIsMix7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImJhcnJlZCJ9fX1dLFs1LDQsIiIsMCx7InNob3J0ZW4iOnsic291cmNlIjo0MCwidGFyZ2V0IjoyMH19XV0=
     \begin{tikzcd}
@@ -800,7 +798,7 @@ With the computation $\Sigma_f = f^*\odot -$ we have an analogue of the computat
       \arrow[between={0.4}{0.8}, Rightarrow, from=0, to=2-2]
     \end{tikzcd}
   \end{equation*}
-and the universal property makes $\Sigma_fR$ into a (left) \emph{Kan extension} of $R$ along $f_!$ in the underlying loose bicategory of $\dbl{D}$. Specializing to the case of $\Sigma_X$ as above and writing the traditional `$\exists$' for the left adjoint, the bijection expressing the universal property is precisely the usual existential introduction rule:
+and the universal property makes $\Sigma_fR$ into a (left) \emph{Kan extension} of $R$ along $f_!$ in the underlying bicategory of $\dbl{D}$. Specializing to the case of $\Sigma_X$ as above and writing the traditional `$\exists$' for the left adjoint, the bijection expressing the universal property is precisely the usual existential introduction rule:
   \begin{equation*}
     % https://q.uiver.app/#q=WzAsNCxbMCwwLCJYIl0sWzEsMCwiWSJdLFsxLDEsIlkiXSxbMCwxLCIxIl0sWzAsMSwiXFxleGlzdHNfWFIiLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJiYXJyZWQifX19XSxbMSwyLCIiLDAseyJsZXZlbCI6Miwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFswLDMsIiEiLDJdLFszLDIsIlMiLDIseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJiYXJyZWQifX19XSxbNCw3LCIiLDAseyJzaG9ydGVuIjp7InNvdXJjZSI6MzAsInRhcmdldCI6MzB9fV1d
     \begin{tikzcd}
@@ -825,12 +823,12 @@ and the universal property makes $\Sigma_fR$ into a (left) \emph{Kan extension} 
     \end{tikzcd}\qquad \qquad
     \inferrule{\exists_XR\Rightarrow S}{R\Rightarrow X_!\odot S}
   \end{equation*}
-Notice that since this construction provides a left Kan extension in the underlying bicategory of $\dbl{D}$ and thus that $\dbl{D}$ is in a sense bicategorically closed, this is not a fragment of the closed structure studied in \cite{shulman2008}.
+Notice that this construction provides a left Kan extension in the underlying bicategory of $\dbl{D}$ and thus that $\dbl{D}$ is in this sense bicategorically closed. This is not a fragment of the closed structure studied in \cite{shulman2008}.
 
 \section{Universal Queries}
 \label{section:universal-queries}
 
-Now that we have made good sense of existential quantification, we will turn to universal quantification, starting from the fibrational semantics and Kan quantification. That the restriction functor $(f,g)^*\colon \dbl{D}(x,y)\to\dbl{D}(a,b)$ has a right adjoint is the statement that there exists a functor 
+Now we turn to universal quantification starting from fibrational semantics and Kan quantification. That the restriction functor $(f,g)^*\colon \dbl{D}(x,y)\to\dbl{D}(a,b)$ has a right adjoint is the statement that there exists a functor 
   \begin{equation*}
     \prod_{f,g}\colon \dbl{D}(a,b)\to\dbl{D}(x,y)
   \end{equation*}
@@ -842,10 +840,10 @@ establishing natural families of bijections of globular cells
     \begin{equation*}
       \inferrule{f_!mg^*\Rightarrow s}{m\Rightarrow \prod_{f,g}(s)}
     \end{equation*}
-given in each direction by application of the appropriate functor and then composition with a unit or counit as the case may be. The elementary characterization of this right adjoint as a universal is the following.
+given in each direction by application of the appropriate functor and then composition with a unit or counit as the case may be. Notice again that this specializes to a bidirectional universal quantification rule. The elementary characterization of this right adjoint as a universal in this context is the following.
 
 \begin{proposition}
-  The restriction functor $(f,g)^*\colon \dbl{D}(x,y)\to\dbl{D}(a,b)$ has a right adjoint if, and only if, for each $s\colon a\proto b$ there is a globular cell $\epsilon_s$ of the form 
+  The restriction functor $(f,g)^*\colon \dbl{D}(x,y)\to\dbl{D}(a,b)$ has a right adjoint if, and only if, for each $s\colon a\proto b$ there is a specified proarrow $\forall_{f,g}(s)$ together with a globular cell $\epsilon_s$ of the form 
     \begin{equation*}
       % https://q.uiver.app/#q=WzAsNCxbMCwwLCJhIl0sWzAsMSwieCJdLFsyLDAsImIiXSxbMiwxLCJ5Il0sWzAsMSwiZiIsMl0sWzAsMiwiZl8hKFxcZm9yYWxsX3tmLGd9KHMpKWdeKiIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImJhcnJlZCJ9fX1dLFsxLDMsIlxcZm9yYWxsX3tmLGd9KHMpIiwyLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiYmFycmVkIn19fV0sWzIsMywiZyJdLFs1LDYsIlxcdGV4dHtyZXN9IiwxLHsic2hvcnRlbiI6eyJzb3VyY2UiOjIwLCJ0YXJnZXQiOjIwfSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoibm9uZSJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV1d
       \begin{tikzcd}
@@ -925,6 +923,42 @@ given in each direction by application of the appropriate functor and then compo
 \begin{proof}
   This is just the characterization of an adjunction in terms of the existence of a counit as a universal (\cite[\S IV.1, Theorem 2(iv)]{maclane1998}). Note that naturality of $\epsilon_s$ in $s$ follows automatically.
 \end{proof}
+
+\begin{remark}
+  There is a crucial conceptual and technical difference here in the fibrational semantics \emph{vis-\'a-vis} the prior case of existential quantification. This is that universal quantification is not neatly expressible via loose composition with a companion or conjoint; nor is there some obvious third type of proarrow $f_*$ associated to a morphism $f$ with its own accompanying base-change cells and universal properties that would do this. For although equipments $\dbl{D}$ involve both a fibration and opfibration $\langle \src,\tgt\rangle\colon \dbl{D}_1\to\dbl{D}_0\times\dbl{D}_0$, this same functor is not usually also a cofibration \cite{shulman2008}. This would the structure required to provide some kind of \emph{corestriction} as a right adjoint to restriction. Universal quantification thus must appear under some different guise. Our approach of course has been that of fibrational semantics: adjoints to substitution are the basic notion; that in one case they happen to be computed by companions or conjoints is a nice feature of equipments, but evidently does not carry over the others. Now, our axiomatized notion is the following, based on \cite[\S1.9]{jacobs1999}. This is a geometric/fibrational analogue of a \emph{quantification hyperdoctrine} \cite{lawvere2006}, \cite{lawvere1970} instantiated here for double categories. As defined in \cite{lambert2025}, a double OLOG is a small and finitely-presented `double category of relations' \cite{lambert2022}. This is in particular a locally posetal cartesian equipment.
+\end{remark}
+
+\begin{definition}
+  A \textbf{quantification double OLOG} is a double OLOG where each substitution functor has a right adjoint satisfying Beck-Chevalley.
+\end{definition}
+
+\begin{example}
+  Certainly $\Rel$ has such adjoints since they are inherited from $\Set$ and computed in the manner described in the introduction. Beck-Chevalley follows or can be verified directly. Thus, given an appropriate additional \emph{reverse} operator on proarrows, we have an axiomatization of the two universal queries of \cref{fig:quant-queries} given by application of the appropriate right adjoint to whatever proarrow is under consideration.
+\end{example}
+
+Our main application of universal quantification is, however, the list-query described \cref{section:relational-division} where we look for those proprietors having all the items on our shopping list. This can be done by a composition of a restriction followed by a universal quantifier right adjoint. Start with a given proarrow $R\colon X\proto Y$ and a subtype $s\colon S\to Y$ representing our list. Consider then the composite functor 
+  \begin{equation} \label{eqn:list-via-doctrines}
+    % https://q.uiver.app/#q=WzAsMyxbMCwwLCJcXGRibHtEfShYLFkpIl0sWzEsMCwiXFxkYmx7RH0oWCxTKSJdLFsyLDAsIlxcZGJse0R9KFgsMSkiXSxbMCwxLCIoMV9YLHMpXioiXSxbMSwyLCJcXHByb2RfezFfWCwhfSJdXQ==
+    \begin{tikzcd}
+      {\dbl{D}(X,Y)} & {\dbl{D}(X,S)} & {\dbl{D}(X,1)}
+      \arrow["{(1_X,s)^*}", from=1-1, to=1-2]
+      \arrow["{\prod_{1_X,!}}", from=1-2, to=1-3]
+    \end{tikzcd}
+  \end{equation}
+assuming of course that such right adjoints exist. Note that this is a direct analogue of the composite \cref{eqn:possibility-via-doctrines} which produced the modal query retrieving exactly those proprietors with some item on the list $S$. In the case of relations, this has the following effect.
+
+\begin{example}
+  Specializing \cref{eqn:list-via-doctrines} to $\Rel$, recall that the restriction $R\odot s_!$ is the set of those pairs $(x,y)$ such that $x\sim_R y$ and $y\in S$. Now, the map $X\times S\to X\times 1$ is up to bijection between codomains the same as the first projection $X\times S\to X$. So, using the computation of $\forall_{\pi_X}$ in \cref{section:varieties-of-quantification}, we have 
+    \begin{align*}
+      \forall_{\pi_X}(R\odot s_!) &= \lbrace x\in X\mid \text{ for all } (x',y)\in X\times S \, (\pi(x',y) = x \text{ implies } (x',y)\in R\odot s_!)\rbrace \\
+      &= \lbrace x\in X\mid \text{ for all } (x,y)\in X\times S \, (x,y)\in R\odot s_!\rbrace \\ 
+      &= \lbrace x\in X\mid \text{ for all } y \in S \, (x,y)\in R\odot s_!\rbrace \\
+      &= \lbrace x\in X\mid \text{ for all } y \in S \, (x\sim_R y)\rbrace
+    \end{align*}
+  That is, the result of the application of the composite of functors to $R$ is the set of those $X$-elements $x$ for which everything in $S$ is $R$-related to $x$. This is precisely to say that if $S$ is a list of ingredients and $X$ is our list of proprietors, then the query returns the list of those who have everything on the list (but could have other items).
+\end{example}
+
+It is worth pointing out that although this construction thus achieves the desired effect and in this sense the objective of the paper too, it leaves a gap in the narrative inasmuch as it is not a modal query like the existential query relative to $S$ that it mimics. The explanation is the relative flexibility of the existential operator. That is, existential validity asks just that \emph{something} satisfy the quantified formula, relation or proposition. This is a relatively weak requirement. And so the result of the possibility query in \cref{fig:quant-queries} is just the existential query $\exists$ applied to $R\odot s_!$. Universal queries, by their nature surveying all entities under the scope of the quantifier, are more stringent. Thus, $\forall(R\odot s_!)$ and $\Box S$ produce dramatically different results: the first case that of the shops with all ingredients on the list; and second those with only ingredients on the list. That is, the first case quantifies over list items and checks against inventory; the second quantifies over inventory and checks against list items. The difficulty consists in the fact that what needs to be returned in each case is the list of proprietors. The built-in for $\forall$ as a right adjoint must match variances without the mixing this would demand in one or the other case. That is, the comprehension of $\forall$ must always match the codomain typing of operator as a right adjoint. The object $R\odot s_!$ must be formed to compare shops with out list items. But just, for example, switching the projection or reversing the relation results in the codomain typing of $\forall$ to $S$-objects which will return ingredients, not shops in the query. To recover this operator we turn to tabulators.
 
 \section{Tabulators and Modality}
 
@@ -1019,8 +1053,6 @@ This operator justly bears the `$\diamondsuit$' notation not only on account of 
     \end{equation*}
   Notice the abuse of notation, namely, that we think of $S$ as both the object providing the domain of $s$ but also as a proarrow $S\colon X\proto 1$ obtained by extension.
 \end{proof}
-
-\section{Full Closed Comprehension}
 
 \section{Prospectus}
 

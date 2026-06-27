@@ -962,6 +962,110 @@ It is worth pointing out that although this construction thus achieves the desir
 
 \section{Tabulators and Modality}
 
+\section{Closed Structure}
+
+\begin{definition}
+  A cartesian equipment $\dbl D$ is \textbf{locally cartesian closed} if each product functor 
+    \begin{equation*}
+      m\wedge-\colon \dbl{D}(X,Y)\to\dbl{D}(X,Y)
+    \end{equation*}
+  has a right adjoint $(-)^m$. The object $n^m$ is called the \textbf{exponential} of $n$ by $m$.
+\end{definition}
+
+\begin{example}
+  For relations $R,S\colon X\proto Y$, the exponential is given by 
+    \begin{equation*}
+      S^R = \lbrace (x,y)\mid xRy \text{ implies } xSy\rbrace
+    \end{equation*}
+  and computed via adjoints as 
+    \begin{equation*}
+      \forall_RR^*(S)
+    \end{equation*}
+  thinking of $R$ as its own tabulator.
+\end{example}
+
+Of course we may simply ask that our cartesian equipments are locally cartesian closed in this sense. It is a point of interest, however, to connect this structure to the right adjoints to substitution assumed in previous sections inasmuch as, (1) these are supposed to provide \emph{generalized hom objects} and (2) there is an evident universal quantification over pairs $(x,y)$ in the example above. The answer, roughly, is that these right adjoints are computable from right adjoints to subsitution whenever the given cartesian equipment has strong and cartesian tabulators.
+
+\begin{definition}
+  The tabulator of a proarrow $p\colon X\proto Y$ is \textbf{strong} if the canonical morphism 
+    \begin{equation*}
+      % https://q.uiver.app/#q=WzAsNCxbMCwwLCJUcCJdLFsxLDAsIlRwIl0sWzEsMSwieSJdLFswLDEsIngiXSxbMCwxLCIiLDAseyJsZXZlbCI6Miwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiYmFycmVkIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMSwyLCJjIl0sWzAsMywiZCIsMl0sWzMsMiwicCIsMix7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImJhcnJlZCJ9fX1dLFs0LDcsIlxcdGF1X3AiLDEseyJzaG9ydGVuIjp7InNvdXJjZSI6MjAsInRhcmdldCI6MjB9LCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJub25lIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
+      \begin{tikzcd}
+        Tp & Tp \\
+        x & y
+        \arrow[""{name=0, anchor=center, inner sep=0}, "\shortmid"{marking}, equals, from=1-1, to=1-2]
+        \arrow["d"', from=1-1, to=2-1]
+        \arrow["c", from=1-2, to=2-2]
+        \arrow[""{name=1, anchor=center, inner sep=0}, "p"'{inner sep=.8ex}, "\shortmid"{marking}, from=2-1, to=2-2]
+        \arrow["{\tau_p}"{description}, draw=none, from=0, to=1]
+      \end{tikzcd} \qquad = \qquad
+      % https://q.uiver.app/#q=WzAsNixbMCwwLCJUcCJdLFsxLDAsIlRwIl0sWzEsMSwieSJdLFswLDEsIngiXSxbMCwyLCJ4Il0sWzEsMiwieSJdLFswLDEsIiIsMCx7ImxldmVsIjoyLCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJiYXJyZWQifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsxLDIsImMiXSxbMCwzLCJkIiwyXSxbMywyLCJkXipcXG9kb3QgY18hIiwyLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiYmFycmVkIn19fV0sWzMsNCwiIiwyLHsibGV2ZWwiOjIsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMiw1LCIiLDIseyJsZXZlbCI6Miwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs0LDUsInAiLDIseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJiYXJyZWQifX19XSxbNiw5LCJcXHRhdV9wIiwxLHsic2hvcnRlbiI6eyJzb3VyY2UiOjIwLCJ0YXJnZXQiOjIwfSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoibm9uZSJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzksMTIsIlxcZXhpc3RzXFwsISIsMSx7ImxhYmVsX3Bvc2l0aW9uIjo2MCwic2hvcnRlbiI6eyJzb3VyY2UiOjIwLCJ0YXJnZXQiOjIwfSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoibm9uZSJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV1d
+      \begin{tikzcd}
+        Tp & Tp \\
+        x & y \\
+        x & y
+        \arrow[""{name=0, anchor=center, inner sep=0}, "\shortmid"{marking}, equals, from=1-1, to=1-2]
+        \arrow["d"', from=1-1, to=2-1]
+        \arrow["c", from=1-2, to=2-2]
+        \arrow[""{name=1, anchor=center, inner sep=0}, "{d^*\odot c_!}"'{inner sep=.8ex}, "\shortmid"{marking}, from=2-1, to=2-2]
+        \arrow[equals, from=2-1, to=3-1]
+        \arrow[equals, from=2-2, to=3-2]
+        \arrow[""{name=2, anchor=center, inner sep=0}, "p"'{inner sep=.8ex}, "\shortmid"{marking}, from=3-1, to=3-2]
+        \arrow["{\tau_p}"{description}, draw=none, from=0, to=1]
+        \arrow["{\exists\,!}"{description, pos=0.6}, draw=none, from=1, to=2]
+      \end{tikzcd}
+    \end{equation*}
+    is an isomorphism. A double category has \textbf{strong tabulators} if it has tabulators and each is strong.
+\end{definition}
+
+\begin{remark}
+  This means, equivalently, that each such tabulator cell $\tau_p$ is an extension cell. Consequently, a double category has strong tabulators if each of its proarrows is the extension of its tabulator. The double category of relations is an example.
+\end{remark}
+
+\begin{definition}
+  Tabulators are \textbf{cartesian} if the counit transformation $\tau\colon \id_{-}T\Rightarrow 1$ is a cartesian transformation.
+\end{definition}
+
+As notation, for $m\colon x\proto y$ and its tabulator $Tm$, we write $m^*(n)$ for the proarrow domain of the restriction cell 
+  \begin{equation*}
+    % https://q.uiver.app/#q=WzAsNCxbMCwxLCJ4Il0sWzEsMSwieSJdLFswLDAsIlRtIl0sWzEsMCwiVG0iXSxbMCwxLCJuIiwyLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiYmFycmVkIn19fV0sWzIsMCwiZCIsMl0sWzIsMywibV4qKG4pIiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiYmFycmVkIn19fV0sWzMsMSwiYyJdLFs2LDQsIlxcbWF0aHJte3Jlc30iLDEseyJzaG9ydGVuIjp7InNvdXJjZSI6MjAsInRhcmdldCI6MjB9LCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJub25lIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
+    \begin{tikzcd}
+      Tm & Tm \\
+      x & y
+      \arrow[""{name=0, anchor=center, inner sep=0}, "{m^*(n)}"{inner sep=.8ex}, "\shortmid"{marking}, from=1-1, to=1-2]
+      \arrow["d"', from=1-1, to=2-1]
+      \arrow["c", from=1-2, to=2-2]
+      \arrow[""{name=1, anchor=center, inner sep=0}, "n"'{inner sep=.8ex}, "\shortmid"{marking}, from=2-1, to=2-2]
+      \arrow["{\mathrm{res}}"{description}, draw=none, from=0, to=1]
+    \end{tikzcd}
+  \end{equation*}
+Likewise $\prod_m$ and $\Sigma_m$ denote the right- and left-adjoints to substitution along the domain and codomain morphisms coming with $Tm$.
+
+\begin{theorem}
+  If $\dbl D$ is a $\prod$-cartesian equipment with strong, cartesian tabulators, then 
+    \begin{equation*}
+      m\wedge n \cong \Sigma_mm^*(n)
+    \end{equation*}
+  holds naturally in $n$, and thus 
+    \begin{equation*}
+      n^m \cong \prod_mm^*(n)
+    \end{equation*}
+  holds naturally in $n$ for each hom-category $\dbl D(x,y)$.
+\end{theorem}
+\begin{proof}
+  The proof is inspired by the argument of \cite[Proposition 10.5.4]{jacobs1999}. We shall show that local products are given by extensions. The second statement will follow since right adjoints are unique up to isomorphism. Consider:
+    \begin{align*}
+      \dbl{D}_1(x,y)(p,\Sigma_mm^*(n)) &\cong \dbl{D}_0/x\times y(t_p, t_{\Sigma_mm^*(n)}) \quad &\text{(strength)} \\
+        &\cong \dbl{D}_0/x\times y(t_p, t_{m^*(n)}) \quad &\text{(absorbs extension)} \\
+        &\cong \dbl{D}_0/x\times y(t_p, t_m\times t_n) \quad &\text{(commutes with pullback)} \\
+        &\cong \dbl{D}_0/x\times y(t_p, t_m)\times\dbl D(p, t_n) \\
+        &\cong \dbl{D}_1(p,m)\times\dbl D_1(p,n)
+    \end{align*}
+  which shows that $\Sigma_mm^*(n)$ computes the cartesian product $m\wedge n$ in $\dbl D(x,y)$. Since $\prod_mm^*$ is the right adjoint, this proves that $\dbl D(x,y)$ is cartesian closed.
+\end{proof}
+
+\section{Cocartesianness and Negation}
+
 \section{The Role of Compactness}
 
 \section{Structure on Relations}

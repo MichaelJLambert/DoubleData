@@ -19,6 +19,39 @@
 
 \refsection{0}
   \datalist[entry]{anyt/global//global/global/global}
+    \entry{aleiferi2018}{thesis}{}{}
+      \name{author}{1}{}{%
+        {{hash=e2b274c2f359d3b84664363447ef3c4f}{%
+           family={Aleiferi},
+           familyi={A\bibinitperiod},
+           given={Eva},
+           giveni={E\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {Dalhousie University}%
+      }
+      \strng{namehash}{e2b274c2f359d3b84664363447ef3c4f}
+      \strng{fullhash}{e2b274c2f359d3b84664363447ef3c4f}
+      \strng{fullhashraw}{e2b274c2f359d3b84664363447ef3c4f}
+      \strng{bibnamehash}{e2b274c2f359d3b84664363447ef3c4f}
+      \strng{authorbibnamehash}{e2b274c2f359d3b84664363447ef3c4f}
+      \strng{authornamehash}{e2b274c2f359d3b84664363447ef3c4f}
+      \strng{authorfullhash}{e2b274c2f359d3b84664363447ef3c4f}
+      \strng{authorfullhashraw}{e2b274c2f359d3b84664363447ef3c4f}
+      \field{labelalpha}{Ale18}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprintclass}{math.CT}
+      \field{eprinttype}{arXiv}
+      \field{title}{Cartesian Double Categories with an Emphasis on Characterizing Spans}
+      \field{type}{phdthesis}
+      \field{year}{2018}
+      \verb{eprint}
+      \verb 1809.06940
+      \endverb
+    \endentry
     \entry{codd1972}{article}{}{}
       \name{author}{1}{}{%
         {{hash=575e6ec8dab1a34c19f7021664baaccc}{%
@@ -311,6 +344,38 @@
       \verb 10.1007/978-1-4612-0927-0
       \endverb
     \endentry
+    \entry{niefield2012}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=7896af568ff0ca3e4359810dbcbc7e3d}{%
+           family={Niefield},
+           familyi={N\bibinitperiod},
+           given={Susan},
+           giveni={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{7896af568ff0ca3e4359810dbcbc7e3d}
+      \strng{fullhash}{7896af568ff0ca3e4359810dbcbc7e3d}
+      \strng{fullhashraw}{7896af568ff0ca3e4359810dbcbc7e3d}
+      \strng{bibnamehash}{7896af568ff0ca3e4359810dbcbc7e3d}
+      \strng{authorbibnamehash}{7896af568ff0ca3e4359810dbcbc7e3d}
+      \strng{authornamehash}{7896af568ff0ca3e4359810dbcbc7e3d}
+      \strng{authorfullhash}{7896af568ff0ca3e4359810dbcbc7e3d}
+      \strng{authorfullhashraw}{7896af568ff0ca3e4359810dbcbc7e3d}
+      \field{labelalpha}{Nie12}
+      \field{sortinit}{N}
+      \field{sortinithash}{22369a73d5f88983a108b63f07f37084}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Theory and Applications of Categories}
+      \field{number}{26}
+      \field{title}{Span, Cospan, and Other Double Categories}
+      \field{volume}{26}
+      \field{year}{2012}
+      \field{pages}{729\bibrangedash 742}
+      \range{pages}{14}
+      \verb{doi}
+      \verb 10.70930/tac/ws68tanm
+      \endverb
+    \endentry
     \entry{shulman2008}{article}{}{}
       \name{author}{1}{}{%
         {{hash=a49cc4742950659ae680e1c40f2295a9}{%
@@ -345,6 +410,7 @@
       \endverb
     \endentry
   \enddatalist
+  \missing{gra}
 \endrefsection
 \endinput
 

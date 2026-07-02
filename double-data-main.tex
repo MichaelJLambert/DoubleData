@@ -49,7 +49,11 @@
   Working draft of a paper on quantification, modality, data queries and comprehension, all in the context of double categories. A follow-up to \cite{lambert2025}.
 \end{abstract}
 
+\tableofcontents
+
 \section{Introduction}
+
+\part{Dependent Products \& Relational Division}
 
 \section{Relational Division}
 \label{section:relational-division}
@@ -962,57 +966,7 @@ It is worth pointing out that although this construction thus achieves the desir
 
 \section{Tabulators and Modality}
 
-\section{Closed Structure}
-
-If $\dbl D$ is a cartesian equipment, then each hom-category $\dbl D(x,y)$ of 
-course has cartesian products, given by the formula 
-  \begin{equation*}
-    % https://q.uiver.app/#q=WzAsNCxbMCwwLCJ4Il0sWzEsMCwieSJdLFsxLDEsIjEiXSxbMCwxLCIxIl0sWzAsMSwiMV97eCx5fSIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImJhcnJlZCJ9fX1dLFsxLDIsIiEiXSxbMCwzLCIhIiwyXSxbMywyLCIiLDIseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJiYXJyZWQifX19XSxbNCw3LCJcXG1hdGhybXtyZXN9IiwxLHsic2hvcnRlbiI6eyJzb3VyY2UiOjIwLCJ0YXJnZXQiOjIwfSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoibm9uZSJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV1d
-    \begin{tikzcd}
-      x & y \\
-      1 & 1
-      \arrow[""{name=0, anchor=center, inner sep=0}, "{1_{x,y}}"{inner sep=.8ex}, "\shortmid"{marking}, from=1-1, to=1-2]
-      \arrow["{!}"', from=1-1, to=2-1]
-      \arrow["{!}", from=1-2, to=2-2]
-      \arrow[""{name=1, anchor=center, inner sep=0}, "\shortmid"{marking}, from=2-1, to=2-2]
-      \arrow["{\mathrm{res}}"{description}, draw=none, from=0, to=1]
-    \end{tikzcd}\qquad\qquad
-    % https://q.uiver.app/#q=WzAsNCxbMCwxLCJ4XFx0aW1lcyB4Il0sWzIsMSwieVxcdGltZXMgeSJdLFswLDAsIngiXSxbMiwwLCJ5Il0sWzAsMSwibVxcdGltZXMgbiIsMix7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImJhcnJlZCJ9fX1dLFsyLDAsIlxcZGVsdGFfeCIsMl0sWzIsMywibVxcd2VkZ2UgbiIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImJhcnJlZCJ9fX1dLFszLDEsIlxcZGVsdGFfeSJdLFs2LDQsIlxcbWF0aHJte3Jlc30iLDEseyJzaG9ydGVuIjp7InNvdXJjZSI6MjAsInRhcmdldCI6MjB9LCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJub25lIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
-    \begin{tikzcd}
-      x && y \\
-      {x\times x} && {y\times y}
-      \arrow[""{name=0, anchor=center, inner sep=0}, "{m\wedge n}"{inner sep=.8ex}, "\shortmid"{marking}, from=1-1, to=1-3]
-      \arrow["{\delta_x}"', from=1-1, to=2-1]
-      \arrow["{\delta_y}", from=1-3, to=2-3]
-      \arrow[""{name=1, anchor=center, inner sep=0}, "{m\times n}"'{inner sep=.8ex}, "\shortmid"{marking}, from=2-1, to=2-3]
-      \arrow["{\mathrm{res}}"{description}, draw=none, from=0, to=1]
-    \end{tikzcd}
-  \end{equation*}
-as described in \cite[Proposition 4.3.2]{aleiferi2018}.
-
-\begin{definition}
-  A cartesian equipment $\dbl D$ is \textbf{locally cartesian closed} if each product functor 
-    \begin{equation*}
-      m\wedge-\colon \dbl{D}(X,Y)\to\dbl{D}(X,Y)
-    \end{equation*}
-  has a right adjoint $(-)^m$. The object $n^m$ is called the \textbf{exponential} of $n$ by $m$.
-\end{definition}
-
-\begin{example}
-  For relations $R,S\colon X\proto Y$, the exponential is given by 
-    \begin{equation*}
-      S^R = \lbrace (x,y)\mid xRy \text{ implies } xSy\rbrace
-    \end{equation*}
-  and computed via adjoints as 
-    \begin{equation*}
-      \forall_RR^*(S)
-    \end{equation*}
-  thinking of $R$ as its own tabulator.
-\end{example}
-
-Of course we may simply ask that our cartesian equipments are locally cartesian closed in this sense. It is a point of interest, however, to connect this structure to the right adjoints to substitution assumed in previous sections inasmuch as, (1) these are supposed to provide \emph{generalized hom objects} and (2) there is an evident universal quantification over pairs $(x,y)$ in the example above. The answer, roughly, is that these right adjoints are computable from right adjoints to substitution whenever the given cartesian equipment has strong, extension-preserving, cartesian tabulators.
-
-\begin{definition}[\cite{gra}]
+\begin{definition}[\cite{grandis1999}]
   A double category $\dbl D$ \textbf{has tabulators} if external identity has a right adjoint 
     \begin{equation*}
       % https://q.uiver.app/#q=WzAsMixbMCwwLCJcXGRibCBEXzAiXSxbMSwwLCJcXGRibHtEfV8xIl0sWzAsMSwiXFxpZF97LX0iLDAseyJvZmZzZXQiOi0yfV0sWzEsMCwiVCIsMCx7Im9mZnNldCI6LTJ9XV0=
@@ -1052,147 +1006,6 @@ Of course we may simply ask that our cartesian equipments are locally cartesian 
     \end{equation*}
   for each such cell $\theta$.
 \end{definition}
-
-\begin{construction}
-  Let $\dbl D$ denote any cartesian equipment with tabulators. Let $\Span(\dbl D_0)(x,y)$ denote the ordinary category of spans in $\dbl D_0$ from $x$ to $y$. Note that we do not yet assume the existence of suitable pullbacks making $\Span(\dbl D_0)$ into a double category. The assignment 
-    \begin{equation*}
-      \int_{x,y}(-)\colon \dbl D(x,y) \to \Span(\dbl D_0)(x,y) \qquad\text{by}\qquad m \quad\mapsto \quad (x\leftarrow Tm\to y)
-    \end{equation*}
-  is functorial by the universal property of tabulators. Likewise, the assignment taking a pairing morphism to its extension 
-    \begin{equation*}
-      \fib_{x,y} \colon \Span(\dbl D_0)(x,y) \to \dbl D(x,y)  \qquad\text{by}\qquad
-      x\xleftarrow{l} z\xrightarrow{r} y \quad \mapsto \quad 
-      % https://q.uiver.app/#q=WzAsNCxbMCwwLCJ6Il0sWzEsMCwieiJdLFsxLDEsInkiXSxbMCwxLCJ4Il0sWzAsMSwiIiwwLHsibGV2ZWwiOjIsInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImJhcnJlZCJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzEsMiwiciJdLFswLDMsImwiLDJdLFszLDIsImxeKlxcb2RvdCByXyEiLDIseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJiYXJyZWQifX19XSxbNCw3LCJcXG1hdGhybXtleHR9IiwxLHsic2hvcnRlbiI6eyJzb3VyY2UiOjIwLCJ0YXJnZXQiOjIwfSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoibm9uZSJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV1d
-      \begin{tikzcd}
-        z & z \\
-        x & y
-        \arrow[""{name=0, anchor=center, inner sep=0}, "\shortmid"{marking}, equals, from=1-1, to=1-2]
-        \arrow["l"', from=1-1, to=2-1]
-        \arrow["r", from=1-2, to=2-2]
-        \arrow[""{name=1, anchor=center, inner sep=0}, "{l^*\odot r_!}"'{inner sep=.8ex}, "\shortmid"{marking}, from=2-1, to=2-2]
-        \arrow["{\mathrm{ext}}"{description}, draw=none, from=0, to=1]
-      \end{tikzcd}
-    \end{equation*}
-  is a functor by the universal property of extensions. Note that these are essentially the hom-localizations of the double functors giving the oplax/lax span representations of \cite{niefield2012}. For our purposes, it is straightforward to check that each such $\fib_{x,y}$ is a left adjoint to the corresponding integral functor
-    \begin{equation*}
-      \fib_{x,y}\;\dashv\; \int_{x,y}(-)
-    \end{equation*}
-  again by universal properties of the involved constructions. Note that the integral functor, being a right adjoint, preserves limits.
-\end{construction}
-
-\begin{proposition}
-  If $\dbl D$ is a cartesian equipment with tabulators, the fibers and integral functors developed above are components of respective lax natural transformations 
-    \begin{equation*}
-      \int(-)\colon \dbl D(-,=) \Rightarrow \Span(\dbl D_0)(-,=) \qquad\text{and}\qquad \fib \colon \Span(\dbl D_0)(-,=)  \Rightarrow \dbl D(-,=) 
-    \end{equation*}
-  of indexed categories (equivalently opfibrations) forming a fibered adjunction.
-\end{proposition}
-\begin{proof}
-  
-\end{proof}
-
-\begin{definition}
-  Suppose $\dbl D$ is a cartesian equipment with tabulators. 
-\end{definition}
-
-\begin{remark}
-  Tabulators in this sense provide a \emph{comprehension scheme}, that is, one half of an elements-style correspondence whose pseudo-inverse is a \emph{fibers construction}, associating, for example in the case of discrete (op)fibrations, the (co)presheaf whose values at a given object is the precisely the fiber of the (op)fibration over that object. Note that we have imposed no conditions on the receiving category of the elements-style tabulator functors other than that it be a slice category. This is so as not to prejudice the \emph{type} of fibration concept the elements construction recovers. See \cite[\S 8]{lambert2022} for more discussion on these points. The next definition say that elements and fibers correctly roundtrip in the direction that makes sense, namely, first tabulating and then extending results in the original proarrow. The other roundtrip does not make sense to axiomatize since we do not specify the fibration type.
-\end{remark}
-
-\begin{definition}
-  The tabulator of a proarrow $p\colon X\proto Y$ is \textbf{strong} if the canonical morphism 
-    \begin{equation*}
-      % https://q.uiver.app/#q=WzAsNCxbMCwwLCJUcCJdLFsxLDAsIlRwIl0sWzEsMSwieSJdLFswLDEsIngiXSxbMCwxLCIiLDAseyJsZXZlbCI6Miwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiYmFycmVkIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMSwyLCJjIl0sWzAsMywiZCIsMl0sWzMsMiwicCIsMix7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImJhcnJlZCJ9fX1dLFs0LDcsIlxcdGF1X3AiLDEseyJzaG9ydGVuIjp7InNvdXJjZSI6MjAsInRhcmdldCI6MjB9LCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJub25lIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
-      \begin{tikzcd}
-        Tp & Tp \\
-        x & y
-        \arrow[""{name=0, anchor=center, inner sep=0}, "\shortmid"{marking}, equals, from=1-1, to=1-2]
-        \arrow["d"', from=1-1, to=2-1]
-        \arrow["c", from=1-2, to=2-2]
-        \arrow[""{name=1, anchor=center, inner sep=0}, "p"'{inner sep=.8ex}, "\shortmid"{marking}, from=2-1, to=2-2]
-        \arrow["{\tau_p}"{description}, draw=none, from=0, to=1]
-      \end{tikzcd} \qquad = \qquad
-      % https://q.uiver.app/#q=WzAsNixbMCwwLCJUcCJdLFsxLDAsIlRwIl0sWzEsMSwieSJdLFswLDEsIngiXSxbMCwyLCJ4Il0sWzEsMiwieSJdLFswLDEsIiIsMCx7ImxldmVsIjoyLCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJiYXJyZWQifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsxLDIsImMiXSxbMCwzLCJkIiwyXSxbMywyLCJkXipcXG9kb3QgY18hIiwyLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiYmFycmVkIn19fV0sWzMsNCwiIiwyLHsibGV2ZWwiOjIsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMiw1LCIiLDIseyJsZXZlbCI6Miwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs0LDUsInAiLDIseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJiYXJyZWQifX19XSxbNiw5LCJcXHRhdV9wIiwxLHsic2hvcnRlbiI6eyJzb3VyY2UiOjIwLCJ0YXJnZXQiOjIwfSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoibm9uZSJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzksMTIsIlxcZXhpc3RzXFwsISIsMSx7ImxhYmVsX3Bvc2l0aW9uIjo2MCwic2hvcnRlbiI6eyJzb3VyY2UiOjIwLCJ0YXJnZXQiOjIwfSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoibm9uZSJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV1d
-      \begin{tikzcd}
-        Tp & Tp \\
-        x & y \\
-        x & y
-        \arrow[""{name=0, anchor=center, inner sep=0}, "\shortmid"{marking}, equals, from=1-1, to=1-2]
-        \arrow["d"', from=1-1, to=2-1]
-        \arrow["c", from=1-2, to=2-2]
-        \arrow[""{name=1, anchor=center, inner sep=0}, "{d^*\odot c_!}"'{inner sep=.8ex}, "\shortmid"{marking}, from=2-1, to=2-2]
-        \arrow[equals, from=2-1, to=3-1]
-        \arrow[equals, from=2-2, to=3-2]
-        \arrow[""{name=2, anchor=center, inner sep=0}, "p"'{inner sep=.8ex}, "\shortmid"{marking}, from=3-1, to=3-2]
-        \arrow["{\tau_p}"{description}, draw=none, from=0, to=1]
-        \arrow["{\exists\,!}"{description, pos=0.6}, draw=none, from=1, to=2]
-      \end{tikzcd}
-    \end{equation*}
-    is an isomorphism. A double category has \textbf{strong tabulators} if it has tabulators and each is strong.
-\end{definition}
-
-\begin{remark}
-  This means, equivalently, that each such tabulator cell $\tau_p$ is an extension cell. Consequently, a double category has strong tabulators if each of its proarrows is the extension of its tabulator. The double category of relations is an example.
-\end{remark}
-
-\begin{definition}
-  Tabulators are \textbf{cartesian} if the counit transformation $\tau\colon \id_{-}T\Rightarrow 1$ is a cartesian transformation.
-\end{definition}
-
-As notation, for $m\colon x\proto y$ and its tabulator $Tm$, we write $m^*(n)$ for the proarrow domain of the restriction cell 
-  \begin{equation*}
-    % https://q.uiver.app/#q=WzAsNCxbMCwxLCJ4Il0sWzEsMSwieSJdLFswLDAsIlRtIl0sWzEsMCwiVG0iXSxbMCwxLCJuIiwyLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiYmFycmVkIn19fV0sWzIsMCwiZCIsMl0sWzIsMywibV4qKG4pIiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiYmFycmVkIn19fV0sWzMsMSwiYyJdLFs2LDQsIlxcbWF0aHJte3Jlc30iLDEseyJzaG9ydGVuIjp7InNvdXJjZSI6MjAsInRhcmdldCI6MjB9LCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJub25lIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
-    \begin{tikzcd}
-      Tm & Tm \\
-      x & y
-      \arrow[""{name=0, anchor=center, inner sep=0}, "{m^*(n)}"{inner sep=.8ex}, "\shortmid"{marking}, from=1-1, to=1-2]
-      \arrow["d"', from=1-1, to=2-1]
-      \arrow["c", from=1-2, to=2-2]
-      \arrow[""{name=1, anchor=center, inner sep=0}, "n"'{inner sep=.8ex}, "\shortmid"{marking}, from=2-1, to=2-2]
-      \arrow["{\mathrm{res}}"{description}, draw=none, from=0, to=1]
-    \end{tikzcd}
-  \end{equation*}
-Likewise $\prod_m$ and $\Sigma_m$ denote the right- and left-adjoints to substitution along the domain and codomain morphisms coming with $Tm$.
-
-\begin{theorem}
-  If $\dbl D$ is a $\prod$-cartesian equipment with strong, cartesian and cocontinuous tabulators, then 
-    \begin{equation*}
-      m\wedge n \cong \coprod_m(\id_{Tm}\wedge m^*(n))
-    \end{equation*}
-  holds naturally in $n$, and thus 
-    \begin{equation*}
-      n^m \cong \prod_mm^*(n)
-    \end{equation*}
-  holds naturally in $n$ for each hom-category $\dbl D(x,y)$.
-\end{theorem}
-\begin{proof}
-  The proof is inspired by the argument of \cite[Proposition 10.5.4]{jacobs1999}. We shall show that local products are given by extensions. The second statement will follow since right adjoints are unique up to isomorphism. Consider:
-    \begin{align*}
-      \dbl{D}_1(x,y)(p,\coprod_mm^*(n)) &\cong \dbl{D}_0/x\times y(t_p, t_{\coprod_mm^*(n)}) \quad &\text{(strength)} \\
-        &\cong \dbl{D}_0/x\times y(t_p, \Sigma_mt_{m^*(n)}) \quad &\text{(cocontinuity)} \\
-        &\cong \dbl{D}_0/x\times y(t_p, t_m\times t_n) \quad &\text{(cartesianness)} \\
-        &\cong \dbl{D}_0/x\times y(t_p, t_m)\times\dbl D(p, t_n) \\
-        &\cong \dbl{D}_1(p,m)\times\dbl D_1(p,n)
-    \end{align*}
-  which shows that $\Sigma_mm^*(n)$ computes the cartesian product $m\wedge n$ in $\dbl D(x,y)$. Since $\prod_mm^*$ is the right adjoint, this proves that $\dbl D(x,y)$ is cartesian closed.
-\end{proof}
-
-\begin{corollary}
-  If a cartesian equipment $\dbl D$ with $\prod$-quantification satisfying Beck-Chevalley has tabulators that are
-    \begin{enumerate}
-      \item strong
-      \item cartesian
-      \item cocontinuous
-    \end{enumerate}
-  then $\dbl D$ is locally cartesian closed as a fibration.
-\end{corollary}
-\begin{proof}
-  Reindexing preserves the closed structure by BC.
-\end{proof}
-
-\section{Cocartesianness and Negation}
-
-\section{The Role of Compactness}
 
 \section{Structure on Relations}
 
@@ -1284,11 +1097,358 @@ This operator justly bears the `$\diamondsuit$' notation not only on account of 
   Notice the abuse of notation, namely, that we think of $S$ as both the object providing the domain of $s$ but also as a proarrow $S\colon X\proto 1$ obtained by extension.
 \end{proof}
 
-\section{Prospectus}
+\part{Cartesian Closedness \& Full First-Order Logic}
 
+\section{Modularity and Frobenius}
 
+It is asserted in \cite[\S 3]{lambert2022} that any `double category of relations' satisfies the usual \emph{Frobenius Law} for the accompanying doctrine. This is proved here in detail since Frobenius the proof is interesting in its own right and the law is the main ingredient in proving that right adjoints to substitution do give cartesian closed structure, locally.
 
+Recall from \cite{carboni1987} that any `bicategory of relations' is compact closed and has an involution law 
+  \begin{equation*}
+    f \mapsto f^\circ
+  \end{equation*}
+satisfying 
+  \begin{equation*}
+    1^\circ = 1\qquad (f^\circ)^\circ = f\qquad (gf)^\circ = f^\circ g^\circ
+  \end{equation*}
+with $(-)^\circ$ defined using the unit and counit in the compact closed structure as in the proof of \cite[Theorem 2.4]{carboni1987}. Now, if $f$ is a \emph{map} then $f^\circ$ is that right adjoint $f\dashv f^\circ$ \cite[Lemma 2.5]{carboni1987}. This extends to `double categories of relations' in the following way.
 
+\begin{lemma}
+  In any `double category of relations', the equations
+    \begin{enumerate}
+      \item $(f_!)^\circ = f^*$
+      \item $(f^*)^\circ = f_!$
+    \end{enumerate}
+  each hold.
+\end{lemma}
+\begin{proof}
+  Start with the usual equipment adjunction $f_!\dashv f^*$ \cite{shulman2008}. The underlying bicategory of any `double category of relations' is a `bicategory of relations' \cite{lambert2022} and bicategorical adjoints are unique up to isomorphism.
+\end{proof}
+
+The proof of the Modular Law (cf. \cite{freyd1990}) is now an application. It is phrased here in the manner needed in proving Frobenius.
+
+\begin{proposition}[Modular Laws] \label{prop:modular-laws}
+  In any `double category of relations', the two inequalities 
+    \begin{enumerate}
+      \item $(f^*\odot m)\wedge n \leq f^*\odot (m\wedge f_!\odot n)$
+      \item $(p\odot f_!)\wedge q \leq (p\wedge q\odot f^*)\odot f_!$
+    \end{enumerate}
+  each hold.
+\end{proposition}
+\begin{proof}
+  Two inequalities follow directly from \cite[Theorem 2.4]{carboni1987}. These are 
+    \begin{enumerate}
+      \item $\Delta_!\odot (f^*\times 1) \leq f^*\odot\Delta_!\odot (1\times f_!)$
+      \item $(f_!\times 1)\odot \Delta^*\leq (1\times f^*)\odot \Delta^*\odot f_!$
+    \end{enumerate}
+  using $(f^*)^\circ = f_!$ as in the lemma above for the first. The two modular laws are direct applications. For the first one, we have 
+    \begin{align*}
+      (f^*\odot m)\wedge n &= \Delta_!\odot (f^*\odot m\times n)\odot\Delta^* \\
+                           &= \Delta_!\odot (f^*\times 1\odot m\times n)\odot\Delta^* \\
+                           &\leq f^*\odot\Delta_!\odot (1\times f_! \odot m\times n)\odot\Delta^* \\
+                           &= f^*\odot\Delta_!\odot (m\times f_! \odot n)\odot\Delta^* \\
+                           &= f^*\odot (m\wedge f_!\odot n)
+    \end{align*}
+  using the fact the interaction of $\odot$ and $\times$ as well as the definition of local products. The other inequality is analogous.
+\end{proof}
+
+\begin{construction}[Frobenius Comparison Cell]\label{construction:Frob-comparison-cell}
+  Let $\dbl D$ denote any cartesian equipment. Local products make sense in this context. Let $f\colon x\to z$ and $g\colon y\to w$ denote morphisms. First form the coproduct extension as the third step in the sequence:
+    \begin{equation*}
+      % https://q.uiver.app/#q=WzAsNCxbMCwwLCJ4Il0sWzAsMSwieiJdLFsxLDAsInkiXSxbMSwxLCJ3Il0sWzAsMSwiZiIsMl0sWzIsMywiZyJdLFsxLDMsInAiLDIseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJiYXJyZWQifX19XSxbMCwyLCJmXyFwZ14qIiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiYmFycmVkIn19fV0sWzcsNiwiXFxtYXRocm17cmVzfSIsMSx7InNob3J0ZW4iOnsic291cmNlIjoyMCwidGFyZ2V0IjoyMH0sInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6Im5vbmUifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dXQ==
+      \begin{tikzcd}
+        x & y \\
+        z & w
+        \arrow[""{name=0, anchor=center, inner sep=0}, "{f_!pg^*}"{inner sep=.8ex}, "\shortmid"{marking}, from=1-1, to=1-2]
+        \arrow["f"', from=1-1, to=2-1]
+        \arrow["g", from=1-2, to=2-2]
+        \arrow[""{name=1, anchor=center, inner sep=0}, "p"'{inner sep=.8ex}, "\shortmid"{marking}, from=2-1, to=2-2]
+        \arrow["{\mathrm{res}}"{description}, draw=none, from=0, to=1]
+      \end{tikzcd}\quad\leadsto\quad
+      % https://q.uiver.app/#q=WzAsNCxbMCwwLCJ4Il0sWzIsMCwieSJdLFswLDEsInhcXHRpbWVzIHgiXSxbMiwxLCJ5XFx0aW1lcyB5Il0sWzAsMSwibVxcd2VkZ2UgZl8hcGdeKiIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImJhcnJlZCJ9fX1dLFswLDIsIlxcRGVsdGFfeCIsMl0sWzEsMywiXFxEZWx0YV95Il0sWzIsMywibVxcdGltZXMgZl8hcGdeKiIsMix7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImJhcnJlZCJ9fX1dLFs0LDcsIlxcbWF0aHJte3Jlc30iLDEseyJzaG9ydGVuIjp7InNvdXJjZSI6MjAsInRhcmdldCI6MjB9LCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJub25lIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
+      \begin{tikzcd}
+        x && y \\
+        {x\times x} && {y\times y}
+        \arrow[""{name=0, anchor=center, inner sep=0}, "{m\wedge f_!pg^*}"{inner sep=.8ex}, "\shortmid"{marking}, from=1-1, to=1-3]
+        \arrow["{\Delta_x}"', from=1-1, to=2-1]
+        \arrow["{\Delta_y}", from=1-3, to=2-3]
+        \arrow[""{name=1, anchor=center, inner sep=0}, "{m\times f_!pg^*}"'{inner sep=.8ex}, "\shortmid"{marking}, from=2-1, to=2-3]
+        \arrow["{\mathrm{res}}"{description}, draw=none, from=0, to=1]
+      \end{tikzcd}\quad\leadsto\quad
+      % https://q.uiver.app/#q=WzAsNCxbMCwwLCJ4Il0sWzIsMCwieSJdLFswLDEsInoiXSxbMiwxLCJ3Il0sWzAsMSwibVxcd2VkZ2UgZl8hcGdeKiIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImJhcnJlZCJ9fX1dLFswLDIsImYiLDJdLFsxLDMsImciXSxbMiwzLCJcXGNvcHJvZF97ZixnfShtXFx3ZWRnZSBmXyFwZ14qKSIsMix7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImJhcnJlZCJ9fX1dLFs0LDcsIlxcbWF0aHJte2V4dH0iLDEseyJzaG9ydGVuIjp7InNvdXJjZSI6MjAsInRhcmdldCI6MjB9LCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJub25lIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
+      \begin{tikzcd}
+        x && y \\
+        z && w
+        \arrow[""{name=0, anchor=center, inner sep=0}, "{m\wedge f_!pg^*}"{inner sep=.8ex}, "\shortmid"{marking}, from=1-1, to=1-3]
+        \arrow["f"', from=1-1, to=2-1]
+        \arrow["g", from=1-3, to=2-3]
+        \arrow[""{name=1, anchor=center, inner sep=0}, "{\coprod_{f,g}(m\wedge f_!pg^*)}"'{inner sep=.8ex}, "\shortmid"{marking}, from=2-1, to=2-3]
+        \arrow["{\mathrm{ext}}"{description}, draw=none, from=0, to=1]
+      \end{tikzcd}.
+    \end{equation*}
+  Note that we are suppressing some of the loose composition notation for readability. Now, on the other hand, form the local product as the second step in the sequence:
+    \begin{equation*}
+      % https://q.uiver.app/#q=WzAsNCxbMCwwLCJ4Il0sWzAsMSwieiJdLFsxLDAsInkiXSxbMSwxLCJ3Il0sWzAsMSwiZiIsMl0sWzIsMywiZyJdLFsxLDMsIlxcY29wcm9kX3tmLGd9bSIsMix7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImJhcnJlZCJ9fX1dLFswLDIsIm0iLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJiYXJyZWQifX19XSxbNyw2LCJcXG1hdGhybXtleHR9IiwxLHsic2hvcnRlbiI6eyJzb3VyY2UiOjIwLCJ0YXJnZXQiOjIwfSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoibm9uZSJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV1d
+      \begin{tikzcd}
+        x & y \\
+        z & w
+        \arrow[""{name=0, anchor=center, inner sep=0}, "m"{inner sep=.8ex}, "\shortmid"{marking}, from=1-1, to=1-2]
+        \arrow["f"', from=1-1, to=2-1]
+        \arrow["g", from=1-2, to=2-2]
+        \arrow[""{name=1, anchor=center, inner sep=0}, "{\coprod_{f,g}m}"'{inner sep=.8ex}, "\shortmid"{marking}, from=2-1, to=2-2]
+        \arrow["{\mathrm{ext}}"{description}, draw=none, from=0, to=1]
+      \end{tikzcd}\qquad\leadsto\qquad 
+      % https://q.uiver.app/#q=WzAsNCxbMCwwLCJ6Il0sWzIsMCwidyJdLFsyLDEsIndcXHRpbWVzIHciXSxbMCwxLCJ6XFx0aW1lcyB6Il0sWzAsMSwiKFxcY29wcm9kX3tmLGd9bSlcXHdlZGdlIHAiLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJiYXJyZWQifX19XSxbMSwyLCJcXERlbHRhX3ciXSxbMCwzLCJcXERlbHRhX3oiLDJdLFszLDIsIihcXGNvcHJvZF97ZixnfW0pXFx0aW1lcyBwIiwyLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiYmFycmVkIn19fV0sWzQsNywiXFxtYXRocm17cmVzfSIsMSx7InNob3J0ZW4iOnsic291cmNlIjoyMCwidGFyZ2V0IjoyMH0sInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6Im5vbmUifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dXQ==
+      \begin{tikzcd}
+        z && w \\
+        {z\times z} && {w\times w}
+        \arrow[""{name=0, anchor=center, inner sep=0}, "{(\coprod_{f,g}m)\wedge p}"{inner sep=.8ex}, "\shortmid"{marking}, from=1-1, to=1-3]
+        \arrow["{\Delta_z}"', from=1-1, to=2-1]
+        \arrow["{\Delta_w}", from=1-3, to=2-3]
+        \arrow[""{name=1, anchor=center, inner sep=0}, "{(\coprod_{f,g}m)\times p}"'{inner sep=.8ex}, "\shortmid"{marking}, from=2-1, to=2-3]
+        \arrow["{\mathrm{res}}"{description}, draw=none, from=0, to=1]
+      \end{tikzcd}
+    \end{equation*}
+  By the universal property of the local product immediately above, there is thus a canonical comparison cell 
+    \begin{equation*}
+      m\wedge f_!pg^* \Rightarrow (\coprod_{f,g}m)\wedge p
+    \end{equation*}
+  and likewise a comparison cell 
+    \begin{equation*}
+      \coprod_{f,g}(m\wedge f_!pg^*) \Rightarrow (\coprod_{f,g}m)\wedge p
+    \end{equation*}
+  by the universal property of the extension cell defining the coproduct in the preantepenultimate display. This is the required \emph{Frobenius comparison cell}. Note that it exists even if, as assumed, $\dbl D$ is merely a cartesian equipment.
+\end{construction}
+
+\begin{proposition}
+  Any `double category of relations' satisfies the Frobenius Law. That is, the canonical cell 
+    \begin{equation*}
+      \coprod_{f,g}(m\wedge f_!pg^*) \leq (\coprod_{f,g}m)\wedge p
+    \end{equation*}
+  described above is invertible.
+\end{proposition}
+\begin{proof}
+  For the proof, we produce an reverse inequality. Uniqueness then forces the inequality above to be an equality. Starting from the left side and using the construction of extensions and both Modular Laws (\cref{prop:modular-laws}), we have 
+    \begin{align*}
+      (\coprod_{f,g}m)\wedge p &=(f^*\odot m \odot g_!)\wedge p \\
+                               &\leq f^*\odot (m\odot g^*\wedge f_!\odot p) \\
+                               &\leq f^*\odot (m \wedge (f_!\odot p\odot g^*))\odot g_! \\
+                               &=\coprod_{f,g}(m\wedge f_!pg^*) 
+    \end{align*}
+  as required.
+\end{proof}
+
+Query Example
+
+\section{Cartesian Closed Structure}
+
+If $\dbl D$ is a cartesian equipment, then each hom-category $\dbl D(x,y)$ of 
+course has cartesian products, given by the formula 
+  \begin{equation*}
+    % https://q.uiver.app/#q=WzAsNCxbMCwwLCJ4Il0sWzEsMCwieSJdLFsxLDEsIjEiXSxbMCwxLCIxIl0sWzAsMSwiMV97eCx5fSIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImJhcnJlZCJ9fX1dLFsxLDIsIiEiXSxbMCwzLCIhIiwyXSxbMywyLCIiLDIseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJiYXJyZWQifX19XSxbNCw3LCJcXG1hdGhybXtyZXN9IiwxLHsic2hvcnRlbiI6eyJzb3VyY2UiOjIwLCJ0YXJnZXQiOjIwfSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoibm9uZSJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV1d
+    \begin{tikzcd}
+      x & y \\
+      1 & 1
+      \arrow[""{name=0, anchor=center, inner sep=0}, "{1_{x,y}}"{inner sep=.8ex}, "\shortmid"{marking}, from=1-1, to=1-2]
+      \arrow["{!}"', from=1-1, to=2-1]
+      \arrow["{!}", from=1-2, to=2-2]
+      \arrow[""{name=1, anchor=center, inner sep=0}, "\shortmid"{marking}, from=2-1, to=2-2]
+      \arrow["{\mathrm{res}}"{description}, draw=none, from=0, to=1]
+    \end{tikzcd}\qquad\qquad
+    % https://q.uiver.app/#q=WzAsNCxbMCwxLCJ4XFx0aW1lcyB4Il0sWzIsMSwieVxcdGltZXMgeSJdLFswLDAsIngiXSxbMiwwLCJ5Il0sWzAsMSwibVxcdGltZXMgbiIsMix7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImJhcnJlZCJ9fX1dLFsyLDAsIlxcZGVsdGFfeCIsMl0sWzIsMywibVxcd2VkZ2UgbiIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImJhcnJlZCJ9fX1dLFszLDEsIlxcZGVsdGFfeSJdLFs2LDQsIlxcbWF0aHJte3Jlc30iLDEseyJzaG9ydGVuIjp7InNvdXJjZSI6MjAsInRhcmdldCI6MjB9LCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJub25lIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
+    \begin{tikzcd}
+      x && y \\
+      {x\times x} && {y\times y}
+      \arrow[""{name=0, anchor=center, inner sep=0}, "{m\wedge n}"{inner sep=.8ex}, "\shortmid"{marking}, from=1-1, to=1-3]
+      \arrow["{\delta_x}"', from=1-1, to=2-1]
+      \arrow["{\delta_y}", from=1-3, to=2-3]
+      \arrow[""{name=1, anchor=center, inner sep=0}, "{m\times n}"'{inner sep=.8ex}, "\shortmid"{marking}, from=2-1, to=2-3]
+      \arrow["{\mathrm{res}}"{description}, draw=none, from=0, to=1]
+    \end{tikzcd}
+  \end{equation*}
+as described in \cite[Proposition 4.3.2]{aleiferi2018}.
+
+\begin{definition}
+  A cartesian equipment $\dbl D$ is \textbf{locally cartesian closed} if each product functor 
+    \begin{equation*}
+      m\wedge-\colon \dbl{D}(X,Y)\to\dbl{D}(X,Y)
+    \end{equation*}
+  has a right adjoint $(-)^m$. The object $n^m$ is called the \textbf{exponential} of $n$ by $m$.
+\end{definition}
+
+\begin{example}
+  For relations $R,S\colon X\proto Y$, the exponential is given by 
+    \begin{equation*}
+      S^R = \lbrace (x,y)\mid xRy \text{ implies } xSy\rbrace
+    \end{equation*}
+  and computed via adjoints as 
+    \begin{equation*}
+      \forall_RR^*(S)
+    \end{equation*}
+  thinking of $R$ as its own tabulator.
+\end{example}
+
+Of course we may simply ask that our cartesian equipments are locally cartesian closed in this sense. It is a point of interest, however, to connect this structure to the right adjoints to substitution assumed in previous sections inasmuch as, (1) these are supposed to provide \emph{generalized hom objects} and (2) there is an evident universal quantification over pairs $(x,y)$ in the example above. The answer, roughly, is that these right adjoints are computable from right adjoints to substitution whenever the given cartesian equipment has strong tabulators
+
+\begin{construction}
+  Let $\dbl D$ denote any cartesian equipment with tabulators. Let $\Span(\dbl D_0)(x,y)$ denote the ordinary category of spans in $\dbl D_0$ from $x$ to $y$. Note that we do not yet assume the existence of suitable pullbacks making $\Span(\dbl D_0)$ into a double category. The assignment 
+    \begin{equation*}
+      \int_{x,y}(-)\colon \dbl D(x,y) \to \Span(\dbl D_0)(x,y) \qquad\text{by}\qquad m \quad\mapsto \quad (x\leftarrow Tm\to y)
+    \end{equation*}
+  is functorial by the universal property of tabulators. Likewise, the assignment taking a pairing morphism to its extension 
+    \begin{equation*}
+      \fib_{x,y} \colon \Span(\dbl D_0)(x,y) \to \dbl D(x,y)  \qquad\text{by}\qquad
+      x\xleftarrow{l} z\xrightarrow{r} y \quad \mapsto \quad 
+      % https://q.uiver.app/#q=WzAsNCxbMCwwLCJ6Il0sWzEsMCwieiJdLFsxLDEsInkiXSxbMCwxLCJ4Il0sWzAsMSwiIiwwLHsibGV2ZWwiOjIsInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImJhcnJlZCJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzEsMiwiciJdLFswLDMsImwiLDJdLFszLDIsImxeKlxcb2RvdCByXyEiLDIseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJiYXJyZWQifX19XSxbNCw3LCJcXG1hdGhybXtleHR9IiwxLHsic2hvcnRlbiI6eyJzb3VyY2UiOjIwLCJ0YXJnZXQiOjIwfSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoibm9uZSJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV1d
+      \begin{tikzcd}
+        z & z \\
+        x & y
+        \arrow[""{name=0, anchor=center, inner sep=0}, "\shortmid"{marking}, equals, from=1-1, to=1-2]
+        \arrow["l"', from=1-1, to=2-1]
+        \arrow["r", from=1-2, to=2-2]
+        \arrow[""{name=1, anchor=center, inner sep=0}, "{l^*\odot r_!}"'{inner sep=.8ex}, "\shortmid"{marking}, from=2-1, to=2-2]
+        \arrow["{\mathrm{ext}}"{description}, draw=none, from=0, to=1]
+      \end{tikzcd}
+    \end{equation*}
+  is a functor by the universal property of extensions. Note that these are essentially the hom-localizations of the double functors giving the oplax/lax span representations of \cite{niefield2012}. For our purposes, it is straightforward to check that each such $\fib_{x,y}$ is a left adjoint to the corresponding integral functor
+    \begin{equation*}
+      \fib_{x,y}\;\dashv\; \int_{x,y}(-)
+    \end{equation*}
+  again by universal properties of the involved constructions. Note that the integral functor, being a right adjoint, preserves limits. As observed in \cite[Lemma 6.3]{lambert2022} the dashed comparison 
+    \begin{equation*}
+      % https://q.uiver.app/#q=WzAsNCxbMCwwLCJ4Il0sWzEsMCwieFxcdGltZXMgeCJdLFsxLDEsInhcXHRpbWVzIHgiXSxbMCwxLCJUXFxpZF94Il0sWzAsMSwiXFxsYW5nbGUxLDFcXHJhbmdsZSJdLFsxLDIsIiIsMCx7ImxldmVsIjoyLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzAsMywiXFxldGEiLDIseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XSxbMywyXV0=
+      \begin{tikzcd}
+        x & {x\times x} \\
+        {T\id_x} & {x\times x}
+        \arrow["{\langle1,1\rangle}", from=1-1, to=1-2]
+        \arrow["\eta"', dashed, from=1-1, to=2-1]
+        \arrow[equals, from=1-2, to=2-2]
+        \arrow[from=2-1, to=2-2]
+      \end{tikzcd}
+    \end{equation*}
+  is an isomorphism iff $\id_{-}\colon\dbl D_0\to\dbl D_1$ is fully faithful, that is, if $\dbl D$ is unit-pure \cite[\S 4.3.7]{aleiferi2018}. Now, this is 
+\end{construction}
+
+\begin{remark}
+  Tabulators in this sense provide a \emph{comprehension scheme}, that is, one half of an elements-style correspondence whose pseudo-inverse is a \emph{fibers construction}, associating, for example in the case of discrete (op)fibrations, the (co)presheaf whose values at a given object is the precisely the fiber of the (op)fibration over that object. Note that we have imposed no conditions on the receiving category of the elements-style tabulator functors other than that it be a slice category. This is so as not to prejudice the \emph{type} of fibration concept the elements construction recovers. See \cite[\S 8]{lambert2022} for more discussion on these points. These functors organize into lax transformations in the following way.
+\end{remark}
+
+\begin{proposition}
+  If $\dbl D$ is a cartesian equipment with tabulators, the fibers and integral functors developed above are components of respective lax natural transformations 
+    \begin{equation*}
+      \int(-)\colon \dbl D(-,=) \Rightarrow \Span(\dbl D_0)(-,=) \qquad\text{and}\qquad \fib \colon \Span(\dbl D_0)(-,=)  \Rightarrow \dbl D(-,=) 
+    \end{equation*}
+  of indexed categories (equivalently opfibrations) forming a fibered adjunction.
+\end{proposition}
+\begin{proof}
+  x
+\end{proof}
+
+The next definition say that elements and fibers correctly roundtrip in the direction that makes sense, namely, first tabulating and then extending results in the original proarrow. The other roundtrip does not make sense to axiomatize since we do not specify the fibration type.
+
+\begin{definition}
+  The tabulator of a proarrow $p\colon X\proto Y$ is \textbf{strong} if the canonical morphism 
+    \begin{equation*}
+      % https://q.uiver.app/#q=WzAsNCxbMCwwLCJUcCJdLFsxLDAsIlRwIl0sWzEsMSwieSJdLFswLDEsIngiXSxbMCwxLCIiLDAseyJsZXZlbCI6Miwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiYmFycmVkIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMSwyLCJjIl0sWzAsMywiZCIsMl0sWzMsMiwicCIsMix7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImJhcnJlZCJ9fX1dLFs0LDcsIlxcdGF1X3AiLDEseyJzaG9ydGVuIjp7InNvdXJjZSI6MjAsInRhcmdldCI6MjB9LCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJub25lIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
+      \begin{tikzcd}
+        Tp & Tp \\
+        x & y
+        \arrow[""{name=0, anchor=center, inner sep=0}, "\shortmid"{marking}, equals, from=1-1, to=1-2]
+        \arrow["d"', from=1-1, to=2-1]
+        \arrow["c", from=1-2, to=2-2]
+        \arrow[""{name=1, anchor=center, inner sep=0}, "p"'{inner sep=.8ex}, "\shortmid"{marking}, from=2-1, to=2-2]
+        \arrow["{\tau_p}"{description}, draw=none, from=0, to=1]
+      \end{tikzcd} \qquad = \qquad
+      % https://q.uiver.app/#q=WzAsNixbMCwwLCJUcCJdLFsxLDAsIlRwIl0sWzEsMSwieSJdLFswLDEsIngiXSxbMCwyLCJ4Il0sWzEsMiwieSJdLFswLDEsIiIsMCx7ImxldmVsIjoyLCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJiYXJyZWQifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsxLDIsImMiXSxbMCwzLCJkIiwyXSxbMywyLCJkXipcXG9kb3QgY18hIiwyLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiYmFycmVkIn19fV0sWzMsNCwiIiwyLHsibGV2ZWwiOjIsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMiw1LCIiLDIseyJsZXZlbCI6Miwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs0LDUsInAiLDIseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJiYXJyZWQifX19XSxbNiw5LCJcXHRhdV9wIiwxLHsic2hvcnRlbiI6eyJzb3VyY2UiOjIwLCJ0YXJnZXQiOjIwfSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoibm9uZSJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzksMTIsIlxcZXhpc3RzXFwsISIsMSx7ImxhYmVsX3Bvc2l0aW9uIjo2MCwic2hvcnRlbiI6eyJzb3VyY2UiOjIwLCJ0YXJnZXQiOjIwfSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoibm9uZSJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV1d
+      \begin{tikzcd}
+        Tp & Tp \\
+        x & y \\
+        x & y
+        \arrow[""{name=0, anchor=center, inner sep=0}, "\shortmid"{marking}, equals, from=1-1, to=1-2]
+        \arrow["d"', from=1-1, to=2-1]
+        \arrow["c", from=1-2, to=2-2]
+        \arrow[""{name=1, anchor=center, inner sep=0}, "{d^*\odot c_!}"'{inner sep=.8ex}, "\shortmid"{marking}, from=2-1, to=2-2]
+        \arrow[equals, from=2-1, to=3-1]
+        \arrow[equals, from=2-2, to=3-2]
+        \arrow[""{name=2, anchor=center, inner sep=0}, "p"'{inner sep=.8ex}, "\shortmid"{marking}, from=3-1, to=3-2]
+        \arrow["{\tau_p}"{description}, draw=none, from=0, to=1]
+        \arrow["{\exists\,!}"{description, pos=0.6}, draw=none, from=1, to=2]
+      \end{tikzcd}
+    \end{equation*}
+    is an isomorphism. A double category has \textbf{strong tabulators} if it has tabulators and each is strong.
+\end{definition}
+
+\begin{remark}
+  This means, equivalently, that each such tabulator cell $\tau_p$ is an extension cell. Consequently, a double category has strong tabulators if each of its proarrows is the extension of its tabulator. The double category of relations is an example.
+\end{remark}
+
+\begin{definition}
+  Tabulators are \textbf{cartesian} if the counit transformation $\tau\colon \id_{-}T\Rightarrow 1$ is a cartesian transformation.
+\end{definition}
+
+As notation, for $m\colon x\proto y$ and its tabulator $Tm$, we write $m^*(n)$ for the proarrow domain of the restriction cell 
+  \begin{equation*}
+    % https://q.uiver.app/#q=WzAsNCxbMCwxLCJ4Il0sWzEsMSwieSJdLFswLDAsIlRtIl0sWzEsMCwiVG0iXSxbMCwxLCJuIiwyLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiYmFycmVkIn19fV0sWzIsMCwiZCIsMl0sWzIsMywibV4qKG4pIiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiYmFycmVkIn19fV0sWzMsMSwiYyJdLFs2LDQsIlxcbWF0aHJte3Jlc30iLDEseyJzaG9ydGVuIjp7InNvdXJjZSI6MjAsInRhcmdldCI6MjB9LCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJub25lIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
+    \begin{tikzcd}
+      Tm & Tm \\
+      x & y
+      \arrow[""{name=0, anchor=center, inner sep=0}, "{m^*(n)}"{inner sep=.8ex}, "\shortmid"{marking}, from=1-1, to=1-2]
+      \arrow["d"', from=1-1, to=2-1]
+      \arrow["c", from=1-2, to=2-2]
+      \arrow[""{name=1, anchor=center, inner sep=0}, "n"'{inner sep=.8ex}, "\shortmid"{marking}, from=2-1, to=2-2]
+      \arrow["{\mathrm{res}}"{description}, draw=none, from=0, to=1]
+    \end{tikzcd}
+  \end{equation*}
+Likewise $\prod_m$ and $\Sigma_m$ denote the right- and left-adjoints to substitution along the domain and codomain morphisms coming with $Tm$.
+
+\begin{theorem}
+  If $\dbl D$ is a unit-pure `double category of relations' with $\prod$, then each hom category $\dbl D(x,y)$ is cartesian closed and 
+    \begin{equation*}
+      m\wedge n \cong \coprod_m(\id_{Tm}\wedge m^*(n))\qquad\qquad n^m \cong \prod_mm^*(n)
+    \end{equation*}
+  compute the product and exponentials.
+\end{theorem}
+\begin{proof}
+  
+\end{proof}
+
+\begin{remark}
+  The proof is inspired by the argument of \cite[Proposition 10.5.4]{jacobs1999}. We shall show that local products are given by extensions. The second statement will follow since right adjoints are unique up to isomorphism. Consider:
+    \begin{align*}
+      \dbl{D}_1(x,y)(p,\coprod_mm^*(n)) &\cong \dbl{D}_0/x\times y(t_p, t_{\coprod_mm^*(n)}) \quad &\text{(strength)} \\
+        &\cong \dbl{D}_0/x\times y(t_p, \Sigma_mt_{m^*(n)}) \quad &\text{(cocontinuity)} \\
+        &\cong \dbl{D}_0/x\times y(t_p, t_m\times t_n) \quad &\text{(cartesianness)} \\
+        &\cong \dbl{D}_0/x\times y(t_p, t_m)\times\dbl D(p, t_n) \\
+        &\cong \dbl{D}_1(p,m)\times\dbl D_1(p,n)
+    \end{align*}
+  which shows that $\Sigma_mm^*(n)$ computes the cartesian product $m\wedge n$ in $\dbl D(x,y)$. Since $\prod_mm^*$ is the right adjoint, this proves that $\dbl D(x,y)$ is cartesian closed.
+\end{remark}
+
+\begin{corollary}
+  If a cartesian equipment $\dbl D$ with $\prod$-quantification satisfying Beck-Chevalley has tabulators that are
+    \begin{enumerate}
+      \item strong
+      \item cartesian
+      \item cocontinuous
+    \end{enumerate}
+  then $\dbl D$ is locally cartesian closed as a fibration.
+\end{corollary}
+\begin{proof}
+  Reindexing preserves the closed structure by BC.
+\end{proof}
+
+\section{Cocartesianness and Negation}
+
+\section{Modal FOL}
+
+\section{Prospectus: The Role of Compactness}
+
+\paragraph{Acknowledgements.} Early versions of this work were presented at the 
+NU Mathematics Colloquium and at FMCS 2026. Thanks are due to all the 
+participants of both meetings and particularly to Marcello LaFrancesco, Dorette 
+Pronk, and Peter Selinger for several provocative questions. Special thanks to 
+Evan Patterson for reviewing an early draft of the manuscript at CMS 2026.
 
 \printbibliography[heading=bibintoc]
+
 \end{document}

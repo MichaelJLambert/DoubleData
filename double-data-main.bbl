@@ -78,6 +78,111 @@
       \field{volume}{RJ987}
       \field{year}{1972}
     \endentry
+    \entry{carboni1987}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=6d15751d0944ed4b8f504e5cec17d37b}{%
+           family={Carboni},
+           familyi={C\bibinitperiod},
+           given={Aurelio},
+           giveni={A\bibinitperiod}}}%
+        {{hash=17327948f4099874fc76bafad7510686}{%
+           family={Walters},
+           familyi={W\bibinitperiod},
+           given={Robert\bibnamedelima F.C.},
+           giveni={R\bibinitperiod\bibinitdelim F\bibinitperiod}}}%
+      }
+      \strng{namehash}{5429057edc584a087e1b1770a20e9183}
+      \strng{fullhash}{5429057edc584a087e1b1770a20e9183}
+      \strng{fullhashraw}{5429057edc584a087e1b1770a20e9183}
+      \strng{bibnamehash}{5429057edc584a087e1b1770a20e9183}
+      \strng{authorbibnamehash}{5429057edc584a087e1b1770a20e9183}
+      \strng{authornamehash}{5429057edc584a087e1b1770a20e9183}
+      \strng{authorfullhash}{5429057edc584a087e1b1770a20e9183}
+      \strng{authorfullhashraw}{5429057edc584a087e1b1770a20e9183}
+      \field{labelalpha}{CW87}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Pure and Applied Algebra}
+      \field{number}{1-2}
+      \field{title}{Cartesian bicategories {I}}
+      \field{volume}{49}
+      \field{year}{1987}
+      \field{pages}{11\bibrangedash 32}
+      \range{pages}{22}
+      \verb{doi}
+      \verb 10.1016/0022-4049(87)90121-6
+      \endverb
+    \endentry
+    \entry{freyd1990}{book}{}{}
+      \name{author}{2}{}{%
+        {{hash=88904867a831e7dc537df1c26e3595f9}{%
+           family={Freyd},
+           familyi={F\bibinitperiod},
+           given={Peter\bibnamedelima J.},
+           giveni={P\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=bb42161be8632e8a0f742dd07fd92d23}{%
+           family={Scedrov},
+           familyi={S\bibinitperiod},
+           given={Andre},
+           giveni={A\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {North Holland}%
+      }
+      \strng{namehash}{0fca73ef8f2b931306a1d86287c4a38a}
+      \strng{fullhash}{0fca73ef8f2b931306a1d86287c4a38a}
+      \strng{fullhashraw}{0fca73ef8f2b931306a1d86287c4a38a}
+      \strng{bibnamehash}{0fca73ef8f2b931306a1d86287c4a38a}
+      \strng{authorbibnamehash}{0fca73ef8f2b931306a1d86287c4a38a}
+      \strng{authornamehash}{0fca73ef8f2b931306a1d86287c4a38a}
+      \strng{authorfullhash}{0fca73ef8f2b931306a1d86287c4a38a}
+      \strng{authorfullhashraw}{0fca73ef8f2b931306a1d86287c4a38a}
+      \field{labelalpha}{FS90}
+      \field{sortinit}{F}
+      \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{series}{North-Holland Mathematical Library}
+      \field{title}{Categories, Allegories.}
+      \field{volume}{39}
+      \field{year}{1990}
+    \endentry
+    \entry{grandis1999}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=f3ff8e8348a1d26e349b582af6718524}{%
+           family={Grandis},
+           familyi={G\bibinitperiod},
+           given={Marco},
+           giveni={M\bibinitperiod}}}%
+        {{hash=3e73f997df2e2d33541feea1f4a7c236}{%
+           family={Paré},
+           familyi={P\bibinitperiod},
+           given={Robert},
+           giveni={R\bibinitperiod}}}%
+      }
+      \strng{namehash}{1adfe41b34eafa1fe7a68007f48f211f}
+      \strng{fullhash}{1adfe41b34eafa1fe7a68007f48f211f}
+      \strng{fullhashraw}{1adfe41b34eafa1fe7a68007f48f211f}
+      \strng{bibnamehash}{1adfe41b34eafa1fe7a68007f48f211f}
+      \strng{authorbibnamehash}{1adfe41b34eafa1fe7a68007f48f211f}
+      \strng{authornamehash}{1adfe41b34eafa1fe7a68007f48f211f}
+      \strng{authorfullhash}{1adfe41b34eafa1fe7a68007f48f211f}
+      \strng{authorfullhashraw}{1adfe41b34eafa1fe7a68007f48f211f}
+      \field{labelalpha}{GP99}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Cahiers de topologie et géométrie différentielle catégoriques}
+      \field{number}{3}
+      \field{title}{Limits in Double Categories}
+      \field{volume}{40}
+      \field{year}{1999}
+      \field{pages}{162\bibrangedash 220}
+      \range{pages}{59}
+    \endentry
     \entry{jacobs1999}{book}{}{}
       \name{author}{1}{}{%
         {{hash=bf424ec58729aa7d35e9d57ec1c7d40d}{%
@@ -410,7 +515,6 @@
       \endverb
     \endentry
   \enddatalist
-  \missing{gra}
 \endrefsection
 \endinput
 

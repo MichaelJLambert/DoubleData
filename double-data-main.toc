@@ -1,0 +1,18 @@
+\contentsline {section}{\numberline {1}Introduction}{2}{section.1}%
+\contentsline {part}{I\hspace {1em}Dependent Products \& Relational Division}{2}{part.1}%
+\contentsline {section}{\numberline {2}Relational Division}{2}{section.2}%
+\contentsline {section}{\numberline {3}OLOGs and Instances}{4}{section.3}%
+\contentsline {section}{\numberline {4}Quantification and Modality}{7}{section.4}%
+\contentsline {section}{\numberline {5}Existential Queries}{9}{section.5}%
+\contentsline {section}{\numberline {6}Fibrational Semantics {I}}{12}{section.6}%
+\contentsline {section}{\numberline {7}Universal Queries}{14}{section.7}%
+\contentsline {section}{\numberline {8}Tabulators and Modality}{16}{section.8}%
+\contentsline {section}{\numberline {9}Structure on Relations}{16}{section.9}%
+\contentsline {part}{II\hspace {1em}Cartesian Closedness \& Full First-Order Logic}{17}{part.2}%
+\contentsline {section}{\numberline {10}Modularity and Frobenius}{17}{section.10}%
+\contentsline {section}{\numberline {11}Cartesian Closed Structure}{19}{section.11}%
+\contentsline {section}{\numberline {12}Cocartesianness and Negation}{22}{section.12}%
+\contentsline {section}{\numberline {13}Modal FOL}{22}{section.13}%
+\contentsline {section}{\numberline {14}Prospectus: The Role of Compactness}{22}{section.14}%
+\contentsline {paragraph}{Acknowledgements.}{22}{section*.2}%
+\contentsline {section}{References}{23}{section*.3}%
